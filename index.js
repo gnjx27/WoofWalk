@@ -20,7 +20,7 @@ global.db = new sqlite3.Database('./database.db', function(err) {
         global.db.run("PRAGMA foreign_keys = ON");
     }
 });
-
+//testing jonathan
 app.use(routes);
 
 app.listen(port, () => {
