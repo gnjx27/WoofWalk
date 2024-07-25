@@ -24,5 +24,7 @@ global.db = new sqlite3.Database('./database.db', function(err) {
 app.use(routes);
 
 app.listen(port, () => {
-    console.log(`Woofwalk listening at port ${port}`);
+    // Blue color and underline
+    const link = `\x1b[34m\x1b[4mhttp://localhost:${port}\x1b[0m`;
+    console.log(`WoofWalk running at ${link}`);
 });
