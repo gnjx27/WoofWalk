@@ -20,10 +20,9 @@ global.db = new sqlite3.Database('./database.db', function(err) {
         global.db.run("PRAGMA foreign_keys = ON");
     }
 });
-//testing jonathan
+
 app.use(routes);
 
-// nisel 
 app.listen(port, () => {
     // Blue color and underline
     const link = `\x1b[34m\x1b[4mhttp://localhost:${port}\x1b[0m`;
