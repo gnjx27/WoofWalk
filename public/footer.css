@@ -1,0 +1,118 @@
+/* General styling for the .row class */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  /* Styling for unordered lists in the footer */
+  footer ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+  
+  /* Footer background and padding */
+  .footer {
+    background-color: #24262b;
+    padding: 70px 0;
+  }
+  
+  /* Footer column settings */
+  .footer-col {
+    flex: 1;
+    padding: 0 15px;
+    box-sizing: border-box;
+    min-width: none;
+  }
+  
+  /* Footer column heading styling */
+  .footer-col h4 {
+    font-size: 20px;
+    color: #ffffff;
+    margin-bottom: 35px;
+    font-weight: 600;
+    position: relative;
+  }
+  
+  /* Underline for footer column headings */
+  .footer-col h4::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+    background-color: #d43b76;
+    height: 3px;
+    box-sizing: border-box;
+    width: 50px;
+  }
+  
+  /* Margin for list items in footer columns */
+  .footer-col ul li:not(:last-child) {
+    margin-bottom: 15px;
+  }
+  
+  /* Styling for links in footer columns */
+  .footer-col ul li a {
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    color: rgb(143, 143, 143);
+    display: block;
+    transition: all 0.3s ease;
+  }
+  
+  /* Hover effect for links in footer columns */
+  .footer-col ul li a:hover {
+    color: white;
+    padding-left: 8px;
+  }
+  
+  /* Styling for social media links in the footer */
+  .footer-col .social-links a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 0 20px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: white;
+    transition: all 0.5s ease;
+    font-size: 1.4rem;
+  }
+  
+  /* Hover effect for social media links */
+  .footer-col .social-links a:hover {
+    color: #24262b;
+    background-color: white;
+  }
+  
+  /* Styling for paragraph text in footer columns */
+  .footer-col p {
+    color: grey;
+    line-height: 20px;
+  }
+  
+  /* Styling for contact items */
+  .footer-col .contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  /* Icon styling for contact items */
+  .footer-col .contact-item i {
+    font-size: 1.2rem;
+    margin-right: 10px;
+    color: #ffffff;
+  }
+  
+  /* Paragraph styling for contact items */
+  .footer-col .contact-item p {
+    color: grey;
+    margin: 0;
+  }
+  
