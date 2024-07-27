@@ -1,0 +1,107 @@
+/* Navbar styling */
+.navbar {
+  background-color: white;
+  height: 60px;
+  box-shadow: grey 0 5px 10px -5px;
+}
+
+/* Logo */
+.logo {
+  max-height: 35px;
+}
+
+/* Navbar Links */
+.nav-link {
+  color: black;
+  font-weight: 600;
+  font-size: 16px;
+  position: relative;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #d43b76;
+}
+
+.nav-link::before {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  content: "";
+  width: 0;
+  height: 3px;
+  background-color: #d43b76;
+  visibility: hidden;
+  transition: 0.3s ease-in-out;
+}
+
+.nav-link:hover::before,
+.nav-link.active::before {
+  width: 90%;
+  max-width: 80px;
+  visibility: visible;
+}
+/* @media (min-width: 991px) {
+  .nav-link::before {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    content: "";
+    width: 0;
+    height: 3px;
+    background-color: #d43b76;
+    visibility: hidden;
+    transition: 0.3s ease-in-out;
+  }
+
+  .nav-link:hover::before,
+  .nav-link.active::before {
+    width: 90%;
+    visibility: visible;
+  }
+} */
+
+/* Navbar Toggler */
+.navbar-toggler {
+  border: none;
+  font-size: 1.25rem;
+}
+
+.navbar-toggler:focus,
+.btn-close:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+/* Button Styles */
+.custom-btn {
+  background-color: #fff;
+  border-radius: 1rem;
+  box-sizing: border-box;
+  color: #0d172a;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  line-height: 1;
+  padding: 0.7rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+/* Hover Effects */
+.custom-btn:hover {
+  background-color: #1d2532;
+  color: white;
+}
+
+/* Main Content */
+main {
+  padding-top: 80px;
+}
