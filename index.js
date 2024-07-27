@@ -3,12 +3,16 @@ const express = require('express');
 var bodyParser = require('body-parser');
 const routes = require("./routes/routes");
 const sqlite3 = require('sqlite3').verbose();
+const fileUpload = require('express-fileupload');
 
 const port = 3000;
 const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
+app.use(fileUpload());
+
+app.use(routes);
 
 global.db = new sqlite3.Database('./database.db', function(err) {
     if (err) {
@@ -20,8 +24,6 @@ global.db = new sqlite3.Database('./database.db', function(err) {
         global.db.run("PRAGMA foreign_keys = ON");
     }
 });
-
-app.use(routes);
 
 app.listen(port, () => {
     // Blue color and underline
