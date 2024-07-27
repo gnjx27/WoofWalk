@@ -10,6 +10,18 @@ CREATE TABLE IF NOT EXISTS user (
     account_type TEXT NOT NULL CHECK(account_type IN('owner', 'walker'))
 );
 
+CREATE TABLE IF NOT EXISTS walker (
+    walker_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    walker_photo TEXT NOT NULL,
+    walker_quote TEXT DEFAULT "Let me walk your dog!",
+    walker_bio TEXT DEFAULT "No bio",
+    walker_skills TEXT DEFAULT "Dog walking",
+    walker_contact TEXT NOT NULL,
+    base_price TEXT NOT NULL,
+    user_id INTEGER NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES user (user_id)
+);
+
 CREATE TABLE IF NOT EXISTS dog (
     dog_id INTEGER PRIMARY KEY AUTOINCREMENT,
     dog_name TEXT NOT NULL,
@@ -25,18 +37,6 @@ CREATE TABLE IF NOT EXISTS dog (
     FOREIGN KEY (user_id) REFERENCES user (user_id)
 );
 
-CREATE TABLE IF NOT EXISTS walker (
-    walker_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    walker_photo TEXT NOT NULL,
-    walker_quote TEXT DEFAULT "Let me walk your dog!",
-    walker_bio TEXT DEFAULT "No bio",
-    walker_skills TEXT DEFAULT "Dog walking",
-    walker_contact TEXT NOT NULL,
-    base_price TEXT NOT NULL,
-    user_id INTEGER NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES user (user_id)
-);
-
 CREATE TABLE IF NOT EXISTS review (
     review_id INTEGER PRIMARY KEY AUTOINCREMENT,
     rating INTEGER NOT NULL CHECK(rating BETWEEN 1 AND 5),
@@ -46,7 +46,35 @@ CREATE TABLE IF NOT EXISTS review (
     FOREIGN KEY (walker_id) REFERENCES walker (walker_id)
 );
 
----insert---
+CREATE TABLE IF NOT EXISTS booking (
+    booking_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    dog_id INTEGER NOT NULL,
+    booking_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    walk_location TEXT NOT NULL,
+    walk_datetime DATETIME NOT NULL,
+    duration TEXT NOT NULL,
+    remarks TEXT DEFAULT "No remarks",
+    walk_status TEXT NOT NULL CHECK(walk_status IN("pending", "complete")),
+    user_id INTEGER NOT NULL,
+    walker_id INTEGER NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES user (user_id),
+    FOREIGN KEY (walker_id) REFERENCES walker (walker_id)
+);
+
+CREATE TABLE IF NOT EXISTS payment (
+    payment_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    amount TEXT NOT NULL,
+    extended_walk_charge TEXT NOT NULL DEFAULT "No extra charges",
+    total_amount TEXT NOT NULL,
+    payment_date DATE NOT NULL,
+    payment_status TEXT NOT NULL CHECK(payment_status IN("pending", "complete")),
+    user_id INTEGER NOT NULL,
+    booking_id INTEGER NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES user (user_id),
+    FOREIGN KEY (booking_id) REFERENCES booking (booking_id)
+);
+
+--- INSERT TEST DATA ---
 INSERT INTO user (username, email, password_hash, account_type) VALUES (
     "user1",
     "user1@gmail.com",
@@ -113,5 +141,38 @@ INSERT INTO review (
     1
 );
 
+INSERT INTO booking (
+    dog_id,
+    walk_location,
+    walk_datetime,
+    duration,
+    walk_status,
+    user_id,
+    walker_id
+) VALUES (
+    1,
+    "Singapore",
+    CURRENT_TIMESTAMP,
+    "1 hour",
+    "pending",
+    1,
+    1
+);
+
+INSERT INTO payment (
+    amount,
+    total_amount,
+    payment_date,
+    payment_status,
+    user_id,
+    booking_id
+) VALUES (
+    "$100.00",
+    "$100.00",
+    DATE("now", "+1 day"),
+    "pending",
+    1,
+    1
+);
 
 COMMIT
