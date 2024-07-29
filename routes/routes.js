@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const { checkExistingUser, hashPassword, insertUser } = require('../utils/utils');
 const { v4: uuidv4 } = require('uuid');
 const nodemailer = require('nodemailer');
+const isAuthenticated = require('../utils/auth');
 
 // Nodemailer setup
 const transporter = nodemailer.createTransport({
@@ -12,6 +13,21 @@ const transporter = nodemailer.createTransport({
     auth: {
         user: 'woofwalk.project@outlook.com',
         pass: 'aspgroup80'
+    }
+});
+
+router.use((req, res, next) => {
+    if (req.session.userId) {
+        global.db.get('SELECT * FROM user WHERE user_id = ?', [req.session.userId], (err, row) => {
+            if (err) {
+                console.error(err);
+            }
+            res.locals.user = row;
+            next();
+        });
+    } else {
+        res.locals.user = null;
+        next();
     }
 });
 
@@ -25,7 +41,7 @@ router.get('/', (req, res) => {
 });
 
 // Route for booking page
-router.get('/booking', (req, res) => {
+router.get('/booking', isAuthenticated, (req, res) => {
     res.render('index', {
         title: 'Booking - WoofWalk',
         currentPage: 'booking',
@@ -34,7 +50,7 @@ router.get('/booking', (req, res) => {
 });
 
 // Route for account page
-router.get('/account', (req, res) => {
+router.get('/account', isAuthenticated, (req, res) => {
     res.render('index', {
         title: 'Account - WoofWalk',
         currentPage: 'account',
@@ -43,7 +59,7 @@ router.get('/account', (req, res) => {
 });
 
 // Route for about page
-router.get('/about', (req, res) => {
+router.get('/about', isAuthenticated, (req, res) => {
     res.render('index', {
         title: 'About - WoofWalk',
         currentPage: 'about',
@@ -118,7 +134,7 @@ router.post('/sign-up', async (req, res) => {
 
 // Handle sign-in form submission
 router.post('/sign-in', async (req, res) => {
-    const { username, password } = req.body;
+    const { username, password, rememberMe } = req.body; // Added rememberMe
     try {
         const user = await new Promise((resolve, reject) => {
             global.db.get('SELECT * FROM user WHERE username = ?', [username], (err, row) => {
@@ -129,8 +145,17 @@ router.post('/sign-in', async (req, res) => {
                 }
             });
         });
+
         if (user && await bcrypt.compare(password, user.password_hash)) {
             req.session.userId = user.user_id;
+            
+            // Set cookie expiration based on 'Remember Me' checkbox
+            if (rememberMe) {
+                req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000; // 30 days
+            } else {
+                req.session.cookie.expires = false; // Session expires when the browser closes
+            }
+
             res.redirect('/');
         } else {
             return res.status(400).send('Invalid username or password');
@@ -139,6 +164,7 @@ router.post('/sign-in', async (req, res) => {
         res.status(500).send('Error signing in');
     }
 });
+
 
 // Handle forgot-password form submission
 router.post("/forgot-password", async (req, res) => {
@@ -190,6 +216,16 @@ router.post("/reset-password", async (req, res) => {
             }
         }
     );
+});
+
+// Route for logout
+router.get('/logout', (req, res) => {
+    req.session.destroy(err => {
+        if (err) {
+            return res.status(500).send('Error logging out');
+        }
+        res.redirect('/');
+    });
 });
 
 module.exports = router;

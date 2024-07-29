@@ -85,3 +85,48 @@
 main {
   padding-top: 10vh;
 }
+
+/* Dropdown Menu Specific Styles */
+.nav-link.dropdown-toggle {
+  color: black;
+  transition: color 0.3s ease;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+ /* Remove underline effect for dropdown toggle */
+.nav-link.dropdown-toggle::before {
+  display: none;
+}
+
+/* Ensure dropdown background color */
+.dropdown-menu {
+  background-color: #fff; 
+}
+
+.dropdown-item {
+  color: #0d172a; /* Default color for dropdown items */
+  text-decoration: none; /* Remove underline from dropdown items */
+}
+
+/* Light background on hover for dropdown items */
+.dropdown-item:hover {
+  background-color: #f8f9fa; 
+  color: #d43b76;
+  font-weight: bold;
+}
+
+/* Set specific styles for the dropdown toggle when active */
+.nav-link.dropdown-toggle.active {
+  color: white;
+  background-color: #d43b76;
+}
+
+/* Hover Effects for Dropdown Toggle */
+.nav-link.dropdown-toggle:hover {
+  color: white;
+  background-color: #d43b76;
+  font-weight: bold;
+}

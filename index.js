@@ -5,6 +5,7 @@ const session = require('express-session');
 const routes = require('./routes/routes');
 const sqlite3 = require('sqlite3').verbose();
 const fileUpload = require('express-fileupload');
+const cookieParser = require('cookie-parser');
 
 const port = 3000;
 const app = express();
@@ -14,12 +15,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 app.use(fileUpload());
 app.set('view engine', 'ejs');
+app.use(cookieParser());
 
 // Session setup for user authentication
 app.use(session({
     secret: 'woofwalk',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: { secure: false }
 }));
 
 // Global database connection
