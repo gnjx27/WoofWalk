@@ -43,26 +43,6 @@
   max-width: 80px;
   visibility: visible;
 }
-/* @media (min-width: 991px) {
-  .nav-link::before {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    content: "";
-    width: 0;
-    height: 3px;
-    background-color: #d43b76;
-    visibility: hidden;
-    transition: 0.3s ease-in-out;
-  }
-
-  .nav-link:hover::before,
-  .nav-link.active::before {
-    width: 90%;
-    visibility: visible;
-  }
-} */
 
 /* Navbar Toggler */
 .navbar-toggler {
@@ -103,5 +83,5 @@
 
 /* Main Content */
 main {
-  padding-top: 80px;
+  padding-top: 10vh;
 }

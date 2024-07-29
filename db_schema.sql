@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS user (
     username TEXT NOT NULL UNIQUE,
     email TEXT NOT NULL UNIQUE,
     password_hash TEXT NOT NULL UNIQUE,
-    account_type TEXT NOT NULL CHECK(account_type IN('owner', 'walker'))
+    account_type TEXT NOT NULL CHECK(account_type IN('owner', 'walker'))     
 );
 
 CREATE TABLE IF NOT EXISTS walker (
