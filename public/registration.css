@@ -102,3 +102,15 @@ input[type="radio"]:checked + .account-options {
   width: 60px;
   box-sizing: border-box;
 }
+
+/* Style for the "Forgot password?" link */
+.forgot-password-link {
+  color: grey;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.forgot-password-link:hover {
+  font-weight: bold;
+  color: #d43b76;
+}
