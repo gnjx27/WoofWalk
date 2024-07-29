@@ -1,7 +1,19 @@
+// imports
 const express = require('express');
-const bcrypt = require('bcrypt');
-const validator = require('validator');
 const router = express.Router();
+const bcrypt = require('bcrypt');
+const { checkExistingUser, hashPassword, insertUser } = require('../utils/utils');
+const { v4: uuidv4 } = require('uuid');
+const nodemailer = require('nodemailer');
+
+// Nodemailer setup
+const transporter = nodemailer.createTransport({
+    service: 'outlook',
+    auth: {
+        user: 'woofwalk.project@outlook.com',
+        pass: 'aspgroup80'
+    }
+});
 
 // Route for home page
 router.get('/', (req, res) => {
@@ -57,69 +69,35 @@ router.get('/sign-up', (req, res) => {
     });
 });
 
-// -----------------------------------------------------------------------
+// Route for forgot-password page
+router.get("/forgot-password", (req, res) => {
+    res.render("index", {
+        title: "Forgot Password - WoofWalk",
+        currentPage: "sign-in",
+        body: "forgot-password"
+    })
+});
 
-// Function to validate user input
-const validateSignUp = ({ username, email, password, confirmPassword }) => {
-    if (!username || !email || !password || !confirmPassword) {
-        return 'All fields are required';
-    }
-    if (password !== confirmPassword) {
-        return 'Passwords do not match';
-    }
-    if (!validator.isEmail(email)) {
-        return 'Invalid email format';
-    }
-    if (password.length < 8 || !/[A-Z]/.test(password) || !/[a-z]/.test(password) || !/[0-9]/.test(password)) {
-        return 'Password must be at least 8 characters long and include uppercase letters, lowercase letters, and numbers';
-    }
-    return null;
-};
-
-// Function to check if email or username already exists
-const checkExistingUser = (db, email, username) => {
-    return new Promise((resolve, reject) => {
-        db.get('SELECT * FROM user WHERE email = ? OR username = ?', [email, username], (err, row) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(row);
-            }
+// Route for reset-password page
+router.get("/reset-password/:token", (req, res) => {
+    const token = req.params.token;
+    // validate one time token
+    if (req.session.OTT && req.session.OTT === token) {
+        delete req.session.OTT;
+        res.render('index', {
+            title: "Reset Password - WoofWalk",
+            currentPage: "sign-in",
+            body: "reset-password"
         });
-    });
-};
-
-// Function to hash password
-const hashPassword = (password) => {
-    return bcrypt.hash(password, 10);
-};
-
-// Function to insert user into the database
-const insertUser = (db, username, email, hashedPassword, accountType) => {
-    return new Promise((resolve, reject) => {
-        db.run(
-            'INSERT INTO user (username, email, password_hash, account_type) VALUES (?, ?, ?, ?)',
-            [username, email, hashedPassword, accountType],
-            function(err) {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve();
-                }
-            }
-        );
-    });
-};
+    }
+    else {
+        return res.status(403).send("This link is invalid or has already been used")
+    }
+});
 
 // Handle sign-up form submission
 router.post('/sign-up', async (req, res) => {
     const { username, email, password, confirmPassword, accountType } = req.body;
-
-    // Validate input
-    const validationError = validateSignUp({ username, email, password, confirmPassword });
-    if (validationError) {
-        return res.status(400).send(validationError);
-    }
 
     try {
         // Check if the email or username already exists
@@ -134,16 +112,16 @@ router.post('/sign-up', async (req, res) => {
         
         res.redirect('/sign-in');
     } catch (error) {
-        res.status(500).send('Error creating account');
+        return res.status(500).send('Error creating account');
     }
 });
 
 // Handle sign-in form submission
 router.post('/sign-in', async (req, res) => {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
     try {
         const user = await new Promise((resolve, reject) => {
-            global.db.get('SELECT * FROM user WHERE email = ?', [email], (err, row) => {
+            global.db.get('SELECT * FROM user WHERE username = ?', [username], (err, row) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -155,12 +133,63 @@ router.post('/sign-in', async (req, res) => {
             req.session.userId = user.user_id;
             res.redirect('/');
         } else {
-            res.status(400).send('Invalid email or password');
+            return res.status(400).send('Invalid username or password');
         }
     } catch (error) {
         res.status(500).send('Error signing in');
     }
 });
 
+// Handle forgot-password form submission
+router.post("/forgot-password", async (req, res) => {
+    const email = req.body.email;
+    // Check if user exists in database
+    const existingUser = await checkExistingUser(global.db, email, "none");
+    if (!existingUser) {
+        return res.status(400).send(`User not registered`);
+    }
+    // User exists in database, send one time link to reset password to user's email
+    const token = uuidv4();
+    req.session.OTT = token;
+    const OTTLink = `http://localhost:3000/reset-password/${token}`;
+    const mailDetails = {
+        from: "woofwalk.project@outlook.com",
+        to: email,
+        subject: "Password Reset",
+        text: `Click the one-time link to reset your password: ${OTTLink}`  
+    };
+    transporter.sendMail(mailDetails, (err, info) => {
+        if (err) {
+            return res.status(500).send("Error sending email to user");
+        }
+        else {
+            console.log("One time link sent to user's email");
+            res.redirect("/sign-in");
+        }
+    });
+});
+
+router.post("/reset-password", async (req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+    const existingUser = await checkExistingUser(global.db, email, "none");
+    if (!existingUser) {
+        return res.status(400).send("User not registered");
+    }
+    const hashedPassword = await hashPassword(password);
+    global.db.run(
+        "UPDATE user SET password_hash = ? WHERE email = ?",
+        [hashedPassword, email],
+        (err) => {
+            if (err) {
+                return res.status(500).send("Error updating password");
+            }
+            else {
+                console.log("Password changed successfully");
+                res.redirect("/sign-in");
+            }
+        }
+    );
+});
 
 module.exports = router;
