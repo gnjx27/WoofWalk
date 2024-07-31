@@ -1,0 +1,59 @@
+/* About page styling (Nicelle, 31 Jul 2024)*/
+/* Set the background color for the entire body */
+body {
+    background-color: rgb(240, 240, 240);
+}
+
+/* Center elements vertically within their container */
+.center-vertical {
+    display: flex; 
+    width: 100%;
+    min-height: 100vh;
+    align-items: center;
+}
+
+/* Style the about-us section */
+.about-us { 
+    width: 100%;
+    padding: calc(5% + 30px) 0px;
+}
+
+/* Style the picture header within the about-us section */
+.about-us .pic-header {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10%;
+}
+
+/* Style the images within the picture header, including a transition effect */
+.about-us .pic-header img {
+    width: 100%;
+    transition: transform .3s;
+}
+
+/* Scale up the image when the picture header is hovered over */
+.about-us .pic-header:hover img {
+    transform: scale(1.2);
+}
+
+/* Style the header text within the about-us section */
+.about-us .header-text { 
+    margin-top: 20px;
+    font-size: 30px; 
+    color: #0d172a;
+}
+
+/* Style a small break line within the about-us section */
+.about-us .break-small { 
+    margin-top: 20px;
+    width: 100px;
+    height: 3px;
+    background-color: #d43b76;
+}
+
+/* Style paragraphs within the about-us section */
+.about-us .paragraph{
+    margin-top: 40px;
+    font-size: 20px;
+    color: #0d172a;
+}
