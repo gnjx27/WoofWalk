@@ -1,9 +1,4 @@
 /* About page styling (Nicelle, 31 Jul 2024)*/
-/* Set the background color for the entire body */
-body {
-    background-color: rgb(240, 240, 240);
-}
-
 /* Center elements vertically within their container */
 .center-vertical {
     display: flex; 
@@ -46,8 +41,8 @@ body {
 /* Style a small break line within the about-us section */
 .about-us .break-small { 
     margin-top: 20px;
-    width: 100px;
-    height: 3px;
+    width: 80px;
+    height: 4px;
     background-color: #d43b76;
 }
 
@@ -56,4 +51,17 @@ body {
     margin-top: 40px;
     font-size: 20px;
     color: #0d172a;
+    text-align: justify;
+}
+
+/* Style the separator line */
+.separator-container {
+    display: flex;
+    justify-content: center;
+    margin: 70px 0;
+}
+
+.separator-line {
+    width: 90%;
+    opacity: 0.2;
 }
