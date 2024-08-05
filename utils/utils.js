@@ -14,9 +14,44 @@ const checkExistingUser = (db, email, username) => {
     });
 };
 
-// Function to hash password
-const hashPassword = (password) => {
-    return bcrypt.hash(password, 10);
+// Server-side validation - second layer of validation
+// Middleware to validate user input
+const validateUserInput = (req, res, next) => {
+    const { username, email, password, confirmPassword } = req.body;
+
+    // Validate username
+    if (!username || username.length < 5) {
+        return res.status(400).send("Username must be at least 5 characters long");
+    }
+
+    // Validate email
+    if (!email || !validator.isEmail(email)) {
+        return res.status(400).send("Invalid email format");
+    }
+
+    // Validate password
+    if (!password || password.length < 8 || !/[A-Z]/.test(password) || !/[a-z]/.test(password) || !/[0-9]/.test(password)) {
+        return res.status(400).send("Password must be at least 8 characters long and include uppercase letters, lowercase letters, and numbers");
+    }
+
+    // Validate confirm password
+    if (password !== confirmPassword) {
+        return res.status(400).send("Passwords do not match");
+    }
+
+    next();
+};
+
+// Middleware to hash password
+const hashPassword = (req, res, next) => {
+    const { password } = req.body;
+    bcrypt.hash(password, 10, (err, hash) => {
+        if (err) {
+            return res.status(500).send("Internal server error");
+        }
+        req.body.password_hash = hash;
+        next();
+    });
 };
 
 // Function to insert user into the database
@@ -36,4 +71,4 @@ const insertUser = (db, username, email, hashedPassword, accountType) => {
     });
 };
 
-module.exports = { checkExistingUser, hashPassword, insertUser };
+module.exports = { checkExistingUser, validateUserInput, hashPassword, insertUser };
