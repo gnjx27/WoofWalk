@@ -1,16 +1,18 @@
-// middleware/auth.js
 function isAuthenticated(req, res, next) {
     if (req.session.userId) {
         global.db.get('SELECT * FROM user WHERE user_id = ?', [req.session.userId], (err, user) => {
             if (err) {
                 return res.status(500).send('Database error');
             }
-            req.user = user; // Attach user info to request
-            next();
+            if (user) {
+                req.user = user; // Attach user info to request
+                next();
+            } else {
+                res.status(401).send('Unauthorized: User not found');
+            }
         });
     } else {
-        req.user = null; // No user logged in
-        next();
+        res.status(401).send('Unauthorized: Not logged in');
     }
 }
 
