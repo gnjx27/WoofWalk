@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-const { checkExistingUser, hashPassword, insertUser } = require('../utils/utils');
+const { checkExistingUser, validateUserInput, hashPassword, insertUser } = require('../utils/utils');
 const { v4: uuidv4 } = require('uuid');
 const nodemailer = require('nodemailer');
 const isAuthenticated = require('../utils/auth');
@@ -112,21 +112,15 @@ router.get("/reset-password/:token", (req, res) => {
 });
 
 // Handle sign-up form submission
-router.post('/sign-up', async (req, res) => {
-    const { username, email, password, confirmPassword, accountType } = req.body;
-
+router.post('/sign-up', validateUserInput, hashPassword, async (req, res) => {
     try {
-        // Check if the email or username already exists
+        const { username, email, password_hash, accountType } = req.body;
         const existingUser = await checkExistingUser(global.db, email, username);
         if (existingUser) {
             return res.status(400).send('Email or username already in use');
         }
-
-        // Hash password and insert user
-        const hashedPassword = await hashPassword(password);
-        await insertUser(global.db, username, email, hashedPassword, accountType);
-        
-        res.redirect('/sign-in');
+        await insertUser(global.db, username, email, password_hash, accountType);
+        res.status(201).redirect('/sign-in');
     } catch (error) {
         return res.status(500).send('Error creating account');
     }
@@ -164,7 +158,6 @@ router.post('/sign-in', async (req, res) => {
         res.status(500).send('Error signing in');
     }
 });
-
 
 // Handle forgot-password form submission
 router.post("/forgot-password", async (req, res) => {
