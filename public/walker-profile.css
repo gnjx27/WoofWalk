@@ -1,0 +1,305 @@
+/* General Container Styles */
+.profile-container {
+    display: flex;
+    max-width: 80%;
+    margin: 30px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile Card Styles */
+.profile-card {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    border-right: 1px solid #ccc;
+}
+
+.walker-image {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Quote Styles */
+.quotes-icon {
+    width: 6%;
+    margin: 0 8px;
+}
+
+blockquote {
+    font-style: italic;
+    font-size: 18px;
+    margin: 20px 0;
+}
+
+/* Walker Information Styles */
+.walker-info {
+    display: flex;
+}
+
+.walker-details {
+    flex: 55%;
+    text-align: left;
+}
+
+.walker-details p {
+    margin: 5px;
+}
+
+.button-container {
+    flex: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-button {
+    background-color: #e9185e;
+    color: white;
+    width: 90%;
+    height: 90%;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.book-button:hover {
+    background-color: #d01753;
+    font-weight: bold;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Contact Walker and Social Icons */
+.contact-walker .social-icons a {
+    text-decoration: none;
+}
+
+.contact-walker .social-icons img {
+    width: 60px;
+    margin: 0 3px;
+    transition: transform 0.3s;
+}
+
+.contact-walker .social-icons img:hover {
+    transform: scale(1.2);
+}
+
+/* Headers for Sections */
+.contact-walker h3,
+.gallery h3 {
+    position: relative;
+    padding-bottom: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.contact-walker h3::after,
+.gallery h3::after {
+    content: "";
+    display: block;
+    width: 20%;
+    border-bottom: 4px solid #e9185e;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Gallery Styles */
+.gallery {
+    margin-top: 20px;
+}
+
+.gallery img {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100px;
+    margin: 5px;
+    transition: transform 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.15);
+}
+
+/* Profile Details Styles */
+.profile-details {
+    flex: 2;
+    padding: 20px;
+}
+
+.profile-details h3 {
+    position: relative;
+    padding-bottom: 20px;
+    margin-bottom: 15px;
+}
+
+.profile-details h3::after {
+    content: "";
+    display: block;
+    width: 12%;
+    border-bottom: 4px solid #e9185e;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.profile-details p {
+    text-align: justify;
+}
+
+/* Skills List Styles */
+.skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skills-list li {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    margin-bottom: 15px;
+}
+
+.skill-icon {
+    width: 40px;
+    height: auto;
+    margin-right: 25px;
+}
+
+.skills-list span {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Review Container Styles */
+.review-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.review {
+    flex: 1 1 calc(33.333% - 20px); /* Three items per row with space for gaps */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Define a set of color classes */
+.review-color-1 {
+    background-color: #f0f8ff; /* Alice Blue */
+}
+
+.review-color-2 {
+    background-color: #f5f5dc; /* Beige */
+}
+
+.review-color-3 {
+    background-color: #e6e6fa; /* Lavender */
+}
+
+.review-color-4 {
+    background-color: #fafad2; /* Light Goldenrod Yellow */
+}
+
+.review-color-5 {
+    background-color: #d3ffd3; /* Light Green */
+}
+
+.review-color-6 {
+    background-color: #ffe4e1; /* Misty Rose */
+}
+
+.review-color-7 {
+    background-color: #f0fff0; /* Honeydew */
+}
+
+.review-color-8 {
+    background-color: #e0ffff; /* Light Cyan */
+}
+
+.review-color-9 {
+    background-color: #ffebcd; /* Blanched Almond */
+}
+
+.review-color-10 {
+    background-color: #e6fffa; /* Mint Cream */
+}
+
+/* Review Image and Content Styles */
+.review-image-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.reviewer-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    box-shadow: 0 0 0 4px #ccc;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.review-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.review-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.review-header h5,
+.review-header p {
+    margin: 0;
+}
+
+.star-rating {
+    font-size: 18px;
+    color: #f1c40f;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
+}
+
+.review p {
+    margin: 5px 0;
+}
+
+/* Edit Button Styles */
+.edit-button {
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    padding: 0.5em;
+    border: 2px solid #d43b76;
+    background-color: #fff;
+    color: #d43b76;
+    font-weight: bold;
+    border-radius: 0.5em;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.edit-button:hover {
+    background-color: #d43b76;
+    color: #fff;
+}

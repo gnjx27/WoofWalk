@@ -1,121 +1,133 @@
+<% if (message) { %>
+<p class="message"><b><%= message %></b></p>
+<% } %>
+
 <!-- Container for the sign-in form with margin and alignment classes -->
-<div class="box-design-1 mt-5 mb-5 justify-content-center align-items-center">
-    <div class="form-container">
+<div class="box-design-1 mt-4 mb-5 justify-content-center align-items-center">
+  <div class="form-container">
+    <!-- Title for the sign-in form -->
+    <h1 class="title-with-line">Sign In</h1>
 
-      <!-- Title for the sign-in form -->
-      <h1 class="title-with-line">Sign In</h1>
+    <!-- Link to the sign-up page for users who don't have an account -->
+    <p>Don't have an account? <a href="/sign-up">Sign Up</a></p>
 
-      <!-- Link to the sign-up page for users who don't have an account -->
-      <p>Don't have an account? <a href="/sign-up">Sign Up</a></p>
+    <!-- Sign-in form with POST method -->
+    <form id="signin-form" action="/sign-in" method="POST">
+      <!-- Username input field -->
+      <div class="mb-3">
+        <label for="username-signin" class="form-label"><b>Username</b></label>
+        <input
+          type="text"
+          class="form-control"
+          id="username-signin"
+          name="username"
+          placeholder="Enter your username"
+          required
+          autocomplete="off"
+        />
 
-      <!-- Sign-in form with POST method -->
-      <form id="signin-form" action="/sign-in" method="POST">
-        
-        <!-- Username input field -->
-        <div class="mb-3">
-          <label for="username-signin" class="form-label"><b>Username</b></label>
+        <!-- Container for displaying username validation errors -->
+        <div class="error-container">
+          <i
+            id="username-signin-error-icon"
+            class="bi bi-exclamation-triangle-fill error-icon"
+            style="display: none"
+          ></i>
+          <div id="username-signin-error" class="text-danger"></div>
+        </div>
+      </div>
+
+      <!-- Password input field -->
+      <div class="mb-3">
+        <label for="password-signin" class="form-label"><b>Password</b></label>
+        <input
+          type="password"
+          class="form-control"
+          id="password-signin"
+          name="password"
+          placeholder="Enter your password"
+          required
+          autocomplete="off"
+        />
+
+        <!-- Container for displaying password validation errors -->
+        <div class="error-container">
+          <i
+            id="password-signin-error-icon"
+            class="bi bi-exclamation-triangle-fill error-icon"
+            style="display: none"
+          ></i>
+          <div id="password-signin-error" class="text-danger"></div>
+        </div>
+      </div>
+
+      <!-- Remember Me checkbox and Forgot password link -->
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="form-check">
           <input
-            type="text"
-            class="form-control"
-            id="username-signin"
-            name="username"
-            placeholder="Enter your username"
-            required
-            autocomplete="off"
+            type="checkbox"
+            class="form-check-input"
+            id="remember-me"
+            name="remember-me"
           />
-
-          <!-- Container for displaying username validation errors -->
-          <div class="error-container">
-            <i
-              id="username-signin-error-icon"
-              class="bi bi-exclamation-triangle-fill error-icon"
-              style="display: none"
-            ></i>
-            <div id="username-signin-error" class="text-danger"></div>
-          </div>
+          <label class="form-check-label" for="remember-me">Remember Me</label>
         </div>
-  
-        <!-- Password input field -->
-        <div class="mb-3">
-          <label for="password-signin" class="form-label"><b>Password</b></label>
-          <input
-            type="password"
-            class="form-control"
-            id="password-signin"
-            name="password"
-            placeholder="Enter your password"
-            required
-            autocomplete="off"
-          />
-
-          <!-- Container for displaying password validation errors -->
-          <div class="error-container">
-            <i
-              id="password-signin-error-icon"
-              class="bi bi-exclamation-triangle-fill error-icon"
-              style="display: none"
-            ></i>
-            <div id="password-signin-error" class="text-danger"></div>
-          </div>
+        <div class="text-end">
+          <a href="/forgot-password" class="forgot-password-link"
+            >Forgot password?</a
+          >
         </div>
+      </div>
 
-         <!-- Remember Me checkbox and Forgot password link -->
-         <div class="d-flex justify-content-between align-items-center mb-3">
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="remember-me" name="remember-me">
-            <label class="form-check-label" for="remember-me">Remember Me</label>
-          </div>
-          <div class="text-end">
-            <a href="/forgot-password" class="forgot-password-link">Forgot password?</a>
-          </div>
-        </div>
-          
-        <!-- Separator line -->
-        <hr class="mt-4 mb-4" />
-  
-        <!-- Submit button -->
-        <button type="submit" class="btn-design-1">Sign In</button>
-      </form>
-    </div>
+      <!-- Separator line -->
+      <hr class="mt-4 mb-4" />
+
+      <!-- Submit button -->
+      <button type="submit" class="btn-design-1">Sign In</button>
+    </form>
   </div>
-  
-  <script>
-    // Add event listener for form submission
-    document
-      .getElementById("signin-form")
-      .addEventListener("submit", function (event) {
-        let valid = true; // Flag to track form validity
-  
-        // Clear previous errors
-        document.getElementById("username-signin-error").textContent = "";
-        document.getElementById("password-signin-error").textContent = "";
-  
-        // Hide error icons
-        document.getElementById("username-signin-error-icon").style.display = "none";
-        document.getElementById("password-signin-error-icon").style.display = "none";
-  
-        // Validate Username
-        const username = document.getElementById("username-signin").value;
-        if (username.length < 5) {
-          document.getElementById("username-signin-error").textContent =
-            "Username must be at least 5 characters!";
-          document.getElementById("username-signin-error-icon").style.display = "inline";
-          valid = false;
-        }
-  
-        // Validate Password
-        const password = document.getElementById("password-signin").value;
-        if (password.length < 8) {
-          document.getElementById("password-signin-error").textContent =
-            "Password must be at least 8 characters!";
-          document.getElementById("password-signin-error-icon").style.display = "inline";
-          valid = false;
-        }
-  
-        // Prevent form submission if validation fails
-        if (!valid) {
-          event.preventDefault();
-        }
-      });
-  </script>
-  
+</div>
+
+<script>
+  // Add event listener for form submission
+  document
+    .getElementById("signin-form")
+    .addEventListener("submit", function (event) {
+      let valid = true; // Flag to track form validity
+
+      // Clear previous errors
+      document.getElementById("username-signin-error").textContent = "";
+      document.getElementById("password-signin-error").textContent = "";
+
+      // Hide error icons
+      document.getElementById("username-signin-error-icon").style.display =
+        "none";
+      document.getElementById("password-signin-error-icon").style.display =
+        "none";
+
+      // Validate Username
+      const username = document.getElementById("username-signin").value;
+      if (username.length < 5) {
+        document.getElementById("username-signin-error").textContent =
+          "Username must be at least 5 characters!";
+        document.getElementById("username-signin-error-icon").style.display =
+          "inline";
+        valid = false;
+      }
+
+      // Validate Password
+      const password = document.getElementById("password-signin").value;
+      if (password.length < 8) {
+        document.getElementById("password-signin-error").textContent =
+          "Password must be at least 8 characters!";
+        document.getElementById("password-signin-error-icon").style.display =
+          "inline";
+        valid = false;
+      }
+
+      // Prevent form submission if validation fails
+      if (!valid) {
+        event.preventDefault();
+      }
+    });
+</script>
