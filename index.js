@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const fileUpload = require('express-fileupload');
 const sqlite3 = require('sqlite3').verbose();
 const routes = require('./routes/routes');
+const ownerRoutes = require('./routes/ownerRoutes');
 const walkerRoutes = require('./routes/walkerRoutes');
 
 const port = 3000;
@@ -40,6 +41,7 @@ global.db = new sqlite3.Database('./database.db', function (err) {
 
 // Routes
 app.use('/', routes);
+app.use('/owner', ownerRoutes);
 app.use('/walker', walkerRoutes);
 
 // Start server
