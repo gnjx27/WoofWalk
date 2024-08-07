@@ -6,6 +6,8 @@ const { checkExistingUser, validateUserInput, hashPassword, insertUser } = requi
 const { v4: uuidv4 } = require('uuid');
 const nodemailer = require('nodemailer');
 const isAuthenticated = require('../utils/auth');
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
 
 // Nodemailer setup
 const transporter = nodemailer.createTransport({
@@ -31,7 +33,7 @@ router.use((req, res, next) => {
     }
 });
 
-// Route for home page
+// Route for home page (accessible to everyone)
 router.get('/', (req, res) => {
     res.render('index', {
         title: 'Home - WoofWalk',
@@ -40,7 +42,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// Route for booking page
+// Route for booking page (protected)
 router.get('/booking', isAuthenticated, (req, res) => {
     res.render('index', {
         title: 'Booking - WoofWalk',
@@ -49,7 +51,7 @@ router.get('/booking', isAuthenticated, (req, res) => {
     });
 });
 
-// Route for account page
+// Route for account page (protected)
 router.get('/account', isAuthenticated, (req, res) => {
     res.render('index', {
         title: 'Account - WoofWalk',
@@ -59,7 +61,7 @@ router.get('/account', isAuthenticated, (req, res) => {
 });
 
 // Route for about page
-router.get('/about', isAuthenticated, (req, res) => {
+router.get('/about', (req, res) => {
     res.render('index', {
         title: 'About - WoofWalk',
         currentPage: 'about',
@@ -69,10 +71,12 @@ router.get('/about', isAuthenticated, (req, res) => {
 
 // Route for sign-in page
 router.get('/sign-in', (req, res) => {
+    const message = req.query.message;
     res.render('index', {
         title: 'Sign In - WoofWalk',
         currentPage: 'sign-in',
-        body: 'sign-in'
+        body: 'sign-in',
+        message: message
     });
 });
 
@@ -128,7 +132,7 @@ router.post('/sign-up', validateUserInput, hashPassword, async (req, res) => {
 
 // Handle sign-in form submission
 router.post('/sign-in', async (req, res) => {
-    const { username, password, rememberMe } = req.body; // Added rememberMe
+    const { username, password, rememberMe } = req.body;
     try {
         const user = await new Promise((resolve, reject) => {
             global.db.get('SELECT * FROM user WHERE username = ?', [username], (err, row) => {
@@ -150,6 +154,13 @@ router.post('/sign-in', async (req, res) => {
                 req.session.cookie.expires = false; // Session expires when the browser closes
             }
 
+            // Redirect based on profile completion
+            if (user.account_type === 'owner' && !user.has_dog_profile) {
+                return res.redirect('/owner-profile');
+            }
+            if (user.account_type === 'walker' && !user.has_walker_profile) {
+                return res.redirect('/walker/walker-profile');
+            }
             res.redirect('/');
         } else {
             return res.status(400).send('Invalid username or password');
@@ -219,6 +230,12 @@ router.get('/logout', (req, res) => {
         }
         res.redirect('/');
     });
+});
+
+// Error handling middleware
+router.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something went wrong!');
 });
 
 module.exports = router;

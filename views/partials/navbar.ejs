@@ -2,13 +2,13 @@
     <div class="container">
         <!-- Logo Link -->
         <a class="navbar-brand" href="/">
-            <img src="/logo1.png" alt="WoofWalk Logo" class="logo" />
+            <img src="/assets/logo1.png" alt="WoofWalk Logo" class="logo" />
         </a>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
                 <!-- Offcanvas Logo Link -->
                 <a class="offcanvas-title" id="offcanvasNavbarLabel" href="/">
-                    <img src="/logo1.png" alt="WoofWalk Logo" class="logo" />
+                    <img src="/assets/logo1.png" alt="WoofWalk Logo" class="logo" />
                 </a>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
@@ -34,7 +34,11 @@
                                 <i class="bi bi-person-circle"></i> <%= user.username %>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                                <li><a class="dropdown-item" href="/account"><i class="bi bi-person-circle"></i> Profile</a></li>
+                                <% if (user.account_type === 'owner') { %>
+                                    <li><a class="dropdown-item" href="/owner-profile"><i class="bi bi-person-circle"></i> Profile</a></li>
+                                <% } else if (user.account_type === 'walker') { %>
+                                    <li><a class="dropdown-item" href="walker/walker-profile"><i class="bi bi-person-circle"></i> Profile</a></li>
+                                <% } %>
                                 <li><a class="dropdown-item" href="/logout"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
                             </ul>
                         </li>

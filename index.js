@@ -1,11 +1,12 @@
-// imports
+// Imports
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const routes = require('./routes/routes');
-const sqlite3 = require('sqlite3').verbose();
-const fileUpload = require('express-fileupload');
 const cookieParser = require('cookie-parser');
+const fileUpload = require('express-fileupload');
+const sqlite3 = require('sqlite3').verbose();
+const routes = require('./routes/routes');
+const walkerRoutes = require('./routes/walkerRoutes');
 
 const port = 3000;
 const app = express();
@@ -15,6 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 app.use(fileUpload());
 app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
 app.use(cookieParser());
 
 // Session setup for user authentication
@@ -28,7 +30,7 @@ app.use(session({
 // Global database connection
 global.db = new sqlite3.Database('./database.db', function (err) {
     if (err) {
-        console.error(err);
+        console.error('Failed to connect to the database:', err);
         process.exit(1);
     } else {
         console.log('Database connected');
@@ -37,7 +39,8 @@ global.db = new sqlite3.Database('./database.db', function (err) {
 });
 
 // Routes
-app.use(routes);
+app.use('/', routes);
+app.use('/walker', walkerRoutes);
 
 // Start server
 app.listen(port, () => {

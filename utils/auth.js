@@ -12,7 +12,7 @@ function isAuthenticated(req, res, next) {
             }
         });
     } else {
-        res.status(401).send('Unauthorized: Not logged in');
+        res.redirect('/sign-in?message=Please+log+in+first'); // Redirect to login page with message
     }
 }
 
