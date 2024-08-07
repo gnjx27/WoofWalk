@@ -1,1 +1,37 @@
 /* Homepage styling (Nicelle, Started on 7 Aug  2024)*/
+.carousel-item{
+    height: 500px;
+}
+
+.c-img{
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+}
+
+.carousel-caption{
+    text-align: left;
+    margin-bottom: 10%;
+}
+
+.btn-container{ 
+   margin: auto;
+   margin-top: 50px;
+   margin-bottom: 50px;
+}
+
+.btn{
+    background-color: #d43b76;
+    font-size: 20px;
+    border-color: #d43b76;
+    border-radius: 5px;
+    border-width: 3px;
+}
+
+.btn:hover{
+    background-color: rgb(240, 240, 240);
+    color: #d43b76;
+    border-color: #d43b76;
+    border-width: 3px;
+
+}
