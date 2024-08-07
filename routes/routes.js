@@ -6,8 +6,6 @@ const { checkExistingUser, validateUserInput, hashPassword, insertUser } = requi
 const { v4: uuidv4 } = require('uuid');
 const nodemailer = require('nodemailer');
 const isAuthenticated = require('../utils/auth');
-const multer = require('multer');
-const upload = multer({ dest: 'uploads/' });
 
 // Nodemailer setup
 const transporter = nodemailer.createTransport({
