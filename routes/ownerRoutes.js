@@ -10,3 +10,5 @@ router.get('/owner-profile', isAuthenticated, (req, res) => {
         body: 'owner-profile'
     });
 });
+
+module.exports = router;

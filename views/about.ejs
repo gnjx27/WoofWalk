@@ -1,6 +1,15 @@
 <!-- Making the about us page (Nicelle, 31 Jul 2024) -->
 <!-- Center the content vertically on the page -->
 <div class="center-vertical">
+  <!-- Top image section -->
+  <div class="top-image">
+    <img src="/assets/about.jpg" alt="About Us Image" />
+    <div class="top-image-text">
+      <h1>About WoofWalk</h1>
+      <p>~ Every dog is a part of our family ~</p>
+    </div>
+  </div>
+
   <!-- The main about-us section with a light background -->
   <div class="about-us bg-light">
     <div class="container">
@@ -25,8 +34,12 @@
         </div>
       </div>
 
-      <div class="separator-container">
-        <img src="assets/bones.png" alt="Separation Line" class="separator-line" />
+      <div class="separator-container" id="our-story">
+        <img
+          src="assets/bones.png"
+          alt="Separation Line"
+          class="separator-line"
+        />
       </div>
 
       <div class="row">
@@ -48,6 +61,178 @@
         <div class="col-12 col-lg-6 mb-4 mb-lg-0">
           <div class="pic-header">
             <img src="assets/about-page-pic2.jpg" alt="About Page Picture 2" />
+          </div>
+        </div>
+      </div>
+
+      <div class="separator-container" id="faq">
+        <img
+          src="assets/bones.png"
+          alt="Separation Line"
+          class="separator-line"
+        />
+      </div>
+
+      <!-- FAQs Section -->
+      <div class="faq_area" id="faq">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12 col-sm-8 col-lg-6">
+
+              <!-- Section Heading -->
+              <div
+                class="section_heading text-center wow fadeInUp"
+                data-wow-delay="0.2s"
+              >
+                <h2 class="faq-title">
+                  <span>Frequently </span> Asked Questions
+                </h2>
+                <div class="line"></div>
+                <p>
+                  Find answers to the most common questions about our services.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <!-- FAQ Area -->
+            <div class="col-12 col-sm-10 col-lg-8">
+              <div class="accordion faq-accordian" id="faqAccordion">
+
+                <!-- FAQ Item 1 -->
+                <div class="card border-0 wow fadeInUp" data-wow-delay="0.2s">
+                  <div class="card-header" id="headingOne">
+                    <h6
+                      class="mb-0 collapsed"
+                      data-toggle="collapse"
+                      data-target="#collapseOne"
+                      aria-expanded="true"
+                      aria-controls="collapseOne"
+                    >
+                      What services does WoofWalk offer?<span
+                        class="lni-chevron-up"
+                      ></span>
+                    </h6>
+                  </div>
+                  <div
+                    class="collapse"
+                    id="collapseOne"
+                    aria-labelledby="headingOne"
+                    data-parent="#faqAccordion"
+                  >
+                    <div class="card-body">
+                      <p>
+                        WoofWalk provides professional dog walking services,
+                        including individual and group walks, as well as
+                        customized exercise plans tailored to your dog's needs.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="card border-0 wow fadeInUp" data-wow-delay="0.3s">
+                  <div class="card-header" id="headingTwo">
+                    <h6
+                      class="mb-0 collapsed"
+                      data-toggle="collapse"
+                      data-target="#collapseTwo"
+                      aria-expanded="true"
+                      aria-controls="collapseTwo"
+                    >
+                      How can I book a dog walker?<span
+                        class="lni-chevron-up"
+                      ></span>
+                    </h6>
+                  </div>
+                  <div
+                    class="collapse"
+                    id="collapseTwo"
+                    aria-labelledby="headingTwo"
+                    data-parent="#faqAccordion"
+                  >
+                    <div class="card-body">
+                      <p>
+                        You can book a dog walker through our website by
+                        selecting the desired service, choosing a walker, and
+                        scheduling the time that works best for you.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="card border-0 wow fadeInUp" data-wow-delay="0.4s">
+                  <div class="card-header" id="headingThree">
+                    <h6
+                      class="mb-0 collapsed"
+                      data-toggle="collapse"
+                      data-target="#collapseThree"
+                      aria-expanded="true"
+                      aria-controls="collapseThree"
+                    >
+                      Are the dog walkers experienced and trained?<span
+                        class="lni-chevron-up"
+                      ></span>
+                    </h6>
+                  </div>
+                  <div
+                    class="collapse"
+                    id="collapseThree"
+                    aria-labelledby="headingThree"
+                    data-parent="#faqAccordion"
+                  >
+                    <div class="card-body">
+                      <p>
+                        Yes, all our dog walkers are experienced and have
+                        undergone thorough training to ensure they provide the
+                        best care for your furry friend.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="card border-0 wow fadeInUp" data-wow-delay="0.5s">
+                  <div class="card-header" id="headingFour">
+                    <h6
+                      class="mb-0 collapsed"
+                      data-toggle="collapse"
+                      data-target="#collapseFour"
+                      aria-expanded="true"
+                      aria-controls="collapseFour"
+                    >
+                      How do I contact customer support?<span
+                        class="lni-chevron-up"
+                      ></span>
+                    </h6>
+                  </div>
+                  <div
+                    class="collapse"
+                    id="collapseFour"
+                    aria-labelledby="headingFour"
+                    data-parent="#faqAccordion"
+                  >
+                    <div class="card-body">
+                      <p>
+                        You can reach our customer support team via email at
+                        support@woofwalk.com or through the contact form on our
+                        website.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Support Button -->
+              <div
+                class="support-button text-center d-flex align-items-center justify-content-center mt-4 wow fadeInUp"
+                data-wow-delay="0.5s"
+              >
+                <p class="mb-0 px-2">Can't find your answers?</p>
+                <a href="#"> Contact us</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
