@@ -2,7 +2,7 @@
 .profile-container {
     display: flex;
     max-width: 80%;
-    margin: 30px auto;
+    margin: 14vh auto 5vh auto;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
@@ -194,6 +194,23 @@ blockquote {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.capitalize-name {
+    text-transform: capitalize;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 1200px) {
+    .review {
+        flex: 1 1 calc(50% - 20px); /* Two items per row with space for gaps */
+    }
+}
+
+@media (max-width: 768px) {
+    .review {
+        flex: 1 1 100%; /* One item per row */
+    }
 }
 
 /* Define a set of color classes */

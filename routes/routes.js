@@ -76,7 +76,7 @@ router.get('/success', (req, res) => {
 router.post('/contact-us', (req, res) => {
     const { name, email, subject, message } = req.body;
 
-    // Validate the inputs (simple example)
+    // Validate all inputs
     if (!name || !email || !subject || !message) {
         return res.status(400).send('All fields are required.');
     }
