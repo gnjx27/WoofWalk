@@ -102,7 +102,7 @@
       <!-- Separator line -->
       <hr class="mt-4 mb-4" />
       <!-- Submit button -->
-      <button type="submit" class="btn-design-1">Send Message</button>
+      <button id="send-message-button" type="submit" class="btn-design-1">Send Message</button>
     </form>
   </div>
 
@@ -110,6 +110,9 @@
     document
       .getElementById("contact-form")
       .addEventListener("submit", function (event) {
+        // get send message button
+        var sendMessageButton = document.getElementById("send-message-button");
+
         let valid = true;
         // Clear previous errors
         document.getElementById("name-error").textContent = "";
@@ -156,7 +159,12 @@
           valid = false;
         }
         // Prevent form submission if validation fails
-        if (!valid) {
+        if (valid) {
+          // disable send message button after form submission
+          sendMessageButton.disabled = true;
+          // change cursor over send message button to disabled icon
+          sendMessageButton.style.cursor = "not-allowed";
+        } else {
           event.preventDefault();
         }
       });

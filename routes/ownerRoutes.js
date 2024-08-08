@@ -7,7 +7,7 @@ router.get('/owner-profile', isAuthenticated, (req, res) => {
     res.render('index', {
         title: 'Owner Profile - WoofWalk',
         currentPage: 'owner-profile',
-        body: 'owner-profile'
+        body: 'owner/owner-profile'
     });
 });
 

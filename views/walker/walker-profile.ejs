@@ -9,8 +9,7 @@
 
     <!-- Walker Quote -->
     <blockquote>
-      <img src="/assets/quotes1.png" alt="quotes1" class="quotes-icon" />Your
-      dog's happiness, my priority.<img
+      <img src="/assets/quotes1.png" alt="quotes1" class="quotes-icon" /><%= walkerData.walker_quote %><img
         src="/assets/quotes2.png"
         alt="quotes2"
         class="quotes-icon"
@@ -21,13 +20,13 @@
     <!-- Walker Information -->
     <div class="walker-info">
       <div class="walker-details">
-        <h2>Carrie :)</h2>
-        <p style="color: #004393">Jurong East, Singapore</p>
+        <h2><%= username %> :)</h2>
+        <p style="color: #004393"><%= walkerData.walker_location %></p>
         <p>⭐⭐⭐⭐⭐</p>
         <p style="color: grey">(25 Reviews)</p>
       </div>
       <div class="button-container">
-        <button class="book-button">BOOK FROM SGD 15 /walk</button>
+        <button class="book-button">BOOK FROM SGD <%= walkerData.base_price %> /walk</button>
       </div>
     </div>
     <hr class="mt-4 mb-4" />
@@ -35,6 +34,7 @@
     <!-- Contact Walker Section with various social media links -->
     <div class="contact-walker">
       <h3>Contact Walker</h3>
+      <h5>Phone number: <%= walkerData.walker_contact %></h5>
       <div class="social-icons">
         <a href="https://web.whatsapp.com/" target="_blank">
           <img src="/assets/whatsapp.png" alt="WhatsApp" />
@@ -73,15 +73,9 @@
   <!-- Profile Details Section -->
   <div class="profile-details">
     <!-- Walker Bios -->
-    <h3>About Carrie</h3>
+    <h3>About <%= username %></h3>
     <p>
-      Hi there! I'm Carrie, and I'm absolutely passionate about dogs. With over
-      7 years of experience in dog walking and pet care, I've had the joy of
-      meeting and caring for dogs of all shapes and sizes. From energetic pups
-      who love a good game of fetch to older dogs who enjoy a leisurely stroll,
-      I tailor each walk to suit their needs and personality. Your furry
-      companion's happiness and well-being are my top priorities, and I can't
-      wait to create paw-some memories with them!
+      <%= walkerData.walker_bio %>
     </p>
     <hr class="mt-4 mb-4" />
 
@@ -90,7 +84,7 @@
     <ul class="skills-list">
       <li>
         <img src="/assets/speak.png" alt="Languages" class="skill-icon" />
-        <span>I speak Chinese, English & Malay</span>
+        <span><%= walkerData.walker_skills %></span>
       </li>
       <li>
         <img src="/assets/experience.png" alt="Experience" class="skill-icon" />

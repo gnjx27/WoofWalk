@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-const { checkExistingUser, validateUserInput, hashPassword, insertUser } = require('../utils/utils');
+const { checkExistingUser, validateUserInput, hashPassword, insertUser, insertWalker } = require('../utils/utils');
 const { v4: uuidv4 } = require('uuid');
 const nodemailer = require('nodemailer');
 const isAuthenticated = require('../utils/auth');
@@ -84,7 +84,7 @@ router.post('/contact-us', (req, res) => {
     // Set up email details
     const mailOptions = {
         from: 'woofwalk.project@outlook.com',
-        to: 'woofwalk.project@outlook.com', // This should be the recipient's email
+        to: 'woofwalk.project@outlook.com',
         subject: `Contact Form Submission: ${subject}`,
         text: `
             Name: ${name}
@@ -160,9 +160,11 @@ router.post('/sign-up', validateUserInput, hashPassword, async (req, res) => {
         if (existingUser) {
             return res.status(400).send('Email or username already in use');
         }
-        await insertUser(global.db, username, email, password_hash, accountType);
+        const userId = await insertUser(global.db, username, email, password_hash, accountType);
+        await insertWalker(global.db, userId);
         res.status(201).redirect('/sign-in');
     } catch (error) {
+        console.log(error.message)
         return res.status(500).send('Error creating account');
     }
 });
@@ -193,10 +195,10 @@ router.post('/sign-in', async (req, res) => {
 
             // Redirect based on profile completion
             if (user.account_type === 'owner' && !user.has_dog_profile) {
-                return res.redirect('/owner-profile');
+                return res.redirect('/owner/owner-profile');
             }
             if (user.account_type === 'walker' && !user.has_walker_profile) {
-                return res.redirect('/walker/walker-profile');
+                return res.redirect('/walker/walker-profile');``
             }
             res.redirect('/');
         } else {

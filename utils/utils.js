@@ -64,6 +64,22 @@ const insertUser = (db, username, email, hashedPassword, accountType) => {
                 if (err) {
                     reject(err);
                 } else {
+                    resolve(this.lastID);
+                }
+            }
+        );
+    });
+};
+
+const insertWalker = (db, userId) => {
+    return new Promise((resolve, reject) => {
+        db.run(
+            'INSERT INTO walker (user_id) VALUES (?)',
+            [userId],
+            function(err) {
+                if (err) {
+                    reject(err);
+                } else {
                     resolve();
                 }
             }
@@ -71,4 +87,52 @@ const insertUser = (db, username, email, hashedPassword, accountType) => {
     });
 };
 
-module.exports = { checkExistingUser, validateUserInput, hashPassword, insertUser };
+const getWalkerData = (db, userId) => {
+    return new Promise((resolve, reject) => {
+        db.get(
+            'SELECT * FROM walker WHERE user_id = ?',
+            [userId],
+            function(err, walkerData) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(walkerData);
+                }
+            }
+        );
+    });
+};
+
+const getWalkerReviews = (db, walkerId) => {
+    return new Promise((resolve, reject) => {
+        db.all(
+            'SELECT * FROM review WHERE walker_id = ?',
+            [walkerId],
+            function(err, reviews) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(reviews);
+                }
+            }
+        )
+    });
+}
+
+const getUserData = (db, userId) => {
+    return new Promise((resolve, reject) => {
+        db.get(
+            'SELECT * FROM user WHERE user_id = ?',
+            [userId],
+            function(err, userData) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(userData);
+                }
+            }
+        );
+    });
+};
+
+module.exports = { checkExistingUser, validateUserInput, hashPassword, insertUser, insertWalker, getWalkerData, getWalkerReviews, getUserData };
