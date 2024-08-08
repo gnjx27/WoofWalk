@@ -84,7 +84,7 @@ router.post('/contact-us', (req, res) => {
     // Set up email details
     const mailOptions = {
         from: 'woofwalk.project@outlook.com',
-        to: 'ngchunpeng@gmail.com', // This should be the recipient's email
+        to: 'woofwalk.project@outlook.com', // This should be the recipient's email
         subject: `Contact Form Submission: ${subject}`,
         text: `
             Name: ${name}
