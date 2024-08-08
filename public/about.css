@@ -1,231 +1,232 @@
 /* About page styling (Nicelle, 31 Jul 2024) */
 /* Center elements vertically within their container */
 .center-vertical {
-    display: flex;
-    width: 100%;
-    min-height: 100vh;
-    align-items: center;
-    flex-direction: column;
-  }
-  
-  /* Style the top image */
-  .top-image {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    margin-top: -10px;
-  }
-  
-  .top-image img {
-    width: 100%;
-    object-fit: cover;
-    filter: brightness(50%);
-  }
-  
-  .top-image-text {
-    font-family: "Permanent Marker", cursive;
-    font-weight: 200;
-    font-style: normal;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-90%, -50%);
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  }
-  
-  .top-image-text h1 {
-    font-size: 4vw;
-    margin: 0;
-  }
-  
-  .top-image-text p {
-    font-size: 2vw;
-    margin: 0;
-  }
-  
-  /* Style the about-us section */
-  .about-us {
-    width: 100%;
-    padding: calc(5% + 30px) 0px;
-  }
-  
-  /* Style the picture header within the about-us section */
-  .about-us .pic-header {
-    position: relative;
-    overflow: hidden;
-    border-radius: 10%;
-  }
-  
-  /* Style the images within the picture header, including a transition effect */
-  .about-us .pic-header img {
-    width: 100%;
-    transition: transform 0.3s;
-  }
-  
-  /* Scale up the image when the picture header is hovered over */
-  .about-us .pic-header:hover img {
-    transform: scale(1.2);
-  }
-  
-  /* Style the header text within the about-us section */
-  .about-us .header-text {
-    margin-top: 20px;
-    font-size: 30px;
-    color: #0d172a;
-  }
-  
-  /* Style a small break line within the about-us section */
-  .about-us .break-small {
-    margin-top: 20px;
-    width: 80px;
-    height: 4px;
-    background-color: #d43b76;
-  }
-  
-  /* Style paragraphs within the about-us section */
-  .about-us .paragraph {
-    margin: 40px 20px 0 0;
-    font-size: 20px;
-    color: #0d172a;
-    text-align: justify;
-  }
-  
-  /* Style the separator line */
-  .separator-container {
-    display: flex;
-    justify-content: center;
-    margin: 70px 0;
-  }
-  
-  .separator-line {
-    width: 90%;
-    opacity: 0.2;
-  }
-  
-  /* Style the FAQ section */
-  .faq_area {
-    position: relative;
-    z-index: 1;
-  }
-  
-  .faq-accordian {
-    position: relative;
-    z-index: 1;
-  }
-  
-  .faq-accordian .card {
-    position: relative;
-    z-index: 1;
-    margin-bottom: 1.5rem;
-  }
-  
-  .faq-accordian .card:last-child {
-    margin-bottom: 0;
-  }
-  
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Style the top image */
+.top-image {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-top: -10px;
+}
+
+.top-image img {
+  width: 100%;
+  object-fit: cover;
+  filter: brightness(50%);
+}
+
+.top-image-text {
+  font-family: "Permanent Marker", cursive;
+  font-weight: 200;
+  font-style: normal;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-90%, -50%);
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.top-image-text h1 {
+  font-size: 4vw;
+  margin: 0;
+}
+
+.top-image-text p {
+  font-size: 2vw;
+  margin: 0;
+}
+
+/* Style the about-us section */
+.about-us {
+  width: 100%;
+  padding: calc(5% + 30px) 0px;
+}
+
+/* Style the picture header within the about-us section */
+.about-us .pic-header {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10%;
+}
+
+/* Style the images within the picture header, including a transition effect */
+.about-us .pic-header img {
+  width: 100%;
+  transition: transform 0.3s;
+}
+
+/* Scale up the image when the picture header is hovered over */
+.about-us .pic-header:hover img {
+  transform: scale(1.2);
+}
+
+/* Style the header text within the about-us section */
+.about-us .header-text {
+  margin-top: 20px;
+  font-size: 30px;
+  color: #0d172a;
+}
+
+/* Style a small break line within the about-us section */
+.about-us .break-small {
+  margin-top: 20px;
+  width: 80px;
+  height: 4px;
+  background-color: #d43b76;
+}
+
+/* Style paragraphs within the about-us section */
+.about-us .paragraph {
+  margin: 40px 20px 0 0;
+  font-size: 20px;
+  color: #0d172a;
+  text-align: justify;
+}
+
+/* Style the separator line */
+.separator-container {
+  display: flex;
+  justify-content: center;
+  margin: 70px 0;
+}
+
+.separator-line {
+  width: 90%;
+  opacity: 0.2;
+}
+
+/* Style the FAQ section */
+.faq_area {
+  position: relative;
+  z-index: 1;
+}
+
+.faq-accordian {
+  position: relative;
+  z-index: 1;
+}
+
+.faq-accordian .card {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 1.5rem;
+}
+
+.faq-accordian .card:last-child {
+  margin-bottom: 0;
+}
+
 /* Container for centering the title and subtitle */
 .faq_area .section_heading {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Adjust underline width using a pseudo-element */
+.faq_area .section_heading h2 {
+  position: relative;
+  font-size: 30px;
+  color: #0d172a;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.faq_area .section_heading h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  width: 30%;
+  border-bottom: 4px solid #d43b76;
+}
+
+/* Style for the subtitle */
+.faq_area .section_heading p {
+  font-size: 18px;
+  color: #0d172a;
+  margin-top: 20px;
+}
+
+/* Style the card header */
+.faq-accordian .card .card-header {
+  background-color: #ffffff;
+  padding: 0;
+  border-bottom-color: #ebebeb;
+}
+
+.faq-accordian .card .card-header h6 {
+  cursor: pointer;
+  padding: 1.75rem 2rem;
+  color: #d43b76;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Increase width of each FAQ question box */
+.faq-accordian .card {
+  width: 100%;
+}
+
+.faq-accordian .card .card-header h6 span {
+  font-size: 1.5rem;
+}
+
+.faq-accordian .card .card-header h6.collapsed {
+  color: #070a57;
+}
+
+.faq-accordian .card .card-header h6.collapsed span {
+  transform: rotate(-180deg);
+}
+
+.faq-accordian .card .card-body {
+  padding: 1.75rem 2rem;
+}
+
+.faq-accordian .card .card-body p:last-child {
+  margin-bottom: 0;
+}
+
+.support-button {
+  color: #121345;
+}
+
+.support-button i {
+  font-size: 1.25rem;
+}
+
+.support-button a {
+  color: #d43b76;
+}
+
+.support-button a:hover {
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 575px) {
+  .support-button p {
+    font-size: 14px;
   }
-  
-  /* Adjust underline width using a pseudo-element */
-  .faq_area .section_heading h2 {
-    position: relative;
-    font-size: 30px;
-    color: #0d172a;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .faq_area .section_heading h2::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: -10px;
-    transform: translateX(-50%);
-    width: 30%;
-    border-bottom: 4px solid #d43b76;
-  }
-  
-  /* Style for the subtitle */
-  .faq_area .section_heading p {
-    font-size: 18px;
-    color: #0d172a;
-    margin-top: 20px;
-  }
-  
-  
-  
-  /* Style the card header */
-  .faq-accordian .card .card-header {
-    background-color: #ffffff;
-    padding: 0;
-    border-bottom-color: #ebebeb;
-  }
-  
-  .faq-accordian .card .card-header h6 {
-    cursor: pointer;
-    padding: 1.75rem 2rem;
-    color: #d43b76;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  /* Increase width of each FAQ question box */
-  .faq-accordian .card {
-    width: 100%;
-  }
-  
-  .faq-accordian .card .card-header h6 span {
-    font-size: 1.5rem;
-  }
-  
-  .faq-accordian .card .card-header h6.collapsed {
-    color: #070a57;
-  }
-  
-  .faq-accordian .card .card-header h6.collapsed span {
-    transform: rotate(-180deg);
-  }
-  
-  .faq-accordian .card .card-body {
-    padding: 1.75rem 2rem;
-  }
-  
-  .faq-accordian .card .card-body p:last-child {
-    margin-bottom: 0;
-  }
-  
-  .support-button {
-    color: #121345;
-  }
-  
+
   .support-button i {
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
-  
+
   .support-button a {
-    text-transform: capitalize;
-    color: #d43b76;
+    font-size: 13px;
   }
-  
-  @media only screen and (max-width: 575px) {
-    .support-button p {
-      font-size: 14px;
-    }
-  
-    .support-button i {
-      font-size: 1rem;
-    }
-  
-    .support-button a {
-      font-size: 13px;
-    }
-  }
-  
+}
+

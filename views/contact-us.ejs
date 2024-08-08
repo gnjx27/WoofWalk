@@ -1,0 +1,164 @@
+<!-- Top image section -->
+<div class="top-image">
+  <img src="/assets/contact.jpg" alt="Contact Us Image" />
+  <div class="top-image-text">
+    <h1>Contact Us</h1>
+    <p>Find the right fit for our furry friend</p>
+  </div>
+</div>
+
+<!-- Container for the contact form and contact information with margin and alignment classes -->
+<div
+  class="d-flex box-design-1 mt-4 mb-5 justify-content-center align-items-start"
+>
+  <!-- Contact form section -->
+  <div class="form-container">
+    <h1 class="title-with-line">Contact Us</h1>
+    <form id="contact-form" action="/contact-us" method="POST">
+      <!-- Name input field -->
+      <div class="mb-3">
+        <label for="name" class="form-label"><b>Name</b></label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          name="name"
+          placeholder="Enter your name"
+          required
+          autocomplete="off"
+        />
+        <div class="error-container">
+          <i
+            id="name-error-icon"
+            class="bi bi-exclamation-triangle-fill error-icon"
+            style="display: none"
+          ></i>
+          <div id="name-error" class="text-danger"></div>
+        </div>
+      </div>
+      <!-- Email input field -->
+      <div class="mb-3">
+        <label for="email-contact" class="form-label"><b>Email</b></label>
+        <input
+          type="email"
+          class="form-control"
+          id="email-contact"
+          name="email"
+          placeholder="Enter your email"
+          required
+          autocomplete="off"
+        />
+        <div class="error-container">
+          <i
+            id="email-error-icon"
+            class="bi bi-exclamation-triangle-fill error-icon"
+            style="display: none"
+          ></i>
+          <div id="email-error" class="text-danger"></div>
+        </div>
+      </div>
+      <!-- Subject input field -->
+      <div class="mb-3">
+        <label for="subject" class="form-label"><b>Subject</b></label>
+        <input
+          type="text"
+          class="form-control"
+          id="subject"
+          name="subject"
+          placeholder="Enter the subject"
+          required
+          autocomplete="off"
+        />
+        <div class="error-container">
+          <i
+            id="subject-error-icon"
+            class="bi bi-exclamation-triangle-fill error-icon"
+            style="display: none"
+          ></i>
+          <div id="subject-error" class="text-danger"></div>
+        </div>
+      </div>
+      <!-- Message input field -->
+      <div class="mb-3">
+        <label for="message" class="form-label"><b>Message</b></label>
+        <textarea
+          class="form-control"
+          id="message"
+          name="message"
+          placeholder="Enter your message"
+          required
+          autocomplete="off"
+          rows="5"
+        ></textarea>
+        <div class="error-container">
+          <i
+            id="message-error-icon"
+            class="bi bi-exclamation-triangle-fill error-icon"
+            style="display: none"
+          ></i>
+          <div id="message-error" class="text-danger"></div>
+        </div>
+      </div>
+      <!-- Separator line -->
+      <hr class="mt-4 mb-4" />
+      <!-- Submit button -->
+      <button type="submit" class="btn-design-1">Send Message</button>
+    </form>
+  </div>
+
+  <script>
+    document
+      .getElementById("contact-form")
+      .addEventListener("submit", function (event) {
+        let valid = true;
+        // Clear previous errors
+        document.getElementById("name-error").textContent = "";
+        document.getElementById("email-error").textContent = "";
+        document.getElementById("subject-error").textContent = "";
+        document.getElementById("message-error").textContent = "";
+        // Hide error icons
+        document.getElementById("name-error-icon").style.display = "none";
+        document.getElementById("email-error-icon").style.display = "none";
+        document.getElementById("subject-error-icon").style.display = "none";
+        document.getElementById("message-error-icon").style.display = "none";
+        // Validate Name
+        const name = document.getElementById("name").value;
+        if (name.length < 5) {
+          document.getElementById("name-error").textContent =
+            "Name must be at least 5 characters!";
+          document.getElementById("name-error-icon").style.display = "inline";
+          valid = false;
+        }
+        // Validate Email
+        const email = document.getElementById("email-contact").value;
+        if (!email.includes("@")) {
+          document.getElementById("email-error").textContent =
+            "Invalid email format!";
+          document.getElementById("email-error-icon").style.display = "inline";
+          valid = false;
+        }
+        // Validate Subject
+        const subject = document.getElementById("subject").value;
+        if (subject.length < 5) {
+          document.getElementById("subject-error").textContent =
+            "Subject must be at least 5 characters!";
+          document.getElementById("subject-error-icon").style.display =
+            "inline";
+          valid = false;
+        }
+        // Validate Message
+        const message = document.getElementById("message").value;
+        if (message.length < 10) {
+          document.getElementById("message-error").textContent =
+            "Message must be at least 10 characters!";
+          document.getElementById("message-error-icon").style.display =
+            "inline";
+          valid = false;
+        }
+        // Prevent form submission if validation fails
+        if (!valid) {
+          event.preventDefault();
+        }
+      });
+  </script>
+</div>

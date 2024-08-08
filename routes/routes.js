@@ -49,21 +49,60 @@ router.get('/booking', isAuthenticated, (req, res) => {
     });
 });
 
-// Route for account page (protected)
-router.get('/account', isAuthenticated, (req, res) => {
-    res.render('index', {
-        title: 'Account - WoofWalk',
-        currentPage: 'account',
-        body: 'account'
-    });
-});
-
 // Route for about page
 router.get('/about', (req, res) => {
     res.render('index', {
         title: 'About - WoofWalk',
         currentPage: 'about',
         body: 'about'
+    });
+});
+
+// Route for contact page
+router.get('/contact-us', (req, res) => {
+    res.render('index', {
+        title: 'Contact Us - WoofWalk',
+        currentPage: 'contact-us',
+        body: 'contact-us'
+    });
+});
+
+// Route for success page
+router.get('/success', (req, res) => {
+    res.render('success');
+});
+
+// Route for handling contact form submission
+router.post('/contact-us', (req, res) => {
+    const { name, email, subject, message } = req.body;
+
+    // Validate the inputs (simple example)
+    if (!name || !email || !subject || !message) {
+        return res.status(400).send('All fields are required.');
+    }
+
+    // Set up email details
+    const mailOptions = {
+        from: 'woofwalk.project@outlook.com',
+        to: 'ngchunpeng@gmail.com', // This should be the recipient's email
+        subject: `Contact Form Submission: ${subject}`,
+        text: `
+            Name: ${name}
+            Email: ${email}
+            Subject: ${subject}
+            Message: ${message}
+        `
+    };
+
+    // Send email
+    transporter.sendMail(mailOptions, (err, info) => {
+        if (err) {
+            console.error('Error sending email:', err);
+            return res.status(500).send('Error sending email.');
+        } else {
+            console.log('Email sent:', info.response);
+            res.redirect('/success');
+        }
     });
 });
 
