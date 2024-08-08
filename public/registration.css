@@ -12,7 +12,7 @@ and covers the full viewport height */
 /* Form container styling */
 .form-container {
   width: 100%;
-  max-width: 500px;
+  max-width: 600px;
   padding: 2em;
   border: 1px solid rgba(128, 128, 128, 0.5);
   border-radius: 0.5em;
@@ -49,7 +49,7 @@ input[type="radio"] {
   color: grey;
   cursor: pointer;
   border: 1px solid rgba(128, 128, 128, 0.5);
-  padding: 0.4em 3.5em;
+  padding: 0.4em 5.5em;
   border-radius: 0.5em;
   transition: all 0.2s;
   margin-left: -23px;
@@ -123,7 +123,7 @@ input[type="radio"]:checked + .account-options {
   padding: 15px;
   margin: 20px auto;
   width: 100%;
-  max-width: 500px;
+  max-width: 600px;
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
