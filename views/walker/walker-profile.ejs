@@ -21,7 +21,7 @@
     <!-- Walker Information -->
     <div class="walker-info">
       <div class="walker-details">
-        <h2 class="capitalize-name"><%= username %> :)</h2>
+        <h2 class="capitalize-name"><%= user.username %> :)</h2>
         <p style="color: #004393">
           <i class="bi bi-pin-map-fill"></i> <%= walkerData.walker_location %>
         </p>
@@ -94,7 +94,7 @@
   <!-- Profile Details Section -->
   <div class="profile-details">
     <!-- Walker Bios -->
-    <h3 class="capitalize-name">About <%= username %></h3>
+    <h3 class="capitalize-name">About <%= user.username %></h3>
     <p><%= walkerData.walker_bio %></p>
     <hr class="mt-4 mb-4" />
 
