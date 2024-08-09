@@ -31,3 +31,4 @@ router.get('/edit-walker-profile', isAuthenticated, async (req, res) => {
 });
 
 module.exports = router;
+

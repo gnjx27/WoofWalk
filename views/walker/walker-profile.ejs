@@ -115,71 +115,31 @@
     <!-- Reviews Section -->
     <h3>Reviews</h3>
     <div class="review-container">
-      <div class="review review-color">
-        <div class="review-image-container">
-          <img
-            src="/assets/reviewer1.jpg"
-            alt="Reviewer 1"
-            class="reviewer-image"
-          />
-        </div>
-        <div class="review-content">
-          <div class="review-header">
-            <h5>Peter Jackson</h5>
-            <p>2024-06-25</p>
-            <p class="star-rating">⭐⭐⭐⭐⭐</p>
+      <% reviews.forEach(review => { %>
+        <div class="review review-color">
+          <div class="review-image-container">
+            <img
+              src="/assets/reviewer1.jpg"
+              alt="Reviewer 1"
+              class="reviewer-image"
+            />
           </div>
-          <p>
-            Carrie is an absolute gem! She's been walking our energetic
-            Labrador, Max, for over a year now, and we couldn't be happier with
-            her service. Her genuine love for dogs shines through in everything
-            she does.
-          </p>
-        </div>
-      </div>
-      <div class="review review-color">
-        <div class="review-image-container">
-          <img
-            src="/assets/reviewer2.jpg"
-            alt="Reviewer 2"
-            class="reviewer-image"
-          />
-        </div>
-        <div class="review-content">
-          <div class="review-header">
-            <h5>Lady Gogo</h5>
-            <p>2024-05-11</p>
-            <p class="star-rating">⭐⭐⭐⭐⭐</p>
+          <div class="review-content">
+            <div class="review-header">
+              <h5><%= review.reviewer_name %></h5>
+              <p><%= review.review_date %></p>
+              <p class="star-rating">
+                <% for(let i = 0; i < review.rating; i++) { %>
+                  ⭐
+                <% } %>
+              </p>
+            </div>
+            <p>
+              <%= review.review %>
+            </p>
           </div>
-          <p>
-            Carrie has been a lifesaver for us and our beloved Cocker Spaniel,
-            Bella. Her warmth and expertise make her more than just a dog
-            walker; she's become a trusted friend to both us and Bella.
-          </p>
         </div>
-      </div>
-      <div class="review review-color">
-        <div class="review-image-container">
-          <img
-            src="/assets/reviewer3.jpg"
-            alt="Reviewer 3"
-            class="reviewer-image"
-          />
-        </div>
-        <div class="review-content">
-          <div class="review-header">
-            <h5>Johnson</h5>
-            <p>2024-07-10</p>
-            <p class="star-rating">⭐⭐⭐⭐</p>
-          </div>
-          <p>
-            Carrie has been fantastic with our Shih Tzu, Rocky. Her dedication
-            and attention to detail have made every walk enjoyable for him. I
-            highly recommend her to anyone looking for a caring and reliable dog
-            walker!
-          </p>
-        </div>
-      </div>
+      <% }); %>
     </div>
   </div>
 </div>
