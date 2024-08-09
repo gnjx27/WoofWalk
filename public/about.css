@@ -107,6 +107,7 @@
 .faq_area {
   position: relative;
   z-index: 1;
+  margin-bottom: -5vh;
 }
 
 .faq-accordian {
