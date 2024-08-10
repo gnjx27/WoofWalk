@@ -1,4 +1,8 @@
-<form action="/walker/update-walker-profile" method="POST" enctype="multipart/form-data">
+<form
+  action="/walker/update-walker-profile"
+  method="POST"
+  enctype="multipart/form-data"
+>
   <div class="profile-container">
     <div class="profile-card">
       <!-- Walker Profile Image -->
@@ -10,8 +14,19 @@
 
       <!-- Upload Photo Button -->
       <div class="mt-4">
-        <input type="file" name="walkerPhoto" id="fileInput" style="display: none;">
-        <button type="button" class="button-design-2" onclick="document.getElementById('fileInput').click()">Upload Photo</button>
+        <input
+          type="file"
+          name="walkerPhoto"
+          id="fileInput"
+          style="display: none"
+        />
+        <button
+          type="button"
+          class="button-design-2"
+          onclick="document.getElementById('fileInput').click()"
+        >
+          Upload Photo
+        </button>
         <span id="fileName">No file chosen</span>
       </div>
 
@@ -22,87 +37,92 @@
         <h3 class="mb-3">Social Media Link</h3>
 
         <div class="social-icons-2 mt-3">
-            <div class="row align-items-center">
-              <div class="col-auto">
-                <img src="/assets/whatsapp.png" alt="WhatsApp" />
-              </div>
-              <div class="col">
-                <input
-                  type="text"
-                  name="whatsapp-link"
-                  id="whatsapp-link"
-                  class="form-control"
-                  placeholder="WhatsApp Link"
-                />
-              </div>
+          <!-- WhatsApp -->
+          <div class="row align-items-center">
+            <div class="col-auto">
+              <img src="/assets/whatsapp.png" alt="WhatsApp" />
             </div>
-          
-            <div class="row align-items-center">
-              <div class="col-auto">
-                <img src="/assets/facebook.png" alt="Facebook" />
-              </div>
-              <div class="col">
-                <input
-                  type="text"
-                  name="facebook-link"
-                  id="facebook-link"
-                  class="form-control"
-                  placeholder="Facebook Link"
-                />
-              </div>
-            </div>
-          
-            <div class="row align-items-center">
-              <div class="col-auto">
-                <img src="/assets/instagram.png" alt="Instagram" />
-              </div>
-              <div class="col">
-                <input
-                  type="text"
-                  name="instagram-link"
-                  id="instagram-link"
-                  class="form-control"
-                  placeholder="Instagram Link"
-                />
-              </div>
-            </div>
-          
-            <div class="row align-items-center">
-              <div class="col-auto">
-                <img src="/assets/linkedin.png" alt="LinkedIn" />
-              </div>
-              <div class="col">
-                <input
-                  type="text"
-                  name="linkedin-link"
-                  id="linkedin-link"
-                  class="form-control"
-                  placeholder="LinkedIn Link"
-                />
-              </div>
-            </div>
-          
-            <div class="row align-items-center">
-              <div class="col-auto">
-                <img src="/assets/snapchat.png" alt="SnapChat" />
-              </div>
-              <div class="col">
-                <input
-                  type="text"
-                  name="snapchat-link"
-                  id="snapchat-link"
-                  class="form-control"
-                  placeholder="SnapChat Link"
-                />
-              </div>
+            <div class="col">
+              <input
+                type="text"
+                name="whatsapp-link"
+                id="whatsapp-link"
+                class="form-control"
+                placeholder="WhatsApp Link"
+              />
             </div>
           </div>
+
+          <!-- Facebook -->
+          <div class="row align-items-center">
+            <div class="col-auto">
+              <img src="/assets/facebook.png" alt="Facebook" />
+            </div>
+            <div class="col">
+              <input
+                type="text"
+                name="facebook-link"
+                id="facebook-link"
+                class="form-control"
+                placeholder="Facebook Link"
+              />
+            </div>
+          </div>
+
+          <!-- Instagram -->
+          <div class="row align-items-center">
+            <div class="col-auto">
+              <img src="/assets/instagram.png" alt="Instagram" />
+            </div>
+            <div class="col">
+              <input
+                type="text"
+                name="instagram-link"
+                id="instagram-link"
+                class="form-control"
+                placeholder="Instagram Link"
+              />
+            </div>
+          </div>
+
+          <!-- LinkedIn -->
+          <div class="row align-items-center">
+            <div class="col-auto">
+              <img src="/assets/linkedin.png" alt="LinkedIn" />
+            </div>
+            <div class="col">
+              <input
+                type="text"
+                name="linkedin-link"
+                id="linkedin-link"
+                class="form-control"
+                placeholder="LinkedIn Link"
+              />
+            </div>
+          </div>
+
+          <!-- SnapChat -->
+          <div class="row align-items-center">
+            <div class="col-auto">
+              <img src="/assets/snapchat.png" alt="SnapChat" />
+            </div>
+            <div class="col">
+              <input
+                type="text"
+                name="snapchat-link"
+                id="snapchat-link"
+                class="form-control"
+                placeholder="SnapChat Link"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- Profile Details Section -->
     <div class="profile-details">
-        <h3>Edit Profile</h3>
+      <h3>Edit Profile</h3>
       <!-- First row: Username and Email -->
       <div class="row mb-3">
         <div class="col-md-6">
@@ -192,14 +212,16 @@
             id="walker_bio"
             name="walker_bio"
             autocomplete="off"
-            rows="5"
-          ><%= walkerData.walker_bio %></textarea>
+            rows="6"
+          >
+<%= walkerData.walker_bio %></textarea
+          >
         </div>
       </div>
 
       <!-- Fifth row: Skill 1 and Skill 2 -->
       <div class="row mb-3">
-        <div class="col-md-6">
+        <div class="col-md-12">
           <label for="walker_skill_1" class="form-label"><b>Skills</b></label>
           <textarea
             class="form-control"
@@ -207,7 +229,9 @@
             name="walker_skills"
             autocomplete="off"
             rows="4"
-          ><%= walkerData.walker_skills %></textarea>
+          >
+<%= walkerData.walker_skills %></textarea
+          >
         </div>
 
         <!-- Cancel and Update Buttons -->
@@ -220,7 +244,9 @@
             >
               Cancel
             </button>
-            <button type="submit" class="button-design-3 update">Edit & Update</button>
+            <button type="submit" class="button-design-3 update">
+              Edit & Update
+            </button>
           </div>
         </div>
       </div>
@@ -238,10 +264,10 @@
   }
 
   // Display the selected file name
-  const fileInput = document.getElementById('fileInput');
-  const fileName = document.getElementById('fileName');
+  const fileInput = document.getElementById("fileInput");
+  const fileName = document.getElementById("fileName");
 
-  fileInput.addEventListener('change', function() {
-      fileName.textContent = this.files[0].name;
+  fileInput.addEventListener("change", function () {
+    fileName.textContent = this.files[0].name;
   });
 </script>

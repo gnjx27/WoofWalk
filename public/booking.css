@@ -1,0 +1,189 @@
+/* Style for top image */
+.booking-top-image {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 8vh;
+}
+
+.booking-top-image img {
+  width: 100%;
+  object-fit: cover;
+  filter: brightness(60%);
+  z-index: -1;
+}
+
+.booking-top-image-text {
+  font-family: "Permanent Marker", cursive;
+  font-weight: 200;
+  font-style: normal;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-91%, -90%);
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.booking-top-image-text h1 {
+  font-size: 3.2vw;
+  margin: 0;
+}
+
+.booking-top-image-text p {
+  font-size: 2.4vw;
+  margin: 0;
+}
+
+/* Container for Booking Sections */
+.booking-container {
+  display: flex;
+  max-width: 80%;
+  margin: 5vh auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.booking-message {
+    font-family: "Georgia", serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    text-align: center;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.running-dog {
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.running-dog img {
+    position: absolute;
+    width: auto;
+    height: 15vh; /* Adjust the height as needed */
+    animation: moveRight 5s linear infinite;
+}
+
+@keyframes moveRight {
+    0% {
+        transform: translateX(0) translateY(-55%); /* Start position */
+    }
+    100% {
+        transform: translateX(400%) translateY(-55%); /* End position */
+    }
+}
+
+/* Left Section Styling */
+.left-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4vh 2vw;
+  border-right: 2px solid #e0e0e0;
+}
+
+/* Right Section Styling */
+.right-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4vh 2vw;
+}
+
+/* Adjustments for better alignment in different screen sizes */
+@media (max-width: 768px) {
+  .left-section {
+    padding: 2vh 3vw;
+    border-right: none;
+    border-bottom: 2px solid #e0e0e0;
+  }
+
+  .right-section {
+    padding: 2vh 3vw;
+  }
+}
+
+.booking-title h3 {
+  position: relative;
+  padding-bottom: 20px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.booking-title h3::after {
+  content: "";
+  display: block;
+  width: 12%;
+  border-bottom: 4px solid #e9185e;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Common Styles for Selections */
+.size-options,
+.age-options,
+.time-options {
+  color: grey;
+  cursor: pointer;
+  border: 1px solid rgba(128, 128, 128, 0.5);
+  border-radius: 0.5em;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.size-options {
+  padding: 1em 2.3em;
+}
+
+.age-options {
+  padding: 1em 4em;
+}
+
+.time-options {
+  padding: 1em 2.6em;
+}
+
+/* Styling for Dog Size Labels */
+.size-label,
+.age-label,
+.time-label {
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Styling for Weight, Age Range, and Time Units */
+.size-weight,
+.age-range,
+.time-units {
+  font-size: 0.85rem;
+  color: inherit;
+  text-align: center;
+}
+
+/* Styles for the selected radio option */
+input[type="radio"]:checked + .size-options,
+input[type="radio"]:checked + .age-options,
+input[type="radio"]:checked + .time-options {
+  border: 2.5px solid;
+  border-color: #d43b76;
+  color: #d43b76;
+  font-weight: bold;
+}
+
+/* Layout for each selection group */
+.dog-size,
+.dog-age,
+.time-range {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
