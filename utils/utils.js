@@ -103,6 +103,22 @@ const getWalkerData = (db, userId) => {
     });
 };
 
+const getOwnerData = (db, userId) => {
+    return new Promise((resolve, reject) => {
+        db.get(
+            'SELECT * FROM dog WHERE dog_id = ?',
+            [userId],
+            function(err, dogData) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(dogData);
+                }
+            }
+        );
+    });
+};
+
 const getWalkerReviews = (db, walkerId) => {
     return new Promise((resolve, reject) => {
         db.all(
@@ -135,4 +151,4 @@ const getUserData = (db, userId) => {
     });
 };
 
-module.exports = { checkExistingUser, validateUserInput, hashPassword, insertUser, insertWalker, getWalkerData, getWalkerReviews, getUserData };
+module.exports = { checkExistingUser, validateUserInput, hashPassword, insertUser, insertWalker, getWalkerData, getWalkerReviews, getUserData, getOwnerData };
