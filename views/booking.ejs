@@ -1,2 +1,303 @@
-<h1>Booking Page</h1>
-<p>Book your dog walking session here.</p>
+<!-- Top image section -->
+<div class="top-image">
+    <img src="/assets/booking.jpg" alt="About Us Image" />
+    <div class="top-image-text">
+      <h1>BRINGING TOGETHER</h1>
+      <p>CARING HEARTS AND HAPPY PAWS</p>
+    </div>
+  </div>
+  
+  <!-- Booking Section -->
+  <form action="/submit-booking" method="post">
+    <div class="booking-container">
+      <div class="row">
+        <!-- Left Section -->
+        <div class="col-md-6 left-section">
+          <!-- Image -->
+          <div class="mb-3">
+            <img
+              src="/assets/booking-dog.jpg"
+              alt="Dog Image"
+              class="img-fluid rounded-start"
+            />
+          </div>
+  
+          <!-- Boarding Near -->
+          <div class="mb-3">
+            <label for="boarding-location" class="form-label"><b>Boarding near</b></label>
+            <input
+              type="text"
+              class="form-control"
+              id="boarding-location"
+              name="boarding-location"
+              placeholder="Zip Code or Address"
+            />
+          </div>
+  
+          <!-- Date and Time -->
+          <div class="row">
+            <div class="col">
+              <label for="date" class="form-label"><b>Date</b></label>
+              <input type="date" class="form-control" id="date" name="date" />
+            </div>
+            <div class="col">
+              <label for="time" class="form-label"><b>Time</b></label>
+              <input type="time" class="form-control" id="time" name="time" />
+            </div>
+          </div>
+  
+          <!-- Remarks -->
+          <div class="mt-3">
+            <label for="remarks" class="form-label"><b>Remarks</b></label>
+            <textarea
+              class="form-control"
+              id="remarks"
+              name="remarks"
+              placeholder="Remarks"
+              rows="3"
+            ></textarea>
+          </div>
+  
+        </div>
+  
+        <!-- Right Section -->
+        <div class="col-md-6 right-section booking-title">
+          <!-- Booking Title -->
+          <h3 class="card-title mb-4">Booking Form</h3>
+          <div class="booking-message">
+            <p>Making every step with your pet a joy.<br>Let's book now for a memorable experience.</p>
+          </div>
+          <div class="running-dog">
+            <img src="/assets/run.gif" alt="Running Dog">
+          </div>
+  
+          <!-- Dog Size Selection -->
+          <div class="mb-3">
+            <label class="form-label"><b>Dog Size</b></label>
+            <div class="dog-size">
+              <!-- Radio button for Small -->
+              <div>
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="dogSize"
+                  id="small"
+                  value="small"
+                  required
+                />
+                <label class="size-options" for="small">
+                  <span class="size-label">Small</span>
+                  <span class="size-weight">&lt;10kg</span>
+                </label>
+              </div>
+  
+              <!-- Radio button for Medium -->
+              <div>
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="dogSize"
+                  id="medium"
+                  value="medium"
+                  required
+                />
+                <label class="size-options" for="medium">
+                  <span class="size-label">Medium</span>
+                  <span class="size-weight">11-26kg</span>
+                </label>
+              </div>
+  
+              <!-- Radio button for Large -->
+              <div>
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="dogSize"
+                  id="large"
+                  value="large"
+                  required
+                />
+                <label class="size-options" for="large">
+                  <span class="size-label">Large</span>
+                  <span class="size-weight">27-45kg</span>
+                </label>
+              </div>
+  
+              <!-- Radio button for X-Large -->
+              <div>
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="dogSize"
+                  id="xlarge"
+                  value="xlarge"
+                  required
+                />
+                <label class="size-options" for="xlarge">
+                  <span class="size-label">X-Large</span>
+                  <span class="size-weight">46+kg</span>
+                </label>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Dog Age Selection -->
+          <div class="mb-3">
+            <label class="form-label"><b>Dog Age</b></label>
+            <div class="dog-age">
+              <!-- Radio button for Puppy -->
+              <div>
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="dogAge"
+                  id="puppy"
+                  value="puppy"
+                  required
+                />
+                <label class="age-options" for="puppy">
+                  <span class="age-label">Puppy</span>
+                  <span class="age-range">0-1 yrs</span>
+                </label>
+              </div>
+  
+              <!-- Radio button for Adult -->
+              <div>
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="dogAge"
+                  id="adult"
+                  value="adult"
+                  required
+                />
+                <label class="age-options" for="adult">
+                  <span class="age-label">Adult</span>
+                  <span class="age-range">2-8 yrs</span>
+                </label>
+              </div>
+  
+              <!-- Radio button for Senior -->
+              <div>
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="dogAge"
+                  id="senior"
+                  value="senior"
+                  required
+                />
+                <label class="age-options" for="senior">
+                  <span class="age-label">Senior</span>
+                  <span class="age-range">9+ yrs</span>
+                </label>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Time Range Selection -->
+          <div class="mb-3">
+            <label class="form-label"><b>Time Range</b></label>
+            <div class="time-range">
+              <!-- Radio button for 30-45 mins -->
+              <div>
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="timeRange"
+                  id="range30-45"
+                  value="30-45"
+                  required
+                />
+                <label class="time-options" for="range30-45">
+                  <span class="time-label">30-45</span>
+                  <span class="time-units">mins</span>
+                </label>
+              </div>
+  
+              <!-- Radio button for 45-60 mins -->
+              <div>
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="timeRange"
+                  id="range45-60"
+                  value="45-60"
+                  required
+                />
+                <label class="time-options" for="range45-60">
+                  <span class="time-label">45-60</span>
+                  <span class="time-units">mins</span>
+                </label>
+              </div>
+  
+              <!-- Radio button for 60-90 mins -->
+              <div>
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="timeRange"
+                  id="range60-90"
+                  value="60-90"
+                  required
+                />
+                <label class="time-options" for="range60-90">
+                  <span class="time-label">60-90</span>
+                  <span class="time-units">mins</span>
+                </label>
+              </div>
+  
+              <!-- Radio button for 90+ mins -->
+              <div>
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="timeRange"
+                  id="range90plus"
+                  value="90+"
+                  required
+                />
+                <label class="time-options" for="range90plus">
+                  <span class="time-label">90++</span>
+                  <span class="time-units">mins</span>
+                </label>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Cancel and Search Buttons -->
+          <div>
+            <div class="col-12">
+              <button
+                type="reset"
+                class="button-design-3 cancel"
+                onclick="handleCancelClick()"
+              >
+                Cancel
+              </button>
+              <button type="submit" class="button-design-3 search">Search</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  <script>
+    function handleCancelClick() {
+      // Reset the form fields
+      document.querySelector("form").reset();
+  
+      // Navigate back to the previous page
+      window.location.href = "/";
+    }
+  
+    // Display the selected file name
+    const fileInput = document.getElementById("fileInput");
+    const fileName = document.getElementById("fileName");
+  
+    fileInput.addEventListener("change", function () {
+      fileName.textContent = this.files[0].name;
+    });
+  </script>
+  
