@@ -17,8 +17,7 @@ CREATE TABLE IF NOT EXISTS walker (
     walker_photo TEXT NOT NULL DEFAULT "No photo",
     walker_quote TEXT DEFAULT "Let me walk your dog!",
     walker_bio TEXT DEFAULT "No bio added...",
-    walker_skill_1 TEXT DEFAULT "Dog walking",
-    walker_skill_2 TEXT DEFAULT "Experience",
+    walker_skills TEXT DEFAULT "No skills added...",
     walker_contact TEXT DEFAULT "+65 9006 1234",
     base_price TEXT DEFAULT "20",
     walker_location TEXT DEFAULT "Singapore",
@@ -43,6 +42,7 @@ CREATE TABLE IF NOT EXISTS dog (
 
 CREATE TABLE IF NOT EXISTS review (
     review_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    reviewer_name TEXT NOT NULL,
     rating INTEGER NOT NULL CHECK(rating BETWEEN 1 AND 5),
     review TEXT NOT NULL,
     review_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,

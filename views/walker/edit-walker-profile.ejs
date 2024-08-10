@@ -1,16 +1,18 @@
-<form action="/update-profile" method="POST" enctype="multipart/form-data">
+<form action="/walker/update-walker-profile" method="POST" enctype="multipart/form-data">
   <div class="profile-container">
     <div class="profile-card">
       <!-- Walker Profile Image -->
       <img
-        src="/assets/walker-image.jpg"
+        src="/walker/get-walker-photo"
         alt="Walker Image"
         class="walker-image"
       />
 
       <!-- Upload Photo Button -->
       <div class="mt-4">
-        <a href="#" class="button-design-2">Upload Photo</a>
+        <input type="file" name="walkerPhoto" id="fileInput" style="display: none;">
+        <button type="button" class="button-design-2" onclick="document.getElementById('fileInput').click()">Upload Photo</button>
+        <span id="fileName">No file chosen</span>
       </div>
 
       <hr class="mt-4 mb-4" />
@@ -110,7 +112,7 @@
             class="form-control"
             id="username"
             name="username"
-            placeholder="<%= user.username %>"
+            value="<%= user.username %>"
             autocomplete="off"
           />
         </div>
@@ -121,7 +123,7 @@
             class="form-control"
             id="email"
             name="email"
-            placeholder="<%= user.email %>"
+            value="<%= user.email %>"
             autocomplete="off"
           />
         </div>
@@ -130,13 +132,13 @@
       <!-- Second row: Quotes and Location -->
       <div class="row mb-3">
         <div class="col-md-6">
-          <label for="walker_quote" class="form-label"><b>Quotes</b></label>
+          <label for="walker_quote" class="form-label"><b>Quote</b></label>
           <input
             type="text"
             class="form-control"
             id="walker_quote"
             name="walker_quote"
-            placeholder="<%= walkerData.walker_quote %>"
+            value="<%= walkerData.walker_quote %>"
             autocomplete="off"
           />
         </div>
@@ -149,7 +151,7 @@
             class="form-control"
             id="walker_location"
             name="walker_location"
-            placeholder="<%= walkerData.walker_location %>"
+            value="<%= walkerData.walker_location %>"
             autocomplete="off"
           />
         </div>
@@ -164,7 +166,7 @@
             class="form-control"
             id="base_price"
             name="base_price"
-            placeholder="<%= walkerData.base_price %>"
+            value="<%= walkerData.base_price %>"
             autocomplete="off"
           />
         </div>
@@ -175,7 +177,7 @@
             class="form-control"
             id="walker_contact"
             name="walker_contact"
-            placeholder="<%= walkerData.walker_contact %>"
+            value="<%= walkerData.walker_contact %>"
             autocomplete="off"
           />
         </div>
@@ -189,36 +191,23 @@
             class="form-control"
             id="walker_bio"
             name="walker_bio"
-            placeholder="<%= walkerData.walker_bio %>"
             autocomplete="off"
             rows="5"
-          ></textarea>
+          ><%= walkerData.walker_bio %></textarea>
         </div>
       </div>
 
       <!-- Fifth row: Skill 1 and Skill 2 -->
       <div class="row mb-3">
         <div class="col-md-6">
-          <label for="walker_skill_1" class="form-label"><b>Skill 1</b></label>
+          <label for="walker_skill_1" class="form-label"><b>Skills</b></label>
           <textarea
             class="form-control"
             id="walker_skill_1"
-            name="walker_skill_1"
-            placeholder="<%= walkerData.walker_skill_1 %>"
+            name="walker_skills"
             autocomplete="off"
             rows="4"
-          ></textarea>
-        </div>
-        <div class="col-md-6">
-          <label for="walker_skill_2" class="form-label"><b>Skill 2</b></label>
-          <textarea
-            class="form-control"
-            id="walker_skill_2"
-            name="walker_skill_2"
-            placeholder="<%= walkerData.walker_skill_2 %>"
-            autocomplete="off"
-            rows="4"
-          ></textarea>
+          ><%= walkerData.walker_skills %></textarea>
         </div>
 
         <!-- Cancel and Update Buttons -->
@@ -247,4 +236,12 @@
     // Navigate back to the previous page
     window.history.back();
   }
+
+  // Display the selected file name
+  const fileInput = document.getElementById('fileInput');
+  const fileName = document.getElementById('fileName');
+
+  fileInput.addEventListener('change', function() {
+      fileName.textContent = this.files[0].name;
+  });
 </script>
