@@ -5,14 +5,14 @@ function isAuthenticated(req, res, next) {
                 return res.status(500).send('Database error');
             }
             if (user) {
-                req.user = user; // Attach user info to request
+                req.user = user;
                 next();
             } else {
                 res.status(401).send('Unauthorized: User not found');
             }
         });
     } else {
-        res.redirect('/sign-in?message=Please+log+in+first'); // Redirect to login page with message
+        res.redirect('/sign-in?message=Please+log+in+first');
     }
 }
 

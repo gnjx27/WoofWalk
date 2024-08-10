@@ -2,7 +2,7 @@
 .profile-container {
     display: flex;
     max-width: 80%;
-    margin: 30px auto;
+    margin: 14vh auto 5vh auto;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
@@ -85,6 +85,11 @@ blockquote {
 
 .contact-walker .social-icons img:hover {
     transform: scale(1.2);
+}
+
+.social-icons-2 img{
+    width: 50px;
+    margin: 1vh -1vw 0 0;
 }
 
 /* Headers for Sections */
@@ -196,6 +201,23 @@ blockquote {
     align-items: center;
 }
 
+.capitalize-name {
+    text-transform: capitalize;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 1200px) {
+    .review {
+        flex: 1 1 calc(50% - 20px); /* Two items per row with space for gaps */
+    }
+}
+
+@media (max-width: 768px) {
+    .review {
+        flex: 1 1 100%; /* One item per row */
+    }
+}
+
 /* Define a set of color classes */
 .review-color-1 {
     background-color: #f0f8ff; /* Alice Blue */
@@ -284,7 +306,7 @@ blockquote {
 }
 
 /* Edit Button Styles */
-.edit-button {
+.button-design-2 {
     text-decoration: none;
     display: block;
     width: 100%;
@@ -299,7 +321,56 @@ blockquote {
     transition: all 0.2s;
 }
 
-.edit-button:hover {
+.button-design-2:hover {
     background-color: #d43b76;
     color: #fff;
+}
+
+/* Button style for update & cancel button */
+.button-design-3.cancel {
+    text-decoration: none;
+    display: inline-block;
+    width: calc(50% - 0.5em);
+    padding: 0.5em;
+    border: 2px solid #d43b76;
+    background-color: #fff;
+    color: #d43b76;
+    font-weight: bold;
+    border-radius: 0.5em;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-right: 0.5em;
+}
+
+.button-design-3.cancel:hover {
+    background-color: #d43b76;
+    color: #fff;
+}
+
+.button-design-3.update {
+    text-decoration: none;
+    display: inline-block;
+    width: calc(50% - 0.5em);
+    padding: 0.5em;
+    border: 2px solid #d43b76;
+    background-color: #d43b76;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 0.5em;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.button-design-3.update:hover {
+    background-color: #d01753;
+    font-weight: bold;
+    font-size: larger;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.button-design-3:last-child {
+    margin-top: 4vh;
+    margin-right: 0;
 }

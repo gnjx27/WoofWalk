@@ -1,1 +1,250 @@
-<h1>Edit Walker Profile</h1>
+<form action="/update-profile" method="POST" enctype="multipart/form-data">
+  <div class="profile-container">
+    <div class="profile-card">
+      <!-- Walker Profile Image -->
+      <img
+        src="/assets/walker-image.jpg"
+        alt="Walker Image"
+        class="walker-image"
+      />
+
+      <!-- Upload Photo Button -->
+      <div class="mt-4">
+        <a href="#" class="button-design-2">Upload Photo</a>
+      </div>
+
+      <hr class="mt-4 mb-4" />
+
+      <!-- Contact Walker Section with various social media links -->
+      <div class="contact-walker">
+        <h3 class="mb-3">Social Media Link</h3>
+
+        <div class="social-icons-2 mt-3">
+            <div class="row align-items-center">
+              <div class="col-auto">
+                <img src="/assets/whatsapp.png" alt="WhatsApp" />
+              </div>
+              <div class="col">
+                <input
+                  type="text"
+                  name="whatsapp-link"
+                  id="whatsapp-link"
+                  class="form-control"
+                  placeholder="WhatsApp Link"
+                />
+              </div>
+            </div>
+          
+            <div class="row align-items-center">
+              <div class="col-auto">
+                <img src="/assets/facebook.png" alt="Facebook" />
+              </div>
+              <div class="col">
+                <input
+                  type="text"
+                  name="facebook-link"
+                  id="facebook-link"
+                  class="form-control"
+                  placeholder="Facebook Link"
+                />
+              </div>
+            </div>
+          
+            <div class="row align-items-center">
+              <div class="col-auto">
+                <img src="/assets/instagram.png" alt="Instagram" />
+              </div>
+              <div class="col">
+                <input
+                  type="text"
+                  name="instagram-link"
+                  id="instagram-link"
+                  class="form-control"
+                  placeholder="Instagram Link"
+                />
+              </div>
+            </div>
+          
+            <div class="row align-items-center">
+              <div class="col-auto">
+                <img src="/assets/linkedin.png" alt="LinkedIn" />
+              </div>
+              <div class="col">
+                <input
+                  type="text"
+                  name="linkedin-link"
+                  id="linkedin-link"
+                  class="form-control"
+                  placeholder="LinkedIn Link"
+                />
+              </div>
+            </div>
+          
+            <div class="row align-items-center">
+              <div class="col-auto">
+                <img src="/assets/snapchat.png" alt="SnapChat" />
+              </div>
+              <div class="col">
+                <input
+                  type="text"
+                  name="snapchat-link"
+                  id="snapchat-link"
+                  class="form-control"
+                  placeholder="SnapChat Link"
+                />
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <!-- Profile Details Section -->
+    <div class="profile-details">
+        <h3>Edit Profile</h3>
+      <!-- First row: Username and Email -->
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="username" class="form-label"><b>Username</b></label>
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            name="username"
+            placeholder="<%= user.username %>"
+            autocomplete="off"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="email" class="form-label"><b>Email</b></label>
+          <input
+            type="text"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="<%= user.email %>"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+
+      <!-- Second row: Quotes and Location -->
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="walker_quote" class="form-label"><b>Quotes</b></label>
+          <input
+            type="text"
+            class="form-control"
+            id="walker_quote"
+            name="walker_quote"
+            placeholder="<%= walkerData.walker_quote %>"
+            autocomplete="off"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="walker_location" class="form-label"
+            ><b>Location</b></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="walker_location"
+            name="walker_location"
+            placeholder="<%= walkerData.walker_location %>"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+
+      <!-- Third row: Base Price and Contact -->
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="base_price" class="form-label"><b>Base Price</b></label>
+          <input
+            type="text"
+            class="form-control"
+            id="base_price"
+            name="base_price"
+            placeholder="<%= walkerData.base_price %>"
+            autocomplete="off"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="walker_contact" class="form-label"><b>Contact</b></label>
+          <input
+            type="text"
+            class="form-control"
+            id="walker_contact"
+            name="walker_contact"
+            placeholder="<%= walkerData.walker_contact %>"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+
+      <!-- Fourth row: Bio -->
+      <div class="row mb-3">
+        <div class="col-md-12">
+          <label for="walker_bio" class="form-label"><b>Bio</b></label>
+          <textarea
+            class="form-control"
+            id="walker_bio"
+            name="walker_bio"
+            placeholder="<%= walkerData.walker_bio %>"
+            autocomplete="off"
+            rows="5"
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- Fifth row: Skill 1 and Skill 2 -->
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="walker_skill_1" class="form-label"><b>Skill 1</b></label>
+          <textarea
+            class="form-control"
+            id="walker_skill_1"
+            name="walker_skill_1"
+            placeholder="<%= walkerData.walker_skill_1 %>"
+            autocomplete="off"
+            rows="4"
+          ></textarea>
+        </div>
+        <div class="col-md-6">
+          <label for="walker_skill_2" class="form-label"><b>Skill 2</b></label>
+          <textarea
+            class="form-control"
+            id="walker_skill_2"
+            name="walker_skill_2"
+            placeholder="<%= walkerData.walker_skill_2 %>"
+            autocomplete="off"
+            rows="4"
+          ></textarea>
+        </div>
+
+        <!-- Cancel and Update Buttons -->
+        <div class="mt-3">
+          <div class="col-12">
+            <button
+              type="reset"
+              class="button-design-3 cancel"
+              onclick="handleCancelClick()"
+            >
+              Cancel
+            </button>
+            <button type="submit" class="button-design-3 update">Edit & Update</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<script>
+  function handleCancelClick() {
+    // Reset the form fields
+    document.querySelector("form").reset();
+
+    // Navigate back to the previous page
+    window.history.back();
+  }
+</script>

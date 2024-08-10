@@ -13,7 +13,7 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  margin-top: -10px;
+  margin-top: 8vh;
 }
 
 .top-image img {
@@ -107,6 +107,7 @@
 .faq_area {
   position: relative;
   z-index: 1;
+  margin-bottom: -5vh;
 }
 
 .faq-accordian {
@@ -230,3 +231,6 @@
   }
 }
 
+.reduce-top-space {
+  margin-top: -5vh;
+}
