@@ -1,25 +1,33 @@
 /* Homepage styling (Nicelle, Started on 7 Aug  2024)*/
+
+/* Setting the height of each carousel item*/
 .carousel-item{
     height: 500px;
 }
 
+/* Adjusting the carousel image*/
 .c-img{
     height: 100%;
     object-fit: cover;
     filter: brightness(0.7);
 }
 
+/* Aligning the carousel caption text */
 .carousel-caption{
     text-align: left;
     margin-bottom: 10%;
 }
 
+/* Centering the button container */
 .btn-container{ 
    margin: auto;
    margin-top: 50px;
    margin-bottom: 50px;
+   margin-right: 0;
+   margin-left: 50%;
 }
 
+/* Styling the button */
 .btn{
     background-color: #d43b76;
     font-size: 20px;
@@ -28,6 +36,7 @@
     border-width: 3px;
 }
 
+/* Hover effect for the button */
 .btn:hover{
     background-color: rgb(240, 240, 240);
     color: #d43b76;
@@ -35,3 +44,101 @@
     border-width: 3px;
 
 }
+
+/* Padding around the "book now" section */
+.booknow-area {
+    padding: 80px 0;
+  }
+
+  /* Positioning and sizing the left image */
+.left-img img {
+    margin-left: 30%;
+    width: 50%;
+    height: 60%;
+}
+
+/* Setting font for h1 elements */
+h1 {
+    font-family: "Permanent Marker", cursive;
+}
+
+/* Aligning h2 and .r-text elements to the right */
+h2, .r-text {
+    text-align: right;
+}
+
+/* Styling h2 elements with a large font size */
+h2 { 
+    font-size: 80px;
+}
+
+/* Benefits header text */
+.b-head-text {
+    text-align: center;
+    font-size: 50px;
+    font-weight: 600;
+}
+
+/* Right margin */
+.right {
+    margin-right: 30%;
+}
+
+/* Benefits item */
+.b-item {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Benefits img  */
+.b-img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    filter: brightness(0.7);
+}
+
+/* Benefits text  */
+.benefits-text {
+    font-weight: 400;
+    font-size: 30px;
+    font-style: normal;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-90%, -50%);
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Why us header  */
+  .why-us-header{
+    text-align: center;
+    font-weight: 600;
+    font-size: 50px;
+  }
+
+  /* Card homepage  */
+  .home {
+    box-shadow: 0 0 0px;
+    overflow: hidden;
+    border-radius: 15px;
+    border-color: rgb(240, 240, 240);
+    margin-left: 20%;
+    background-color: rgb(240, 240, 240);
+  }
+
+  /* Card title  */
+  .card-title {
+    font-family: "Permanent Marker", cursive;
+    text-align: center;
+    font-size: 40px;
+  }
+
+  /* Card text  */
+  .card-text { 
+    text-align: center;
+  }
+
+
+
