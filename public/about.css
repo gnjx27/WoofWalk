@@ -70,6 +70,7 @@
 
 /* Style the header text within the about-us section */
 .about-us .header-text {
+  font-weight: 500;
   margin-top: 20px;
   font-size: 30px;
   color: #0d172a;
@@ -136,6 +137,14 @@
 /* Adjust underline width using a pseudo-element */
 .faq_area .section_heading h2 {
   position: relative;
+  font-size: 30px;
+  color: #0d172a;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.team-title {
+  text-align: center;
   font-size: 30px;
   color: #0d172a;
   padding-bottom: 10px;
@@ -233,4 +242,69 @@
 
 .reduce-top-space {
   margin-top: -5vh;
+}
+
+/* Profile styling  */
+
+.profile-area {
+  padding: 80px 0;
+}
+
+/* About us card  */
+.card {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+/* Banner image  */
+.profile-banner img {
+  height: 200px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  width: 100%;
+}
+
+/* Profile pic  */
+.profile-img img {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 7px solid #d43b76;
+  margin-top: -80px;
+}
+
+/* Profile text  */
+.profile-text{
+  padding: 30px 0;
+  text-align: center;
+}
+
+/* Name  */
+.name { 
+  font-weight: 900;
+  font-size: 20px;
+  margin: 0 0 20px;
+}
+
+/* Profile text  */
+.profile-text p {
+  font-size: 16px;
+  padding: 0 35px;
+}
+
+/* Social media icons  */
+.profile-socials {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.profile-socials i {
+  font-size: 20px;
+  color:#d43b76;
 }
