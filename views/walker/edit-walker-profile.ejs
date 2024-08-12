@@ -19,6 +19,7 @@
           name="walkerPhoto"
           id="fileInput"
           style="display: none"
+          accept="image/*"
         />
         <button
           type="button"
@@ -264,10 +265,27 @@
   }
 
   // Display the selected file name
-  const fileInput = document.getElementById("fileInput");
-  const fileName = document.getElementById("fileName");
+  document.getElementById('fileInput').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    const fileNameSpan = document.getElementById('fileName');
+    const walkerImage = document.getElementById('walkerImage');
 
-  fileInput.addEventListener("change", function () {
-    fileName.textContent = this.files[0].name;
+    if (file) {
+      // Update the file name text
+      fileNameSpan.textContent = file.name;
+
+      // Create a FileReader to read the file
+      const reader = new FileReader();
+
+      // Once the file is read, update the image src
+      reader.onload = function(e) {
+        walkerImage.src = e.target.result;
+      };
+
+      // Read the image file as a data URL
+      reader.readAsDataURL(file);
+    } else {
+      fileNameSpan.textContent = 'No file chosen';
+    }
   });
 </script>

@@ -57,6 +57,7 @@
 
 .running-dog {
     width: 100%;
+    /* overflow: hidden; */
     position: relative;
     margin-bottom: 20px;
 }
@@ -64,16 +65,16 @@
 .running-dog img {
     position: absolute;
     width: auto;
-    height: 15vh; /* Adjust the height as needed */
+    height: 15vh;
     animation: moveRight 5s linear infinite;
 }
 
 @keyframes moveRight {
     0% {
-        transform: translateX(0) translateY(-55%); /* Start position */
+        transform: translateX(-2vw) translateY(-55%); /* Start position */
     }
     100% {
-        transform: translateX(400%) translateY(-55%); /* End position */
+        transform: translateX(25vw) translateY(-55%); /* End position */
     }
 }
 
