@@ -49,6 +49,14 @@ router.get('/booking', isAuthenticated, (req, res) => {
     });
 });
 
+router.get('/booking-walker', (req, res) => {
+    res.render('index', {
+        title: 'Search Walker- WoofWalk',
+        currentPage: 'booking-walker',
+        body: 'booking-walker'
+    });
+});
+
 // Route for about page
 router.get('/about', (req, res) => {
     res.render('index', {

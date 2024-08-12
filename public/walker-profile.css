@@ -44,6 +44,11 @@ blockquote {
     text-align: left;
 }
 
+.walker-info .walker-details h2 {
+    font-size: 4.2vh;
+    text-align: left;
+}
+
 .walker-details p {
     margin: 5px;
 }
