@@ -61,7 +61,7 @@ router.get('/get-walker-photo', async (req, res) => {
     const walkerPhoto = walkerData.walker_photo;
     res.set('Content-Type', 'image/png'); // Set appropriate content type (e.g., image/png, image/jpeg)
     res.end(walkerPhoto, 'binary');
-});
+}); 
 
 module.exports = router;
 

@@ -6,6 +6,7 @@ const { checkExistingUser, validateUserInput, hashPassword, insertUser, insertWa
 const { v4: uuidv4 } = require('uuid');
 const nodemailer = require('nodemailer');
 const isAuthenticated = require('../utils/auth');
+const { getWalkerData, getWalkerReviews, getUserData } = require('../utils/utils');
 
 // Nodemailer setup
 const transporter = nodemailer.createTransport({
@@ -49,11 +50,13 @@ router.get('/booking', isAuthenticated, (req, res) => {
     });
 });
 
-router.get('/booking-walker', (req, res) => {
+router.get('/booking-walker', async (req, res) => {
+    const walkerData = await getWalkerData(global.db, req.session.userId);
     res.render('index', {
         title: 'Search Walker- WoofWalk',
         currentPage: 'booking-walker',
-        body: 'booking-walker'
+        body: 'booking-walker',
+        walkerData: walkerData
     });
 });
 
