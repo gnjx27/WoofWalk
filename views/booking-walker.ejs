@@ -38,7 +38,7 @@
               </div>
               <!-- Second Column: Book Button -->
               <div class="button-container">
-                <button class="book-button">
+                <button class="book-button" onclick="navigateToBookingSummary()">
                   BOOK FROM <br />
                   <span>SGD <%= walkerData.base_price %></span> <br />
                   /walk
@@ -46,7 +46,7 @@
               </div>
             </div>
             <div>
-              <button class="button-design-2 mt-3">View More</button>
+              <button class="button-design-2 mt-3" onclick="navigateToWalkerProfile()">View More</button>
             </div>
           </div>
         </div>
@@ -80,7 +80,7 @@
               </div>
               <!-- Second Column: Book Button -->
               <div class="button-container">
-                <button class="book-button">
+                <button class="book-button" onclick="navigateToBookingSummary()">
                   BOOK FROM <br />
                   <span>SGD <%= walkerData.base_price %></span> <br />
                   /walk
@@ -88,7 +88,7 @@
               </div>
             </div>
             <div>
-              <button class="button-design-2 mt-3">View More</button>
+              <button class="button-design-2 mt-3" onclick="navigateToWalkerProfile()">View More</button>
             </div>
           </div>
         </div>
@@ -122,7 +122,7 @@
               </div>
               <!-- Second Column: Book Button -->
               <div class="button-container">
-                <button class="book-button">
+                <button class="book-button" onclick="navigateToBookingSummary()">
                   BOOK FROM <br />
                   <span>SGD <%= walkerData.base_price %></span> <br />
                   /walk
@@ -130,7 +130,7 @@
               </div>
             </div>
             <div>
-              <button class="button-design-2 mt-3">View More</button>
+              <button class="button-design-2 mt-3" onclick="navigateToWalkerProfile()">View More</button>
             </div>
           </div>
         </div>
@@ -164,7 +164,7 @@
               </div>
               <!-- Second Column: Book Button -->
               <div class="button-container">
-                <button class="book-button">
+                <button class="book-button" onclick="navigateToBookingSummary()">
                   BOOK FROM <br />
                   <span>SGD <%= walkerData.base_price %></span> <br />
                   /walk
@@ -172,7 +172,7 @@
               </div>
             </div>
             <div>
-              <button class="button-design-2 mt-3">View More</button>
+              <button class="button-design-2 mt-3" onclick="navigateToWalkerProfile()">View More</button>
             </div>
           </div>
         </div>
@@ -206,7 +206,7 @@
               </div>
               <!-- Second Column: Book Button -->
               <div class="button-container">
-                <button class="book-button">
+                <button class="book-button" onclick="navigateToBookingSummary()">
                   BOOK FROM <br />
                   <span>SGD <%= walkerData.base_price %></span> <br />
                   /walk
@@ -214,7 +214,7 @@
               </div>
             </div>
             <div>
-              <button class="button-design-2 mt-3">View More</button>
+              <button class="button-design-2 mt-3" onclick="navigateToWalkerProfile()">View More</button>
             </div>
           </div>
         </div>
@@ -259,4 +259,27 @@
       },
     },
   });
+
+  function navigateToBookingSummary() {
+    // Get the necessary data from the HTML elements
+    const walkerId = '<%= walkerData.walker_id %>';
+    const userId = '<%= user.user_id %>';
+
+    // Construct the URL for the booking-summary.ejs page
+    const bookingSummaryUrl = `/booking-summary?walkerId=${walkerId}&userId=${userId}`;
+
+    // Redirect the user to the booking-summary.ejs page
+    window.location.href = bookingSummaryUrl;
+  }
+
+  function navigateToWalkerProfile() {
+    // Get the necessary data from the HTML elements
+    const walkerId = '<%= walkerData.walker_id %>';
+
+    // Construct the URL for the walker-profile.ejs page
+    const walkerProfileUrl = `/walker/walker-profile?walkerId=${walkerId}`;
+
+    // Redirect the user to the walker-profile.ejs page
+    window.location.href = walkerProfileUrl;
+  }
 </script>

@@ -60,6 +60,16 @@ router.get('/booking-walker', async (req, res) => {
     });
 });
 
+router.get('/booking-summary', async (req, res) => {
+    const walkerData = await getWalkerData(global.db, req.session.userId);
+    res.render('index', {
+        title: 'Booking Summary - WoofWalk',
+        currentPage: 'booking-summary',
+        body: 'booking-summary',
+        walkerData: walkerData
+    });
+});
+
 // Route for about page
 router.get('/about', (req, res) => {
     res.render('index', {
