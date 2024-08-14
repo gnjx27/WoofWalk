@@ -103,21 +103,6 @@ const getWalkerData = (db, userId) => {
     });
 };
 
-const getOwnerData = (db, userId) => {
-    return new Promise((resolve, reject) => {
-        db.get(
-            'SELECT * FROM dog WHERE dog_id = ?',
-            [userId],
-            function(err, dogData) {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(dogData);
-                }
-            }
-        );
-    });
-};
 
 const getWalkerReviews = (db, walkerId) => {
     return new Promise((resolve, reject) => {
@@ -150,5 +135,42 @@ const getUserData = (db, userId) => {
         );
     });
 };
+
+// Function to get owner data
+const getOwnerData = (db, userId) => {
+    return new Promise((resolve, reject) => {
+        db.get(
+            `SELECT 
+                d.dog_name, 
+                d.dog_breed, 
+                d.dog_age, 
+                d.dog_size,
+                d.dog_gender,
+                d.dog_photo,
+                d.special_needs,
+                d.favourite_activities,
+                d.behavioural_notes
+            FROM 
+                dog d 
+            JOIN 
+                owner o 
+            ON 
+                d.user_id = o.user_id 
+            WHERE 
+                o.user_id = ?`, 
+            [userId], 
+            (err, row) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(row);
+                }
+            }
+        );
+    });
+};
+
+
+
 
 module.exports = { checkExistingUser, validateUserInput, hashPassword, insertUser, insertWalker, getWalkerData, getWalkerReviews, getUserData, getOwnerData };

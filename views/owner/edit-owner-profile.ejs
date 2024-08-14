@@ -1,0 +1,154 @@
+<form action="/owner/update-owner-profile" method="POST" enctype="multipart/form-data">
+    <div class="profile-details">
+      <h3>Edit Owner Profile</h3>
+      <!-- First row: Username and Email -->
+      
+      <!-- Second row: Dog Name and Location -->
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="dog_name" class="form-label"><b>Dog Name</b></label>
+          <input
+            type="text"
+            class="form-control"
+            id="dog_name"
+            name="dog_name"
+            value="<%= ownerData.dog_name %>"
+            autocomplete="off"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="owner_location" class="form-label"><b>Location</b></label>
+          <input
+            type="text"
+            class="form-control"
+            id="owner_location"
+            name="owner_location"
+            value="<%= ownerData.owner_location %>"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+      <!-- Third row: Dog Breed and Age -->
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="dog_breed" class="form-label"><b>Dog Breed</b></label>
+          <input
+            type="text"
+            class="form-control"
+            id="dog_breed"
+            name="dog_breed"
+            value="<%= ownerData.dog_breed %>"
+            autocomplete="off"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="dog_age" class="form-label"><b>Dog Age</b></label>
+          <input
+            type="number"
+            class="form-control"
+            id="dog_age"
+            name="dog_age"
+            value="<%= ownerData.dog_age %>"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+      <!-- Fourth row: Dog Size and Gender -->
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="dog_size" class="form-label"><b>Dog Size</b></label>
+          <input
+            type="text"
+            class="form-control"
+            id="dog_size"
+            name="dog_size"
+            value="<%= ownerData.dog_size %>"
+            autocomplete="off"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="dog_gender" class="form-label"><b>Dog Gender</b></label>
+          <input
+            type="text"
+            class="form-control"
+            id="dog_gender"
+            name="dog_gender"
+            value="<%= ownerData.dog_gender %>"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+      <!-- Fifth row: Special Needs and Favourite Activities -->
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="special_needs" class="form-label"><b>Special Needs</b></label>
+          <textarea
+            class="form-control"
+            id="special_needs"
+            name="special_needs"
+            rows="4"
+          ><%= ownerData.special_needs %></textarea>
+        </div>
+        <div class="col-md-6">
+          <label for="favourite_activities" class="form-label"><b>Favourite Activities</b></label>
+          <textarea
+            class="form-control"
+            id="favourite_activities"
+            name="favourite_activities"
+            rows="4"
+          ><%= ownerData.favourite_activities %></textarea>
+        </div>
+      </div>
+      <!-- Sixth row: Behavioural Notes -->
+      <div class="row mb-3">
+        <div class="col-12">
+          <label for="behavioural_notes" class="form-label"><b>Behavioural Notes</b></label>
+          <textarea
+            class="form-control"
+            id="behavioural_notes"
+            name="behavioural_notes"
+            rows="4"
+          ><%= ownerData.behavioural_notes %></textarea>
+        </div>
+      </div>
+      <!-- Dog Photo Upload -->
+      <div class="row mb-3">
+        <div class="col-12">
+          <label for="dog_photo" class="form-label"><b>Dog Photo</b></label>
+          <input
+            type="file"
+            class="form-control"
+            id="dog_photo"
+            name="dog_photo"
+          />
+        </div>
+      </div>
+      <!-- Cancel and Update Buttons -->
+      <div class="mt-3">
+        <div class="col-12">
+          <button
+            type="reset"
+            class="button-design-3 cancel"
+            onclick="handleCancelClick()"
+          >
+            Cancel
+          </button>
+          <button type="submit" class="button-design-3 update">Edit & Update</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <script>
+    function handleCancelClick() {
+      // Reset the form fields
+      document.querySelector("form").reset();
+      // Navigate back to the previous page
+      window.history.back();
+    }
+    // Display the selected file name
+    const fileInput = document.getElementById('dog_photo');
+    fileInput.addEventListener('change', function() {
+        const fileName = document.getElementById('fileName');
+        fileName.textContent = this.files[0].name;
+    });
+  </script>
