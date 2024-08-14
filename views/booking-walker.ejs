@@ -1,0 +1,375 @@
+<!-- Swiper CSS -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+<!-- Custom CSS -->
+<link rel="stylesheet" href="/booking-walker.css" />
+
+<section>
+  <div class="slide-container swiper-container">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <!-- 1st Walker -->
+        <div class="card swiper-slide">
+          <div class="image-content">
+            <img
+              src="/assets/walker-image.jpg"
+              alt="Walker Image"
+              class="card-img"
+            />
+          </div>
+          <p class="quote">
+            <img src="/assets/quotes1.png" alt="quotes1" class="quote-icon" />
+            <%=walkerData.walker_quote %>
+            <img src="/assets/quotes2.png" alt="quotes1" class="quote-icon" />
+          </p>
+          <div class="card-content">
+            <div class="walker-info">
+              <!-- First Column: Name, Location, Stars, Reviews -->
+              <div class="walker-details">
+                <h2 class="capitalize-name"><%= user.username %> :)</h2>
+                <p style="color: #004393">
+                  <i class="bi bi-pin-map-fill"></i> <%=
+                  walkerData.walker_location %>
+                </p>
+                <p>⭐⭐⭐⭐⭐</p>
+                <p style="color: grey">(25 Reviews)</p>
+              </div>
+              <!-- Second Column: Book Button -->
+              <div class="button-container">
+                <button
+                  class="book-button"
+                  onclick="navigateToBookingSummary()"
+                >
+                  BOOK FROM <br />
+                  <span>SGD <%= walkerData.base_price %></span> <br />
+                  /walk
+                </button>
+              </div>
+            </div>
+            <!-- Buttons -->
+            <div class="col-12 buttons-container">
+              <button
+                type="reset"
+                class="button-design-3 cancel"
+                onclick="handleReturnClick()"
+              >
+                Return
+              </button>
+              <button
+                type="submit"
+                class="button-design-3 payment"
+                onclick="navigateToWalkerProfile()"
+              >
+                View More
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2nd Walker -->
+        <div class="card swiper-slide">
+          <div class="image-content">
+            <img
+              src="/assets/walker-image.jpg"
+              alt="Walker Image"
+              class="card-img"
+            />
+          </div>
+
+          <p class="quote">
+            <img src="/assets/quotes1.png" alt="quotes1" class="quote-icon" />
+            <%=walkerData.walker_quote %>
+            <img src="/assets/quotes2.png" alt="quotes1" class="quote-icon" />
+          </p>
+          <div class="card-content">
+            <div class="walker-info">
+              <!-- First Column: Name, Location, Stars, Reviews -->
+              <div class="walker-details">
+                <h2 class="capitalize-name"><%= user.username %> :)</h2>
+                <p style="color: #004393">
+                  <i class="bi bi-pin-map-fill"></i> <%=
+                  walkerData.walker_location %>
+                </p>
+                <p>⭐⭐⭐⭐⭐</p>
+                <p style="color: grey">(25 Reviews)</p>
+              </div>
+              <!-- Second Column: Book Button -->
+              <div class="button-container">
+                <button
+                  class="book-button"
+                  onclick="navigateToBookingSummary()"
+                >
+                  BOOK FROM <br />
+                  <span>SGD <%= walkerData.base_price %></span> <br />
+                  /walk
+                </button>
+              </div>
+            </div>
+            <!-- Buttons -->
+            <div class="col-12 buttons-container">
+              <button
+                type="reset"
+                class="button-design-3 cancel"
+                onclick="handleReturnClick()"
+              >
+                Return
+              </button>
+              <button
+                type="submit"
+                class="button-design-3 payment"
+                onclick="navigateToWalkerProfile()"
+              >
+                View More
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3rd Walker -->
+        <div class="card swiper-slide">
+          <div class="image-content">
+            <img
+              src="/assets/walker-image.jpg"
+              alt="Walker Image"
+              class="card-img"
+            />
+          </div>
+
+          <p class="quote">
+            <img src="/assets/quotes1.png" alt="quotes1" class="quote-icon" />
+            <%=walkerData.walker_quote %>
+            <img src="/assets/quotes2.png" alt="quotes1" class="quote-icon" />
+          </p>
+          <div class="card-content">
+            <div class="walker-info">
+              <!-- First Column: Name, Location, Stars, Reviews -->
+              <div class="walker-details">
+                <h2 class="capitalize-name"><%= user.username %> :)</h2>
+                <p style="color: #004393">
+                  <i class="bi bi-pin-map-fill"></i> <%=
+                  walkerData.walker_location %>
+                </p>
+                <p>⭐⭐⭐⭐⭐</p>
+                <p style="color: grey">(25 Reviews)</p>
+              </div>
+              <!-- Second Column: Book Button -->
+              <div class="button-container">
+                <button
+                  class="book-button"
+                  onclick="navigateToBookingSummary()"
+                >
+                  BOOK FROM <br />
+                  <span>SGD <%= walkerData.base_price %></span> <br />
+                  /walk
+                </button>
+              </div>
+            </div>
+            <!-- Buttons -->
+            <div class="col-12 buttons-container">
+              <button
+                type="reset"
+                class="button-design-3 cancel"
+                onclick="handleReturnClick()"
+              >
+                Return
+              </button>
+              <button
+                type="submit"
+                class="button-design-3 payment"
+                onclick="navigateToWalkerProfile()"
+              >
+                View More
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4th Walker -->
+        <div class="card swiper-slide">
+          <div class="image-content">
+            <img
+              src="/assets/walker-image.jpg"
+              alt="Walker Image"
+              class="card-img"
+            />
+          </div>
+
+          <p class="quote">
+            <img src="/assets/quotes1.png" alt="quotes1" class="quote-icon" />
+            <%=walkerData.walker_quote %>
+            <img src="/assets/quotes2.png" alt="quotes1" class="quote-icon" />
+          </p>
+          <div class="card-content">
+            <div class="walker-info">
+              <!-- First Column: Name, Location, Stars, Reviews -->
+              <div class="walker-details">
+                <h2 class="capitalize-name"><%= user.username %> :)</h2>
+                <p style="color: #004393">
+                  <i class="bi bi-pin-map-fill"></i> <%=
+                  walkerData.walker_location %>
+                </p>
+                <p>⭐⭐⭐⭐⭐</p>
+                <p style="color: grey">(25 Reviews)</p>
+              </div>
+              <!-- Second Column: Book Button -->
+              <div class="button-container">
+                <button
+                  class="book-button"
+                  onclick="navigateToBookingSummary()"
+                >
+                  BOOK FROM <br />
+                  <span>SGD <%= walkerData.base_price %></span> <br />
+                  /walk
+                </button>
+              </div>
+            </div>
+            <!-- Buttons -->
+            <div class="col-12 buttons-container">
+              <button
+                type="reset"
+                class="button-design-3 cancel"
+                onclick="handleReturnClick()"
+              >
+                Return
+              </button>
+              <button
+                type="submit"
+                class="button-design-3 payment"
+                onclick="navigateToWalkerProfile()"
+              >
+                View More
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5th Walker -->
+        <div class="card swiper-slide">
+          <div class="image-content">
+            <img
+              src="/assets/walker-image.jpg"
+              alt="Walker Image"
+              class="card-img"
+            />
+          </div>
+
+          <p class="quote">
+            <img src="/assets/quotes1.png" alt="quotes1" class="quote-icon" />
+            <%=walkerData.walker_quote %>
+            <img src="/assets/quotes2.png" alt="quotes1" class="quote-icon" />
+          </p>
+          <div class="card-content">
+            <div class="walker-info">
+              <!-- First Column: Name, Location, Stars, Reviews -->
+              <div class="walker-details">
+                <h2 class="capitalize-name"><%= user.username %> :)</h2>
+                <p style="color: #004393">
+                  <i class="bi bi-pin-map-fill"></i> <%=
+                  walkerData.walker_location %>
+                </p>
+                <p>⭐⭐⭐⭐⭐</p>
+                <p style="color: grey">(25 Reviews)</p>
+              </div>
+              <!-- Second Column: Book Button -->
+              <div class="button-container">
+                <button
+                  class="book-button"
+                  onclick="navigateToBookingSummary()"
+                >
+                  BOOK FROM <br />
+                  <span>SGD <%= walkerData.base_price %></span> <br />
+                  /walk
+                </button>
+              </div>
+            </div>
+            <!-- Buttons -->
+            <div class="col-12 buttons-container">
+              <button
+                type="reset"
+                class="button-design-3 cancel"
+                onclick="handleReturnClick()"
+              >
+                Return
+              </button>
+              <button
+                type="submit"
+                class="button-design-3 payment"
+                onclick="navigateToWalkerProfile()"
+              >
+                View More
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</section>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script type="text/javascript">
+  var swiper = new Swiper(".swiper", {
+    effect: "coverflow",
+    grabCursor: true,
+    centeredSlides: true,
+    coverflowEffect: {
+      rotate: 0,
+      stretch: 0,
+      depth: 50,
+      modifier: 4,
+      slideShadows: true,
+    },
+    loop: true,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    keyboard: {
+      enabled: true,
+    },
+    breakpoints: {
+      560: {
+        slidesPerView: 2.5,
+      },
+      768: {
+        slidesPerView: 3,
+      },
+      1024: {
+        slidesPerView: 3,
+      },
+    },
+  });
+
+  function handleReturnClick() {
+    // Navigate back to the booking page
+    window.location.href = "/booking";
+  }
+
+  function navigateToBookingSummary() {
+    // Get the necessary data from the HTML elements
+    const walkerId = "<%= walkerData.walker_id %>";
+    const userId = "<%= user.user_id %>";
+
+    // Construct the URL for the booking-summary.ejs page
+    const bookingSummaryUrl = `/booking-summary?walkerId=${walkerId}&userId=${userId}`;
+
+    // Redirect the user to the booking-summary.ejs page
+    window.location.href = bookingSummaryUrl;
+  }
+
+  function navigateToWalkerProfile() {
+    // Get the necessary data from the HTML elements
+    const walkerId = "<%= walkerData.walker_id %>";
+
+    // Construct the URL for the walker-profile.ejs page
+    const walkerProfileUrl = `/walker/walker-profile?walkerId=${walkerId}`;
+
+    // Redirect the user to the walker-profile.ejs page
+    window.location.href = walkerProfileUrl;
+  }
+</script>

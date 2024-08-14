@@ -6,6 +6,7 @@ const { checkExistingUser, validateUserInput, hashPassword, insertUser, insertWa
 const { v4: uuidv4 } = require('uuid');
 const nodemailer = require('nodemailer');
 const isAuthenticated = require('../utils/auth');
+const { getWalkerData, getWalkerReviews, getUserData } = require('../utils/utils');
 
 // Nodemailer setup
 const transporter = nodemailer.createTransport({
@@ -46,6 +47,44 @@ router.get('/booking', isAuthenticated, (req, res) => {
         title: 'Booking - WoofWalk',
         currentPage: 'booking',
         body: 'booking'
+    });
+});
+
+router.get('/booking-walker', async (req, res) => {
+    const walkerData = await getWalkerData(global.db, req.session.userId);
+    res.render('index', {
+        title: 'Search Walker- WoofWalk',
+        currentPage: 'booking-walker',
+        body: 'booking-walker',
+        walkerData: walkerData
+    });
+});
+
+router.get('/booking-summary', async (req, res) => {
+    const walkerData = await getWalkerData(global.db, req.session.userId);
+    res.render('index', {
+        title: 'Booking Summary - WoofWalk',
+        currentPage: 'booking-summary',
+        body: 'booking-summary',
+        walkerData: walkerData
+    });
+});
+
+router.get('/booking-success', (req, res) => {
+    res.render('index', {
+        title: 'Booking Successful - WoofWalk',
+        currentPage: 'booking-success',
+        body: 'booking-success'
+    });
+});
+
+router.get('/booking-history', async (req, res) => {
+    const walkerData = await getWalkerData(global.db, req.session.userId);
+    res.render('index', {
+        title: 'Booking History - WoofWalk',
+        currentPage: 'booking-history',
+        body: 'booking-history',
+        walkerData: walkerData
     });
 });
 

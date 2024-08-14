@@ -1,0 +1,300 @@
+/* Style for top image */
+.booking-top-image {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 8vh;
+}
+
+.booking-top-image img {
+  width: 100%;
+  object-fit: cover;
+  filter: brightness(60%);
+  z-index: -1;
+}
+
+.booking-top-image-text {
+  font-family: "Permanent Marker", cursive;
+  font-weight: 200;
+  font-style: normal;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-91%, -90%);
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.booking-top-image-text h1 {
+  font-size: 3.2vw;
+  margin: 0;
+}
+
+.booking-top-image-text p {
+  font-size: 2.4vw;
+  margin: 0;
+}
+
+/* Container for Booking Sections */
+.booking-container {
+  display: flex;
+  max-width: 80%;
+  margin: 5vh auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.booking-message {
+    font-family: "Georgia", serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    text-align: center;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.running-dog {
+    width: 100%;
+    /* overflow: hidden; */
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.running-dog img {
+    position: absolute;
+    width: auto;
+    height: 15vh;
+    animation: moveRight 5s linear infinite;
+}
+
+@keyframes moveRight {
+    0% {
+        transform: translateX(-2vw) translateY(-55%); /* Start position */
+    }
+    100% {
+        transform: translateX(25vw) translateY(-55%); /* End position */
+    }
+}
+
+/* Left Section Styling */
+.booking-container .left-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4vh 2vw;
+  border-right: 2px solid #e0e0e0;
+}
+
+/* Right Section Styling */
+.booking-container .right-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4vh 2vw;
+}
+
+/* Adjustments for better alignment in different screen sizes */
+@media (max-width: 768px) {
+  .left-section {
+    padding: 2vh 3vw;
+    border-right: none;
+    border-bottom: 2px solid #e0e0e0;
+  }
+
+  .right-section {
+    padding: 2vh 3vw;
+  }
+}
+
+.booking-title h3 {
+  position: relative;
+  padding-bottom: 20px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.booking-title h3::after {
+  content: "";
+  display: block;
+  width: 12%;
+  border-bottom: 4px solid #e9185e;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Common Styles for Selections */
+.size-options,
+.age-options,
+.time-options {
+  color: grey;
+  cursor: pointer;
+  border: 1px solid rgba(128, 128, 128, 0.5);
+  border-radius: 0.5em;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.size-options {
+  padding: 1em 2.3em;
+}
+
+.age-options {
+  padding: 1em 4em;
+}
+
+.time-options {
+  padding: 1em 2.6em;
+}
+
+/* Styling for Dog Size Labels */
+.size-label,
+.age-label,
+.time-label {
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Styling for Weight, Age Range, and Time Units */
+.size-weight,
+.age-range,
+.time-units {
+  font-size: 0.85rem;
+  color: inherit;
+  text-align: center;
+}
+
+/* Styles for the selected radio option */
+input[type="radio"]:checked + .size-options,
+input[type="radio"]:checked + .age-options,
+input[type="radio"]:checked + .time-options {
+  border: 2.5px solid;
+  border-color: #d43b76;
+  color: #d43b76;
+  font-weight: bold;
+}
+
+/* Layout for each selection group */
+.dog-size,
+.dog-age,
+.time-range {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ /* Container for Booking Summary */
+.summary-container {
+  max-width: 55%;
+  margin: 14vh auto 5vh auto;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: #FFF;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.booking-details,
+.walker-details,
+.payment-details {
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border: 2px solid #e0e0e0;
+}
+
+/* Booking Details Container */
+.booking-details {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Location, Date, Time & Duration, Dog Size & Age */
+.booking-details h4 {
+  margin: 0;
+  font-weight: normal;
+  font-size: 1.2em;
+}
+
+/* Paragraphs */
+.booking-details p {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin: 5px 0;
+}
+
+.detail-item .bi {
+  margin: 0 8px;
+}
+
+/* Walker Content */
+.walker-content {
+  display: flex;
+  align-items: center;
+}
+
+.walker-image {
+  border-radius: 15px;
+  width: 8vw;
+  height: auto;
+  margin-right: 20px;
+}
+
+/* Walker Info */
+.walker-info {
+  flex: 1;
+}
+
+/* Walker Name */
+.walker-name {
+  margin: 0;
+  font-size: 1.8em;
+}
+
+/* Walker Quote */
+.walker-quote {
+  margin: 8px 0 0;
+  font-style: italic;
+  color: #666;
+}
+
+.quotes-icon {
+  width: 5%;
+  margin: 0 5px;
+}
+
+/* Payment Item */
+.payment-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+/* Description and Price */
+.description {
+  text-align: left;
+  flex: 2;
+}
+
+.price {
+  text-align: right;
+  flex: 1;
+}
+
+/* Total Item */
+.total .description {
+  font-weight: bold;
+}
+
+.total .price {
+  font-weight: bold;
+}
+
+.buttons-container {
+  margin-top: -20px;
+}

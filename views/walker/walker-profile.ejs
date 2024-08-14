@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/walker-profile.css" />
+
 <div class="profile-container">
   <div class="profile-card">
     <!-- Walker Profile Image -->
@@ -30,7 +32,7 @@
       </div>
       <div class="button-container">
         <button class="book-button">
-          BOOK FROM SGD <%= walkerData.base_price %> /walk
+          BOOK FROM<br>SGD <%= walkerData.base_price %><br>/walk
         </button>
       </div>
     </div>
@@ -102,12 +104,8 @@
     <h3>Skills</h3>
     <ul class="skills-list">
       <li>
-        <img src="/assets/speak.png" alt="Languages" class="skill-icon" />
-        <span><%= walkerData.walker_skills %></span>
-      </li>
-      <li>
         <img src="/assets/experience.png" alt="Experience" class="skill-icon" />
-        <span>Over 7 years of experience</span>
+        <span><%= walkerData.walker_skills %></span>
       </li>
     </ul>
     <hr class="mt-4 mb-4" />

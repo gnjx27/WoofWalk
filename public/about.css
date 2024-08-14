@@ -70,6 +70,7 @@
 
 /* Style the header text within the about-us section */
 .about-us .header-text {
+  font-weight: 500;
   margin-top: 20px;
   font-size: 30px;
   color: #0d172a;
@@ -134,7 +135,8 @@
 }
 
 /* Adjust underline width using a pseudo-element */
-.faq_area .section_heading h2 {
+.faq_area .section_heading h2,
+.section_heading h2 {
   position: relative;
   font-size: 30px;
   color: #0d172a;
@@ -142,7 +144,16 @@
   margin-bottom: 10px;
 }
 
-.faq_area .section_heading h2::after {
+.team-title, .section-heading {
+  text-align: center;
+  font-size: 30px;
+  color: #0d172a;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.faq_area .section_heading h2::after,
+.section_heading h2::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -153,7 +164,8 @@
 }
 
 /* Style for the subtitle */
-.faq_area .section_heading p {
+.faq_area .section_heading p,
+.section_heading p {
   font-size: 18px;
   color: #0d172a;
   margin-top: 20px;
@@ -233,4 +245,74 @@
 
 .reduce-top-space {
   margin-top: -5vh;
+}
+
+/* Profile styling  */
+
+.profile-area {
+  padding: 20px 0;
+}
+
+/* About us card  */
+.card {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+/* Banner image  */
+.profile-banner img {
+  height: 200px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  width: 100%;
+}
+
+/* Profile pic  */
+.profile-img img {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 5px solid white;
+  margin-top: -70px;
+}
+
+/* Profile text  */
+.profile-text{
+  padding: 30px 0;
+  text-align: center;
+}
+
+/* Name  */
+.name { 
+  font-weight: 900;
+  font-size: 20px;
+  margin: 0 0 20px;
+}
+
+/* Profile text  */
+.profile-text p {
+  font-size: 16px;
+  padding: 0 35px;
+}
+
+/* Social media icons  */
+.profile-socials {
+  text-align: center;
+  padding-bottom: 5vh;
+}
+
+.profile-socials .bi {
+  font-size: 4vh;
+  margin: 0 10px;
+  color:#d43b76;
+}
+
+.profile-socials a {
+  text-decoration: none;
 }
