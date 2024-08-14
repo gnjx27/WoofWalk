@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/booking.css" />  
+<link rel="stylesheet" href="/booking.css" />
 <link rel="stylesheet" href="/about.css" />
 <link rel="stylesheet" href="/registration.css" />
 
@@ -37,6 +37,7 @@
             id="boarding-location"
             name="boarding-location"
             placeholder="Zip Code or Address"
+            required
           />
         </div>
 
@@ -44,11 +45,20 @@
         <div class="row">
           <div class="col">
             <label for="date" class="form-label"><b>Date</b></label>
-            <input type="date" class="form-control" id="date" name="date" />
+            <input type="date" class="form-control" id="date" name="date" required />
           </div>
           <div class="col">
             <label for="time" class="form-label"><b>Time</b></label>
-            <input type="time" class="form-control" id="time" name="time" />
+            <!--  -->
+            <input
+              type="time"
+              class="form-control"
+              id="time"
+              name="time"
+              min="05:00"
+              max="22:00"
+              required
+            />
           </div>
         </div>
 
@@ -284,7 +294,7 @@
               Cancel
             </button>
             <button
-              type="button"
+              type="submit"
               class="button-design-3 search"
               onclick="navigateToWalkerPage()"
             >

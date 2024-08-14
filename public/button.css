@@ -42,11 +42,12 @@
 }
 
 .button-design-3.update,
-.button-design-3.search {
+.button-design-3.search,
+.button-design-3.payment {
     text-decoration: none;
     display: inline-block;
     width: calc(50% - 0.5em);
-    padding: 0.6em;
+    padding: 0.5em;
     border: 2px solid #d43b76;
     background-color: #d43b76;
     color: #fff;
@@ -57,7 +58,8 @@
 }
 
 .button-design-3.update:hover,
-.button-design-3.search:hover {
+.button-design-3.search:hover,
+.button-design-3.payment:hover {
     background-color: #d01753;
     font-weight: bold;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);

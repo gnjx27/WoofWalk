@@ -39,9 +39,11 @@
                                 <% if (user.account_type === 'owner') { %>
                                     <li><a class="dropdown-item" href="/owner-profile"><i class="bi bi-person-circle"></i> Profile</a></li>
                                     <li><a class="dropdown-item" href="/edit-owner-profile"><i class="bi bi-pencil-square"></i> Edit Profile</a></li>
+                                    <li><a class="dropdown-item" href="/booking-history"><i class="bi bi-clock-history"></i> Booking History</a></li>
                                 <% } else if (user.account_type === 'walker') { %>
                                     <li><a class="dropdown-item" href="/walker/walker-profile"><i class="bi bi-person-circle"></i> Profile</a></li>
                                     <li><a class="dropdown-item" href="/walker/edit-walker-profile"><i class="bi bi-pencil-square"></i> Edit Profile</a></li>
+                                    <li><a class="dropdown-item" href="/booking-history"><i class="bi bi-clock-history"></i> Booking History</a></li>
                                 <% } %>
                                 <li><a class="dropdown-item" href="/logout"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
                             </ul>

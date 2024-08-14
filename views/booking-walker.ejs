@@ -38,15 +38,32 @@
               </div>
               <!-- Second Column: Book Button -->
               <div class="button-container">
-                <button class="book-button" onclick="navigateToBookingSummary()">
+                <button
+                  class="book-button"
+                  onclick="navigateToBookingSummary()"
+                >
                   BOOK FROM <br />
                   <span>SGD <%= walkerData.base_price %></span> <br />
                   /walk
                 </button>
               </div>
             </div>
-            <div>
-              <button class="button-design-2 mt-3" onclick="navigateToWalkerProfile()">View More</button>
+            <!-- Buttons -->
+            <div class="col-12 buttons-container">
+              <button
+                type="reset"
+                class="button-design-3 cancel"
+                onclick="handleReturnClick()"
+              >
+                Return
+              </button>
+              <button
+                type="submit"
+                class="button-design-3 payment"
+                onclick="navigateToWalkerProfile()"
+              >
+                View More
+              </button>
             </div>
           </div>
         </div>
@@ -80,15 +97,32 @@
               </div>
               <!-- Second Column: Book Button -->
               <div class="button-container">
-                <button class="book-button" onclick="navigateToBookingSummary()">
+                <button
+                  class="book-button"
+                  onclick="navigateToBookingSummary()"
+                >
                   BOOK FROM <br />
                   <span>SGD <%= walkerData.base_price %></span> <br />
                   /walk
                 </button>
               </div>
             </div>
-            <div>
-              <button class="button-design-2 mt-3" onclick="navigateToWalkerProfile()">View More</button>
+            <!-- Buttons -->
+            <div class="col-12 buttons-container">
+              <button
+                type="reset"
+                class="button-design-3 cancel"
+                onclick="handleReturnClick()"
+              >
+                Return
+              </button>
+              <button
+                type="submit"
+                class="button-design-3 payment"
+                onclick="navigateToWalkerProfile()"
+              >
+                View More
+              </button>
             </div>
           </div>
         </div>
@@ -122,15 +156,32 @@
               </div>
               <!-- Second Column: Book Button -->
               <div class="button-container">
-                <button class="book-button" onclick="navigateToBookingSummary()">
+                <button
+                  class="book-button"
+                  onclick="navigateToBookingSummary()"
+                >
                   BOOK FROM <br />
                   <span>SGD <%= walkerData.base_price %></span> <br />
                   /walk
                 </button>
               </div>
             </div>
-            <div>
-              <button class="button-design-2 mt-3" onclick="navigateToWalkerProfile()">View More</button>
+            <!-- Buttons -->
+            <div class="col-12 buttons-container">
+              <button
+                type="reset"
+                class="button-design-3 cancel"
+                onclick="handleReturnClick()"
+              >
+                Return
+              </button>
+              <button
+                type="submit"
+                class="button-design-3 payment"
+                onclick="navigateToWalkerProfile()"
+              >
+                View More
+              </button>
             </div>
           </div>
         </div>
@@ -164,15 +215,32 @@
               </div>
               <!-- Second Column: Book Button -->
               <div class="button-container">
-                <button class="book-button" onclick="navigateToBookingSummary()">
+                <button
+                  class="book-button"
+                  onclick="navigateToBookingSummary()"
+                >
                   BOOK FROM <br />
                   <span>SGD <%= walkerData.base_price %></span> <br />
                   /walk
                 </button>
               </div>
             </div>
-            <div>
-              <button class="button-design-2 mt-3" onclick="navigateToWalkerProfile()">View More</button>
+            <!-- Buttons -->
+            <div class="col-12 buttons-container">
+              <button
+                type="reset"
+                class="button-design-3 cancel"
+                onclick="handleReturnClick()"
+              >
+                Return
+              </button>
+              <button
+                type="submit"
+                class="button-design-3 payment"
+                onclick="navigateToWalkerProfile()"
+              >
+                View More
+              </button>
             </div>
           </div>
         </div>
@@ -206,15 +274,32 @@
               </div>
               <!-- Second Column: Book Button -->
               <div class="button-container">
-                <button class="book-button" onclick="navigateToBookingSummary()">
+                <button
+                  class="book-button"
+                  onclick="navigateToBookingSummary()"
+                >
                   BOOK FROM <br />
                   <span>SGD <%= walkerData.base_price %></span> <br />
                   /walk
                 </button>
               </div>
             </div>
-            <div>
-              <button class="button-design-2 mt-3" onclick="navigateToWalkerProfile()">View More</button>
+            <!-- Buttons -->
+            <div class="col-12 buttons-container">
+              <button
+                type="reset"
+                class="button-design-3 cancel"
+                onclick="handleReturnClick()"
+              >
+                Return
+              </button>
+              <button
+                type="submit"
+                class="button-design-3 payment"
+                onclick="navigateToWalkerProfile()"
+              >
+                View More
+              </button>
             </div>
           </div>
         </div>
@@ -260,10 +345,15 @@
     },
   });
 
+  function handleReturnClick() {
+    // Navigate back to the booking page
+    window.location.href = "/booking";
+  }
+
   function navigateToBookingSummary() {
     // Get the necessary data from the HTML elements
-    const walkerId = '<%= walkerData.walker_id %>';
-    const userId = '<%= user.user_id %>';
+    const walkerId = "<%= walkerData.walker_id %>";
+    const userId = "<%= user.user_id %>";
 
     // Construct the URL for the booking-summary.ejs page
     const bookingSummaryUrl = `/booking-summary?walkerId=${walkerId}&userId=${userId}`;
@@ -274,7 +364,7 @@
 
   function navigateToWalkerProfile() {
     // Get the necessary data from the HTML elements
-    const walkerId = '<%= walkerData.walker_id %>';
+    const walkerId = "<%= walkerData.walker_id %>";
 
     // Construct the URL for the walker-profile.ejs page
     const walkerProfileUrl = `/walker/walker-profile?walkerId=${walkerId}`;
