@@ -79,7 +79,7 @@
 }
 
 /* Left Section Styling */
-.left-section {
+.booking-container .left-section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -88,7 +88,7 @@
 }
 
 /* Right Section Styling */
-.right-section {
+.booking-container .right-section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -187,4 +187,114 @@ input[type="radio"]:checked + .time-options {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+}
+
+ /* Container for Booking Summary */
+.summary-container {
+  max-width: 55%;
+  margin: 14vh auto 5vh auto;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: #FFF;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.booking-details,
+.walker-details,
+.payment-details {
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border: 2px solid #e0e0e0;
+}
+
+/* Booking Details Container */
+.booking-details {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Location, Date, Time & Duration, Dog Size & Age */
+.booking-details h4 {
+  margin: 0;
+  font-weight: normal;
+  font-size: 1.2em;
+}
+
+/* Paragraphs */
+.booking-details p {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin: 5px 0;
+}
+
+.detail-item .bi {
+  margin: 0 8px;
+}
+
+/* Walker Content */
+.walker-content {
+  display: flex;
+  align-items: center;
+}
+
+.walker-image {
+  border-radius: 15px;
+  width: 8vw;
+  height: auto;
+  margin-right: 20px;
+}
+
+/* Walker Info */
+.walker-info {
+  flex: 1;
+}
+
+/* Walker Name */
+.walker-name {
+  margin: 0;
+  font-size: 1.8em;
+}
+
+/* Walker Quote */
+.walker-quote {
+  margin: 8px 0 0;
+  font-style: italic;
+  color: #666;
+}
+
+.quotes-icon {
+  width: 5%;
+  margin: 0 5px;
+}
+
+/* Payment Item */
+.payment-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+/* Description and Price */
+.description {
+  text-align: left;
+  flex: 2;
+}
+
+.price {
+  text-align: right;
+  flex: 1;
+}
+
+/* Total Item */
+.total .description {
+  font-weight: bold;
+}
+
+.total .price {
+  font-weight: bold;
+}
+
+.buttons-container {
+  margin-top: -20px;
 }

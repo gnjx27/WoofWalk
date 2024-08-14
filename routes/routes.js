@@ -70,6 +70,24 @@ router.get('/booking-summary', async (req, res) => {
     });
 });
 
+router.get('/booking-success', (req, res) => {
+    res.render('index', {
+        title: 'Booking Successful - WoofWalk',
+        currentPage: 'booking-success',
+        body: 'booking-success'
+    });
+});
+
+router.get('/booking-history', async (req, res) => {
+    const walkerData = await getWalkerData(global.db, req.session.userId);
+    res.render('index', {
+        title: 'Booking History - WoofWalk',
+        currentPage: 'booking-history',
+        body: 'booking-history',
+        walkerData: walkerData
+    });
+});
+
 // Route for about page
 router.get('/about', (req, res) => {
     res.render('index', {

@@ -1,4 +1,116 @@
-<h1>Booking Summary</h1>
-<h1>Booking Summary</h1>
-<h1>Booking Summary</h1>
-<h1>Booking Summary</h1>
+<link rel="stylesheet" href="/booking.css" />
+
+<div class="summary-container">
+  <div class="row booking-title">
+    <h3 class="mb-4">Booking Summary</h3>
+
+    <!-- Left Section -->
+    <div class="col-md-6 left-section">
+      <!-- Booking Details Container -->
+      <div class="booking-details">
+        <h3 class="mb-4">Booking Details</h3>
+        <!-- Location -->
+        <div class="detail-item">
+          <h4><i class="bi bi-pin-map-fill"></i>Location</h4>
+          <p>Jurong East, Singapore.</p>
+        </div>
+        <hr />
+        <!-- Date -->
+        <div class="detail-item">
+          <h4><i class="bi bi-calendar-check"></i>Date</h4>
+          <p>Wed, 3 May 2024</p>
+        </div>
+        <hr />
+        <!-- Time & Duration -->
+        <div class="detail-item">
+          <h4><i class="bi bi-clock"></i>Time & Duration</h4>
+          <p>5pm - 6pm (45-60 min)</p>
+        </div>
+        <hr />
+        <!-- Dog Size & Age -->
+        <div class="detail-item">
+          <h4><i class="bi bi-info-circle"></i>Dog Size & Age</h4>
+          <p>Medium 11-26kg</p>
+          <p>Adult 2-8 yrs</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="col-md-6 right-section">
+      <!-- Walker Details -->
+      <div class="walker-details">
+        <h3 class="card-title mb-4">Walker Details</h3>
+        <div class="walker-content">
+          <img
+            src="/assets/walker-image.jpg"
+            alt="Walker Image"
+            class="walker-image"
+          />
+          <div class="walker-info">
+            <h4 class="walker-name" style="text-transform: capitalize;"><%= user.username %> :)</h4>
+            <!-- <p class="walker-quote">Your dog's happiness, my priority.</p> -->
+            <div class="walker-quote">
+              <img
+                src="/assets/quotes1.png"
+                alt="quotes1"
+                class="quotes-icon"
+              /><%= walkerData.walker_quote %><img
+                src="/assets/quotes2.png"
+                alt="quotes2"
+                class="quotes-icon"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Payment Details -->
+      <div class="payment-details">
+        <h3 class="card-title mb-4">Payment Details</h3>
+        <div class="payment-item">
+          <span class="description">Basic Charge (30 mins)</span>
+          <span class="price">$30</span>
+        </div>
+        <div class="payment-item">
+          <span class="description">Extended Walk (45-60 mins)</span>
+          <span class="price">$15</span>
+        </div>
+        <div class="payment-item total">
+          <span class="description">Total Cost</span>
+          <span class="price">$45</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="col-12 buttons-container">
+      <button
+        type="reset"
+        class="button-design-3 cancel"
+        onclick="handleCancelClick()"
+      >
+        Return & Edit
+      </button>
+      <button
+        type="submit"
+        class="button-design-3 payment"
+        onclick="navigateToBookingSuccessPage()"
+      >
+        Proceed to Payment
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function handleCancelClick() {
+    // Navigate back to the booking page
+    window.location.href = "/booking-walker";
+  }
+
+  function navigateToBookingSuccessPage() {
+    // Navigate to the booking success page
+    window.location.href = "/booking-success";
+  }
+</script>
