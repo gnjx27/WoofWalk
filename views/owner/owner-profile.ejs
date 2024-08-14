@@ -1,1 +1,31 @@
 <h1>Complete Your Dog Owner Profile</h1>
+<div class="profile-container">
+    <div class="profile card">
+        <!-- Sidebar -->    
+        <div class="sidebar">
+            <ul>
+                <li><a href="/payment">Payment</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/booking-history">Booking History</a></li>
+            </ul>
+        </div>
+    
+        <!-- Dog information -->
+        <div class="dog-details">
+            <h2>About <%= ownerData.dog_name %></h2>
+            <p style="color: #004393;">
+                <i class="bi bi-pin-map-fill"></i> <%= ownerData.owner_location %>
+            </p>
+            <p>Breed: <%= ownerData.dog_breed %></p>
+            <p>Age: <%= ownerData.dog_age %> years</p>
+            <p>Size: <%= ownerData.dog_size %></p>
+            <p>Gender: <%= ownerData.dog_gender %></p>
+            <p>Special Needs: <%= ownerData.special_needs %></p>
+            <p>Favourite Activities: <%= ownerData.favourite_activities %></p>
+            <p>Behavioural Notes: <%= ownerData.behavioural_notes %></p>
+            <img src="<%= ownerData.dog_photo %>" alt="Dog Photo" />
+        </div>
+    </div>
+    <!-- Edit Profile Button -->
+    <a href="/owner/edit-owner-profile" class="button-design-2">Edit Profile</a>
+</div>
