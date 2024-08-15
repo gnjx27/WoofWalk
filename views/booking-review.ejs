@@ -1,0 +1,131 @@
+<link rel="stylesheet" href="/about.css" />
+<link rel="stylesheet" href="/booking-history.css" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+/>
+
+<!-- Top image section -->
+<div class="top-image">
+  <img src="/assets/review.jpg" alt="Review Image" />
+  <div class="top-image-text">
+    <h1>Review Walker</h1>
+    <p>Your Feedback Guides Us to Better Walks</p>
+  </div>
+</div>
+
+<!-- Review Form Container -->
+<div class="review-container">
+  <div class="review-title">
+    <h3>Leave a Review</h3>
+    <p>How would you rate the service provided?</p>
+  </div>
+
+  <form action="#" method="POST">
+    <!-- Walker Image -->
+    <div class="review-image-container">
+      <img
+        src="/assets/reviewer1.jpg"
+        alt="Review Walker Image"
+        class="review-image"
+      />
+    </div>
+
+    <!-- Rating Section -->
+    <div class="rating-section">
+      <label for="star-rating">Rating</label>
+      <div class="star-rating mb-4">
+        <i class="fas fa-star" data-value="5"></i>
+        <i class="fas fa-star" data-value="4"></i>
+        <i class="fas fa-star" data-value="3"></i>
+        <i class="fas fa-star" data-value="2"></i>
+        <i class="fas fa-star" data-value="1"></i>
+      </div>
+      <input type="hidden" id="star-rating" name="rating" required />
+    </div>
+
+    <!-- Review Section -->
+    <div>
+      <label for="review">Review</label>
+      <textarea
+        name="review"
+        id="review"
+        class="form-control mt-3"
+        rows="3"
+        placeholder="Write your review here..."
+        required
+      ></textarea>
+    </div>
+
+    <!-- Buttons -->
+    <div class="col-12 buttons-container">
+      <button
+        type="reset"
+        class="button-design-3 cancel"
+        onclick="handleCancelClick()"
+      >
+        Cancel
+      </button>
+      <button
+        type="submit"
+        class="button-design-3 payment"
+        onclick="navigateToReviewSuccessPage()"
+      >
+        Submit Review
+      </button>
+    </div>
+  </form>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const stars = document.querySelectorAll(".star-rating .fa-star");
+    const ratingInput = document.getElementById("star-rating");
+
+    stars.forEach((star) => {
+      star.addEventListener("click", () => {
+        const rating = star.getAttribute("data-value");
+        ratingInput.value = rating;
+
+        // Remove 'selected' class from all stars
+        stars.forEach((s) => s.classList.remove("selected"));
+
+        // Add 'selected' class to the clicked star and all stars to its left
+        star.classList.add("selected");
+        let nextSibling = star.nextElementSibling;
+        while (nextSibling) {
+          nextSibling.classList.add("selected");
+          nextSibling = nextSibling.nextElementSibling;
+        }
+      });
+
+      star.addEventListener("mouseover", () => {
+        // Remove 'hover' class from all stars
+        stars.forEach((s) => s.classList.remove("hover"));
+
+        // Add 'hover' class to the hovered star and all stars to its left
+        star.classList.add("hover");
+        let nextSibling = star.nextElementSibling;
+        while (nextSibling) {
+          nextSibling.classList.add("hover");
+          nextSibling = nextSibling.nextElementSibling;
+        }
+      });
+
+      star.addEventListener("mouseout", () => {
+        // Remove 'hover' class from all stars
+        stars.forEach((s) => s.classList.remove("hover"));
+      });
+    });
+  });
+
+  function handleCancelClick() {
+    document.querySelector("form").reset();
+    window.location.href = "/booking-history";
+  }
+
+  function navigateToReviewSuccessPage() {
+    // Navigate to the booking review success page
+    window.location.href = "/booking-review-success";
+  }
+</script>

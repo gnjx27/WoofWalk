@@ -88,6 +88,22 @@ router.get('/booking-history', async (req, res) => {
     });
 });
 
+router.get('/booking-review', (req, res) => {
+    res.render('index', {
+        title: 'Booking Review - WoofWalk',
+        currentPage: 'booking-review',
+        body: 'booking-review'
+    });
+});
+
+router.get('/booking-review-success', (req, res) => {
+    res.render('index', {
+        title: 'Review Success - WoofWalk',
+        currentPage: 'booking-review-success',
+        body: 'booking-review-success'
+    });
+});
+
 // Route for about page
 router.get('/about', (req, res) => {
     res.render('index', {

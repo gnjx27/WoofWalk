@@ -104,11 +104,12 @@
 /* Ensure dropdown background color */
 .dropdown-menu {
   background-color: #fff; 
+  padding: 5px;
 }
 
 .dropdown-item {
-  color: #0d172a; /* Default color for dropdown items */
-  text-decoration: none; /* Remove underline from dropdown items */
+  color: #0d172a;
+  text-decoration: none;
 }
 
 /* Light background on hover for dropdown items */

@@ -1,0 +1,44 @@
+<style>
+    /* Container for Review Success Page */
+    .success-container {
+      text-align: center;
+      margin: 14vh auto 8vh auto;
+      padding: 40px;
+      max-width: 50%;
+      border-radius: 20px;
+      background-color: #f9f9f9;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+  
+    .success-image {
+      width: 80%;
+      height: auto;
+      border-radius: 30px;
+      margin-bottom: 20px;
+    }
+  
+    .message-container h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+  </style>
+  
+  <div class="success-container">
+    <img
+      src="/assets/review-success.jpg"
+      alt="Success Image"
+      class="success-image"
+    />
+    <div class="message-container">
+      <h1>Your review has been successfully submitted!</h1>
+      <h1>Thank you :)</h1>
+    </div>
+  </div>
+  
+  <script>
+    // Redirect to history page after 5 seconds
+    setTimeout(function () {
+      window.location.href = "/booking-history";
+    }, 5000);
+  </script>
+  
