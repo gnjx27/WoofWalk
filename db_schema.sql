@@ -25,8 +25,6 @@ CREATE TABLE IF NOT EXISTS walker (
     FOREIGN KEY (user_id) REFERENCES user (user_id)
 );
 
-
-
 CREATE TABLE IF NOT EXISTS dog (
     dog_id INTEGER PRIMARY KEY AUTOINCREMENT,
     dog_name TEXT NOT NULL,
@@ -45,7 +43,7 @@ CREATE TABLE IF NOT EXISTS dog (
 CREATE TABLE IF NOT EXISTS review (
     review_id INTEGER PRIMARY KEY AUTOINCREMENT,
     reviewer_name TEXT NOT NULL,
-    rating INTEGER NOT NULL CHECK(rating BETWEEN 1 AND 5),
+    star_rating INTEGER NOT NULL,
     review TEXT NOT NULL,
     review_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     walker_id INTEGER NOT NULL,
@@ -88,6 +86,15 @@ CREATE TABLE IF NOT EXISTS owner (
     FOREIGN KEY (user_id) REFERENCES user (user_id)
 );
 
+-- Insert 5 owner accounts 
+-- Password is Hello123
+INSERT INTO user (username, email, password_hash, account_type, has_owner_profile)
+VALUES
+  ('frank', 'frank@example.com', '$2b$10$WO4vjXeqEREDftX7SsaUC.fVPyH0BulMCy5jGXBtDYkAGYvUaQNKC', 'owner', 1),
+  ('grace', 'grace@example.com', '$2b$10$WO4vjXeqEREDftX7SsaUC.fVPyH0BulMCy5jGXBtDYkAGYvUaQNKC', 'owner', 1),
+  ('henry', 'henry@example.com', '$2b$10$WO4vjXeqEREDftX7SsaUC.fVPyH0BulMCy5jGXBtDYkAGYvUaQNKC', 'owner', 1),
+  ('isabella', 'isabella@example.com', '$2b$10$WO4vjXeqEREDftX7SsaUC.fVPyH0BulMCy5jGXBtDYkAGYvUaQNKC', 'owner', 1),
+  ('jacky', 'jack@example.com', '$2b$10$WO4vjXeqEREDftX7SsaUC.fVPyH0BulMCy5jGXBtDYkAGYvUaQNKC', 'owner', 1);
 
 -- Insert 5 walker accounts 
 -- Password is Hello123
