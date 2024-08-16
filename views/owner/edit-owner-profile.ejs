@@ -1,9 +1,76 @@
-<form action="/owner/update-owner-profile" method="POST" enctype="multipart/form-data">
+<link rel="stylesheet" href="/walker-profile.css" />
+<link rel="stylesheet" href="/owner-profile.css" />
+<link rel="stylesheet" href="/booking.css" />
+<link rel="stylesheet" href="/registration.css" />
+
+<form
+  action="/owner/update-owner-profile"
+  method="POST"
+  enctype="multipart/form-data"
+>
+  <div class="profile-container">
+    <div class="profile-card">
+      <!-- Owner Profile Image -->
+      <img src="/assets/reviewer1.jpg" alt="Owner Image" class="owner-image" />
+
+      <!-- Upload Photo Button -->
+      <div class="mt-4">
+        <input
+          type="file"
+          name="walkerPhoto"
+          id="fileInput"
+          style="display: none"
+          accept="image/*"
+        />
+        <button
+          type="button"
+          class="button-design-2"
+          onclick="document.getElementById('fileInput').click()"
+        >
+          Upload Photo
+        </button>
+        <span id="fileName">No file chosen</span>
+      </div>
+
+      <hr class="mt-4 mb-4" />
+
+      <!-- Contact Walker Section with various Edit User Profile -->
+      <div class="contact-walker">
+        <h3 class="mb-3">Edit User Profile</h3>
+
+        <div class="row mb-3">
+          <div class="col-md-12">
+            <label for="username" class="form-label"><b>Username</b></label>
+            <input
+              type="text"
+              class="form-control"
+              id="username"
+              name="username"
+              value="username"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-12">
+            <label for="email" class="form-label"><b>Email</b></label>
+            <input
+              type="text"
+              class="form-control"
+              id="email"
+              name="email"
+              value="example@gmail.com"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Profile Details Section -->
     <div class="profile-details">
-      <h3>Edit Owner Profile</h3>
-      <!-- First row: Username and Email -->
-      
-      <!-- Second row: Dog Name and Location -->
+      <h3>Edit Dog Profile</h3>
+      <!-- First row: dog name and breed -->
       <div class="row mb-3">
         <div class="col-md-6">
           <label for="dog_name" class="form-label"><b>Dog Name</b></label>
@@ -12,143 +79,234 @@
             class="form-control"
             id="dog_name"
             name="dog_name"
-            value="<%= ownerData.dog_name %>"
+            value="Dog Name"
             autocomplete="off"
           />
         </div>
         <div class="col-md-6">
-          <label for="owner_location" class="form-label"><b>Location</b></label>
-          <input
-            type="text"
-            class="form-control"
-            id="owner_location"
-            name="owner_location"
-            value="<%= ownerData.owner_location %>"
-            autocomplete="off"
-          />
-        </div>
-      </div>
-      <!-- Third row: Dog Breed and Age -->
-      <div class="row mb-3">
-        <div class="col-md-6">
-          <label for="dog_breed" class="form-label"><b>Dog Breed</b></label>
+          <label for="dog_breed" class="form-label"
+            ><b>Dog Breed</b></label
+          >
           <input
             type="text"
             class="form-control"
             id="dog_breed"
             name="dog_breed"
-            value="<%= ownerData.dog_breed %>"
-            autocomplete="off"
-          />
-        </div>
-        <div class="col-md-6">
-          <label for="dog_age" class="form-label"><b>Dog Age</b></label>
-          <input
-            type="number"
-            class="form-control"
-            id="dog_age"
-            name="dog_age"
-            value="<%= ownerData.dog_age %>"
+            value="Dog Breed"
             autocomplete="off"
           />
         </div>
       </div>
-      <!-- Fourth row: Dog Size and Gender -->
-      <div class="row mb-3">
-        <div class="col-md-6">
-          <label for="dog_size" class="form-label"><b>Dog Size</b></label>
-          <input
-            type="text"
-            class="form-control"
-            id="dog_size"
-            name="dog_size"
-            value="<%= ownerData.dog_size %>"
-            autocomplete="off"
-          />
-        </div>
-        <div class="col-md-6">
-          <label for="dog_gender" class="form-label"><b>Dog Gender</b></label>
-          <input
-            type="text"
-            class="form-control"
-            id="dog_gender"
-            name="dog_gender"
-            value="<%= ownerData.dog_gender %>"
-            autocomplete="off"
-          />
+
+      <!-- Second Row: Dog Size Selection -->
+      <div class="mb-3">
+        <label class="form-label"><b>Dog Size</b></label>
+        <div class="dog-size">
+          <!-- Radio button for Small -->
+          <div>
+            <input
+              class="form-check-input"
+              type="radio"
+              name="dogSize"
+              id="small"
+              value="small"
+              required
+            />
+            <label class="size-options-2" for="small">
+              <span class="size-label">Small</span>
+              <span class="size-weight">&lt;10kg</span>
+            </label>
+          </div>
+
+          <!-- Radio button for Medium -->
+          <div>
+            <input
+              class="form-check-input"
+              type="radio"
+              name="dogSize"
+              id="medium"
+              value="medium"
+              required
+            />
+            <label class="size-options-2" for="medium">
+              <span class="size-label">Medium</span>
+              <span class="size-weight">11-26kg</span>
+            </label>
+          </div>
+
+          <!-- Radio button for Large -->
+          <div>
+            <input
+              class="form-check-input"
+              type="radio"
+              name="dogSize"
+              id="large"
+              value="large"
+              required
+            />
+            <label class="size-options-2" for="large">
+              <span class="size-label">Large</span>
+              <span class="size-weight">27-45kg</span>
+            </label>
+          </div>
+
+          <!-- Radio button for X-Large -->
+          <div>
+            <input
+              class="form-check-input"
+              type="radio"
+              name="dogSize"
+              id="xlarge"
+              value="xlarge"
+              required
+            />
+            <label class="size-options-2" for="xlarge">
+              <span class="size-label">X-Large</span>
+              <span class="size-weight">46+kg</span>
+            </label>
+          </div>
         </div>
       </div>
-      <!-- Fifth row: Special Needs and Favourite Activities -->
+
+      <!-- Third Row: Dog Age Selection -->
+      <div class="mb-3">
+        <label class="form-label"><b>Dog Age</b></label>
+        <div class="dog-age">
+          <!-- Radio button for Puppy -->
+          <div>
+            <input
+              class="form-check-input"
+              type="radio"
+              name="dogAge"
+              id="puppy"
+              value="puppy"
+              required
+            />
+            <label class="age-options-2" for="puppy">
+              <span class="age-label">Puppy</span>
+              <span class="age-range">0-1 yrs</span>
+            </label>
+          </div>
+
+          <!-- Radio button for Adult -->
+          <div>
+            <input
+              class="form-check-input"
+              type="radio"
+              name="dogAge"
+              id="adult"
+              value="adult"
+              required
+            />
+            <label class="age-options-2" for="adult">
+              <span class="age-label">Adult</span>
+              <span class="age-range">2-8 yrs</span>
+            </label>
+          </div>
+
+          <!-- Radio button for Senior -->
+          <div>
+            <input
+              class="form-check-input"
+              type="radio"
+              name="dogAge"
+              id="senior"
+              value="senior"
+              required
+            />
+            <label class="age-options-2" for="senior">
+              <span class="age-label">Senior</span>
+              <span class="age-range">9+ yrs</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fourth row: Special Needs -->
       <div class="row mb-3">
-        <div class="col-md-6">
-          <label for="special_needs" class="form-label"><b>Special Needs</b></label>
+        <div class="col-md-12">
+          <label for="special_needs" class="form-label"><b>Special Needs or Medical Conditions</b></label>
           <textarea
             class="form-control"
             id="special_needs"
             name="special_needs"
-            rows="4"
-          ><%= ownerData.special_needs %></textarea>
-        </div>
-        <div class="col-md-6">
-          <label for="favourite_activities" class="form-label"><b>Favourite Activities</b></label>
-          <textarea
-            class="form-control"
-            id="favourite_activities"
-            name="favourite_activities"
-            rows="4"
-          ><%= ownerData.favourite_activities %></textarea>
-        </div>
-      </div>
-      <!-- Sixth row: Behavioural Notes -->
-      <div class="row mb-3">
-        <div class="col-12">
-          <label for="behavioural_notes" class="form-label"><b>Behavioural Notes</b></label>
-          <textarea
-            class="form-control"
-            id="behavioural_notes"
-            name="behavioural_notes"
-            rows="4"
-          ><%= ownerData.behavioural_notes %></textarea>
-        </div>
-      </div>
-      <!-- Dog Photo Upload -->
-      <div class="row mb-3">
-        <div class="col-12">
-          <label for="dog_photo" class="form-label"><b>Dog Photo</b></label>
-          <input
-            type="file"
-            class="form-control"
-            id="dog_photo"
-            name="dog_photo"
-          />
-        </div>
-      </div>
-      <!-- Cancel and Update Buttons -->
-      <div class="mt-3">
-        <div class="col-12">
-          <button
-            type="reset"
-            class="button-design-3 cancel"
-            onclick="handleCancelClick()"
+            autocomplete="off"
+            rows="5"
           >
-            Cancel
-          </button>
-          <button type="submit" class="button-design-3 update">Edit & Update</button>
+Input special needs here...</textarea
+          >
+        </div>
+      </div>
+      
+      <!-- Fifth row: Remark -->
+      <div class="row mb-3">
+        <div class="col-md-12">
+          <label for="dog_remark" class="form-label"><b>Remarks</b></label>
+          <textarea
+            class="form-control"
+            id="dog_remark"
+            name="dog_remark"
+            autocomplete="off"
+            rows="5"
+          >
+Input remarks here...</textarea
+          >
+        </div>
+      </div>
+
+        <!-- Cancel and Update Buttons -->
+        <div class="mt-3">
+          <div class="col-12">
+            <button
+              type="reset"
+              class="button-design-3 cancel"
+              onclick="handleCancelClick()"
+            >
+              Cancel
+            </button>
+            <button type="submit" class="button-design-3 update">
+              Edit & Update
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </form>
-  <script>
-    function handleCancelClick() {
-      // Reset the form fields
-      document.querySelector("form").reset();
-      // Navigate back to the previous page
-      window.history.back();
-    }
-    // Display the selected file name
-    const fileInput = document.getElementById('dog_photo');
-    fileInput.addEventListener('change', function() {
-        const fileName = document.getElementById('fileName');
-        fileName.textContent = this.files[0].name;
+  </div>
+</form>
+
+<script>
+  function handleCancelClick() {
+    // Reset the form fields
+    document.querySelector("form").reset();
+
+    // Navigate back to the previous page
+    window.history.back();
+  }
+
+  // Display the selected file name
+  document
+    .getElementById("fileInput")
+    .addEventListener("change", function (event) {
+      const file = event.target.files[0];
+      const fileNameSpan = document.getElementById("fileName");
+      const walkerImage = document.getElementById("walkerImage");
+
+      if (file) {
+        // Update the file name text
+        fileNameSpan.textContent = file.name;
+
+        // Create a FileReader to read the file
+        const reader = new FileReader();
+
+        // Once the file is read, update the image src
+        reader.onload = function (e) {
+          walkerImage.src = e.target.result;
+        };
+
+        // Read the image file as a data URL
+        reader.readAsDataURL(file);
+      } else {
+        fileNameSpan.textContent = "No file chosen";
+      }
     });
-  </script>
+</script>
