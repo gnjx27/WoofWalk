@@ -145,11 +145,10 @@ const getOwnerData = (db, userId) => {
                 d.dog_breed, 
                 d.dog_age, 
                 d.dog_size,
-                d.dog_gender,
                 d.dog_photo,
                 d.special_needs,
-                d.favourite_activities,
-                d.behavioural_notes
+                d.dog_remark
+
             FROM 
                 dog d 
             JOIN 

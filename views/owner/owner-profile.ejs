@@ -1,31 +1,137 @@
-<h1>Complete Your Dog Owner Profile</h1>
-<div class="profile-container">
-    <div class="profile card">
-        <!-- Sidebar -->    
-        <div class="sidebar">
-            <ul>
-                <li><a href="/payment">Payment</a></li>
-                <li><a href="/profile">Profile</a></li>
-                <li><a href="/booking-history">Booking History</a></li>
-            </ul>
+<link rel="stylesheet" href="/owner-profile.css" />
+<link rel="stylesheet" href="/walker-profile.css" />
+
+<div class="owner-profile-container">
+  <div class="owner-profile-card">
+    <!-- Walker Profile Image -->
+    <img src="/assets/reviewer1.jpg" alt="Walker Image" class="walker-image" />
+
+    <!-- User Profile (Owner) -->
+    <div class="contact-walker mb-4">
+      <h3 class="mb-4">User Profile</h3>
+      <!-- Username -->
+      <div class="profile-box">
+        <img
+          src="/assets/icons/username.png"
+          alt="Username Icon"
+          class="profile-img"
+        />
+        <div class="profile-info">
+          <h5>Username</h5>
+          <p>Jacky</p>
         </div>
-    
-        <!-- Dog information -->
-        <div class="dog-details">
-            <h2>About <%= ownerData.dog_name %></h2>
-            <p style="color: #004393;">
-                <i class="bi bi-pin-map-fill"></i> <%= ownerData.owner_location %>
-            </p>
-            <p>Breed: <%= ownerData.dog_breed %></p>
-            <p>Age: <%= ownerData.dog_age %> years</p>
-            <p>Size: <%= ownerData.dog_size %></p>
-            <p>Gender: <%= ownerData.dog_gender %></p>
-            <p>Special Needs: <%= ownerData.special_needs %></p>
-            <p>Favourite Activities: <%= ownerData.favourite_activities %></p>
-            <p>Behavioural Notes: <%= ownerData.behavioural_notes %></p>
-            <img src="<%= ownerData.dog_photo %>" alt="Dog Photo" />
+      </div>
+      <!-- Email -->
+      <div class="profile-box mt-4">
+        <img
+          src="/assets/icons/email.png"
+          alt="Email Icon"
+          class="profile-img"
+        />
+        <div class="profile-info">
+          <h5>Email</h5>
+          <p>jacky@gmail.com</p>
         </div>
+      </div>
     </div>
+
     <!-- Edit Profile Button -->
     <a href="/owner/edit-owner-profile" class="button-design-2">Edit Profile</a>
+  </div>
+
+  <!-- Profile Details Section -->
+  <div class="profile-details">
+    <!-- Walker Bios -->
+    <h3>Dog Profile</h3>
+    <div class="run-jump-dog">
+      <img src="/assets/doggy.gif" alt="Running & Jumping Dog" />
+    </div>
+    <div class="profile-row extend-margin-top">
+      <!-- Dog Name -->
+      <div class="profile-box mt-4">
+        <img
+          src="/assets/icons/dog-name.png"
+          alt="Dog Name Icon"
+          class="profile-img"
+        />
+        <div class="profile-info">
+          <h5>Dog Name</h5>
+          <p>Max</p>
+        </div>
+      </div>
+
+      <!-- Dog Breed -->
+      <div class="profile-box mt-4">
+        <img
+          src="/assets/icons/dog-breed.png"
+          alt="Dog Breed Icon"
+          class="profile-img"
+        />
+        <div class="profile-info">
+          <h5>Dog Breed</h5>
+          <p>Bichon</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-row">
+      <!-- Dog Age -->
+      <div class="profile-box mt-4">
+        <img
+          src="/assets/icons/dog-age.png"
+          alt="Dog Age Icon"
+          class="profile-img"
+        />
+        <div class="profile-info">
+          <h5>Dog Age</h5>
+          <p>Adult 2-8 yrs</p>
+        </div>
+      </div>
+
+      <!-- Dog Size -->
+      <div class="profile-box mt-4">
+        <img
+          src="/assets/icons/dog-size.png"
+          alt="Dog Size Icon"
+          class="profile-img"
+        />
+        <div class="profile-info">
+          <h5>Dog Size</h5>
+          <p>Medium 11-26kg</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Special Needs or Medical Conditions -->
+    <div class="profile-box mt-4">
+      <img
+        src="/assets/icons/special-needs.png"
+        alt="Special Need Icon"
+        class="profile-img"
+      />
+      <div class="profile-info">
+        <h5>Special Needs or Medical Conditions</h5>
+        <p>
+          Max has a sensitive stomach; please avoid giving him treats that
+          aren't pre-approved.
+        </p>
+      </div>
+    </div>
+
+    <!-- Remarks -->
+    <div class="profile-box mt-4">
+      <img
+        src="/assets/icons/dog-remark.png"
+        alt="Remark Icon"
+        class="profile-img"
+      />
+      <div class="profile-info">
+        <h5>Remarks</h5>
+        <p>
+          Max is very friendly and enjoys interacting with people and small
+          dogs. He can be shy around larger dogs but usually warms up quickly.
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
