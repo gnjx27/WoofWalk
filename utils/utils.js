@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const validator = require('validator');
+const fs = require('fs');
 
 // Function to check if email or username already exists
 const checkExistingUser = (db, email, username) => {
@@ -73,17 +74,23 @@ const insertUser = (db, username, email, hashedPassword, accountType) => {
 
 const insertWalker = (db, userId) => {
     return new Promise((resolve, reject) => {
-        db.run(
-            'INSERT INTO walker (user_id) VALUES (?)',
-            [userId],
-            function(err) {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve();
-                }
+        fs.readFile('./public/walker/walker-default-img.png', (err, data) => {
+            if (err) {
+                console.log("error reading default walker image");
+            } else {
+                db.run(
+                    'INSERT INTO walker (user_id, walker_photo) VALUES (?, ?)',
+                    [userId, data],
+                    function(err) {
+                        if (err) {
+                            reject(err);
+                        } else {
+                            resolve();
+                        }
+                    }
+                );     
             }
-        );
+        });
     });
 };
 
@@ -167,9 +174,6 @@ const getOwnerData = (db, userId) => {
             }
         );
     });
-};
-
-
-
+}; 
 
 module.exports = { checkExistingUser, validateUserInput, hashPassword, insertUser, insertWalker, getWalkerData, getWalkerReviews, getUserData, getOwnerData };

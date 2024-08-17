@@ -43,16 +43,23 @@ router.post('/update-walker-profile', async (req, res) => {
     const walker_skills = req.body.walker_skills;
     const base_price = req.body.base_price;
     const walker_location = req.body.walker_location;
+    const walker_contact = req.body.walker_contact;
     const walker_id = walkerData.walker_id;
-    const query = "UPDATE walker SET walker_photo = ?, walker_quote = ?, walker_bio = ?, walker_skills = ?, base_price = ?, walker_location = ? WHERE walker_id = ?";
-    global.db.run(query, [walkerPhoto, walker_quote, walker_bio, walker_skills, base_price, walker_location, walker_id], (err) => {
+    const walkerQuery = "UPDATE walker SET walker_photo = ?, walker_quote = ?, walker_bio = ?, walker_skills = ?, base_price = ?, walker_location = ?, walker_contact = ? WHERE walker_id = ?";
+    const username = req.body.username;
+    const email = req.body.email;
+    const userQuery = "UPDATE user SET username = ?, email = ?, has_walker_profile = 1 WHERE user_id = ?";
+    global.db.run(walkerQuery, [walkerPhoto, walker_quote, walker_bio, walker_skills, base_price, walker_location, walker_contact, walker_id], (err) => {
         if (err) {
             return res.status(500).send("Error updating walker info");
         }
-        else {
-            console.log("Walker info updated");
-            res.redirect("/walker/walker-profile");
-        }
+        global.db.run(userQuery, [username, email, req.session.userId], (err) => {
+            if (err) {
+                return res.status(500).send("Error updating user info");
+            } else {
+                res.redirect('/walker/walker-profile');
+            }
+        });
     });
 });
 

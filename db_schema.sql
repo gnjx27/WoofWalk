@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS walker (
     walker_quote TEXT DEFAULT "Let me walk your dog!",
     walker_bio TEXT DEFAULT "No bio added...",
     walker_skills TEXT DEFAULT "No skills added...",
-    walker_contact TEXT DEFAULT "+65 9006 1234",
+    walker_contact TEXT DEFAULT "No number added...",
     base_price TEXT DEFAULT "20",
     walker_location TEXT DEFAULT "Singapore",
     user_id INTEGER NOT NULL,
@@ -75,7 +75,6 @@ CREATE TABLE IF NOT EXISTS payment (
     FOREIGN KEY (user_id) REFERENCES user (user_id),
     FOREIGN KEY (booking_id) REFERENCES booking (booking_id)
 );
-
 
 CREATE TABLE IF NOT EXISTS owner (
     id INTEGER PRIMARY KEY AUTOINCREMENT,

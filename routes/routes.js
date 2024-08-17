@@ -253,7 +253,7 @@ router.post('/sign-in', async (req, res) => {
                 return res.redirect('/owner/owner-profile');
             }
             if (user.account_type === 'walker' && !user.has_walker_profile) {
-                return res.redirect('/walker/walker-profile');``
+                return res.redirect('/walker/walker-profile');
             }
             res.redirect('/');
         } else {
