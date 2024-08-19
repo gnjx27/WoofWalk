@@ -4,6 +4,7 @@
   action="/walker/update-walker-profile"
   method="POST"
   enctype="multipart/form-data"
+  id="update-walker-profile"
 >
   <div class="profile-container">
     <div class="profile-card">
@@ -31,7 +32,7 @@
         >
           Upload Photo
         </button>
-        <span id="fileName">No file chosen</span>
+        <span id="fileName" style="color: #9e9e9e">No file chosen</span>
       </div>
 
       <hr class="mt-4 mb-4" />
@@ -139,6 +140,14 @@
             value="<%= user.username %>"
             autocomplete="off"
           />
+          <div class="error-container">
+            <i
+              id="username-error-icon"
+              class="bi bi-exclamation-triangle-fill error-icon"
+              style="display: none"
+            ></i>
+            <div id="username-error" class="text-danger"></div>
+          </div>
         </div>
         <div class="col-md-6">
           <label for="email" class="form-label"><b>Email</b></label>
@@ -150,6 +159,14 @@
             value="<%= user.email %>"
             autocomplete="off"
           />
+          <div class="error-container">
+            <i
+              id="email-error-icon"
+              class="bi bi-exclamation-triangle-fill error-icon"
+              style="display: none"
+            ></i>
+            <div id="email-error" class="text-danger"></div>
+          </div>
         </div>
       </div>
 
@@ -165,6 +182,14 @@
             value="<%= walkerData.walker_quote %>"
             autocomplete="off"
           />
+          <div class="error-container">
+            <i
+              id="quote-error-icon"
+              class="bi bi-exclamation-triangle-fill error-icon"
+              style="display: none"
+            ></i>
+            <div id="quote-error" class="text-danger"></div>
+          </div>
         </div>
         <div class="col-md-6">
           <label for="walker_location" class="form-label"
@@ -178,6 +203,14 @@
             value="<%= walkerData.walker_location %>"
             autocomplete="off"
           />
+          <div class="error-container">
+            <i
+              id="location-error-icon"
+              class="bi bi-exclamation-triangle-fill error-icon"
+              style="display: none"
+            ></i>
+            <div id="location-error" class="text-danger"></div>
+          </div>
         </div>
       </div>
 
@@ -193,6 +226,14 @@
             value="<%= walkerData.base_price %>"
             autocomplete="off"
           />
+          <div class="error-container">
+            <i
+              id="price-error-icon"
+              class="bi bi-exclamation-triangle-fill error-icon"
+              style="display: none"
+            ></i>
+            <div id="price-error" class="text-danger"></div>
+          </div>
         </div>
         <div class="col-md-6">
           <label for="walker_contact" class="form-label"><b>Contact</b></label>
@@ -204,6 +245,14 @@
             value="<%= walkerData.walker_contact %>"
             autocomplete="off"
           />
+          <div class="error-container">
+            <i
+              id="contact-error-icon"
+              class="bi bi-exclamation-triangle-fill error-icon"
+              style="display: none"
+            ></i>
+            <div id="contact-error" class="text-danger"></div>
+          </div>
         </div>
       </div>
 
@@ -220,22 +269,38 @@
           >
 <%= walkerData.walker_bio %></textarea
           >
+          <div class="error-container">
+            <i
+              id="bio-error-icon"
+              class="bi bi-exclamation-triangle-fill error-icon"
+              style="display: none"
+            ></i>
+            <div id="bio-error" class="text-danger"></div>
+          </div>
         </div>
       </div>
 
       <!-- Fifth row: Skills -->
       <div class="row mb-3">
         <div class="col-md-12">
-          <label for="walker_skill_1" class="form-label"><b>Skills</b></label>
+          <label for="walker_skills" class="form-label"><b>Skills</b></label>
           <textarea
             class="form-control"
-            id="walker_skill_1"
+            id="walker_skills"
             name="walker_skills"
             autocomplete="off"
             rows="4"
           >
 <%= walkerData.walker_skills %></textarea
           >
+          <div class="error-container">
+            <i
+              id="skills-error-icon"
+              class="bi bi-exclamation-triangle-fill error-icon"
+              style="display: none"
+            ></i>
+            <div id="skills-error" class="text-danger"></div>
+          </div>
         </div>
 
         <!-- Cancel and Update Buttons -->
@@ -268,27 +333,140 @@
   }
 
   // Display the selected file name
-  document.getElementById('fileInput').addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    const fileNameSpan = document.getElementById('fileName');
-    const walkerImage = document.getElementById('walkerImage');
+  document
+    .getElementById("fileInput")
+    .addEventListener("change", function (event) {
+      const file = event.target.files[0];
+      const fileNameSpan = document.getElementById("fileName");
+      const walkerImage = document.getElementById("walkerImage");
 
-    if (file) {
-      // Update the file name text
-      fileNameSpan.textContent = file.name;
+      if (file) {
+        // Update the file name text
+        fileNameSpan.textContent = file.name;
 
-      // Create a FileReader to read the file
-      const reader = new FileReader();
+        // Create a FileReader to read the file
+        const reader = new FileReader();
 
-      // Once the file is read, update the image src
-      reader.onload = function(e) {
-        walkerImage.src = e.target.result;
-      };
+        // Once the file is read, update the image src
+        reader.onload = function (e) {
+          walkerImage.src = e.target.result;
+        };
 
-      // Read the image file as a data URL
-      reader.readAsDataURL(file);
-    } else {
-      fileNameSpan.textContent = 'No file chosen';
-    }
-  });
+        // Read the image file as a data URL
+        reader.readAsDataURL(file);
+      } else {
+        fileNameSpan.textContent = "No file chosen";
+      }
+    });
+
+  document
+    .getElementById("update-walker-profile")
+    .addEventListener("submit", function (event) {
+      let valid = true;
+
+      // Clear previous errors
+      document.getElementById("username-error").textContent = "";
+      document.getElementById("email-error").textContent = "";
+      document.getElementById("quote-error").textContent = "";
+      document.getElementById("location-error").textContent = "";
+      document.getElementById("price-error").textContent = "";
+      document.getElementById("contact-error").textContent = "";
+      document.getElementById("bio-error").textContent = "";
+      document.getElementById("skills-error").textContent = "";
+
+      // Hide error icons
+      document.getElementById("username-error-icon").style.display = "none";
+      document.getElementById("email-error-icon").style.display = "none";
+      document.getElementById("quote-error-icon").style.display = "none";
+      document.getElementById("location-error-icon").style.display = "none";
+      document.getElementById("price-error-icon").style.display = "none";
+      document.getElementById("contact-error-icon").style.display = "none";
+      document.getElementById("bio-error-icon").style.display = "none";
+      document.getElementById("skills-error-icon").style.display = "none";
+
+      // Validate Username
+      const username = document.getElementById("username").value;
+      if (username.length < 5) {
+        document.getElementById("username-error").textContent =
+          "Username must be at least 5 characters!";
+        document.getElementById("username-error-icon").style.display = "inline";
+        valid = false;
+      }
+
+      // Validate Email
+      const email = document.getElementById("email").value;
+      if (!email.includes("@") || !email.includes(".")) {
+        document.getElementById("email-error").textContent =
+          "Invalid email format!";
+        document.getElementById("email-error-icon").style.display = "inline";
+        valid = false;
+      }
+
+      // Validate Quote
+      const quote = document.getElementById("walker_quote").value;
+      if (quote.length < 5) {
+        document.getElementById("quote-error").textContent =
+          "Quote must be at least 5 characters!";
+        document.getElementById("quote-error-icon").style.display = "inline";
+        valid = false;
+      }
+
+      // Validate Location
+      const location = document.getElementById("walker_location").value;
+      if (location.length < 6) {
+        document.getElementById("location-error").textContent =
+          "Location must be at least 6 characters!";
+        document.getElementById("location-error-icon").style.display = "inline";
+        valid = false;
+      }
+
+      // Validate Price
+      const price = document.getElementById("base_price").value.trim();
+      const pricePattern = /^\d+$/; // Only digits allowed
+      if (!pricePattern.test(price)) {
+        document.getElementById("price-error").textContent =
+          "Price must be a positive integer without decimal points.";
+        document.getElementById("price-error-icon").style.display = "inline";
+        valid = false;
+      } else if (parseInt(price, 10) <= 0) {
+        document.getElementById("price-error").textContent =
+          "Price must be a positive number.";
+        document.getElementById("price-error-icon").style.display = "inline";
+        valid = false;
+      }
+
+      // Validate Contact Number
+      const contactNumber = document
+        .getElementById("walker_contact")
+        .value.trim();
+      const contactPattern = /^\d{8}$/; // Exactly 8 digits
+      if (!contactPattern.test(contactNumber)) {
+        document.getElementById("contact-error").textContent =
+          "Contact number must be exactly 8 digits.";
+        document.getElementById("contact-error-icon").style.display = "inline";
+        valid = false;
+      }
+
+      // Validate Bio
+      const bio = document.getElementById("walker_bio").value;
+      if (bio.length < 10) {
+        document.getElementById("bio-error").textContent =
+          "Bio must be at least 10 characters!";
+        document.getElementById("bio-error-icon").style.display = "inline";
+        valid = false;
+      }
+      
+      // Validate Skills
+      const skills = document.getElementById("walker_skills").value;
+      if (skills.length < 8) {
+        document.getElementById("skills-error").textContent =
+          "Skills must be at least 8 characters!";
+        document.getElementById("skills-error-icon").style.display = "inline";
+        valid = false;
+      }
+
+      if (!valid) {
+        event.preventDefault();
+      }
+    });
 </script>

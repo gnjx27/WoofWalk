@@ -311,3 +311,22 @@ blockquote {
     margin: 5px 0;
 }
 
+/* Container for the error icon and message */
+.error-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  /* Error icon styling */
+  .error-icon {
+    color: #dc3545;
+    font-size: 1.2em;
+  }
+  
+  /* Error message styling */
+  .text-danger {
+    color: #dc3545;
+    font-size: 0.9em;
+  }
+  
