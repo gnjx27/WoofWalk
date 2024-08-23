@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS dog (
     dog_breed TEXT NOT NULL,
     dog_age INTEGER NOT NULL CHECK(dog_age BETWEEN 1 AND 30),
     dog_size TEXT NOT NULL CHECK(dog_size IN('S', 'M', 'L', 'XL')),
-    dog_photo TEXT NOT NULL,
+    dog_photo TEXT "No photo",
     special_needs TEXT DEFAULT 'No special need',
     dog_remark TEXT DEFAULT 'No remark',
     user_id INTEGER NOT NULL,
@@ -76,13 +76,6 @@ CREATE TABLE IF NOT EXISTS payment (
     FOREIGN KEY (booking_id) REFERENCES booking (booking_id)
 );
 
-CREATE TABLE IF NOT EXISTS owner (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    owner_location TEXT NOT NULL,
-    user_id INTEGER NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES user (user_id)
-);
-
 -- Insert 5 owner accounts 
 -- Password is Hello123
 INSERT INTO user (username, email, password_hash, account_type, has_owner_profile)
@@ -111,5 +104,10 @@ VALUES
   ('No photo', 'Walking with dogs is not just a job; it''s a joy and a privilege.', 'Greeting, I''m Charlie! With 6 years in dog walking and a lifelong love for pets, I provide a personalized walking experience for each furry friend. From playful pups to gentle seniors, I ensure every walk is both enjoyable and beneficial. My goal is to make each walk a delightful experience for your dog and to foster a positive relationship between us.', 'Dog walking, Pet sitting', '99876543', '28', 'Bugis, Singapore', (SELECT user_id FROM user WHERE username = 'charlie')),
   ('No photo', 'Let''s explore the world one paw at a time!', 'I''m Daisy, and I''m thrilled to offer my dog walking services. With a background in pet care and a passion for animals, I ensure that every walk is an adventure. My approach is to understand each dog''s personality and needs to provide a tailored walking experience. Whether it''s a brisk run or a relaxed stroll, your dog will be in good hands with me.', 'Dog walking, Exercise routines', '+99871233', '30', 'Tampines, Singapore', (SELECT user_id FROM user WHERE username = 'daisy')),
   ('No photo', 'Unleash your dogs happiness with me!', 'Greetings, I''m Elizabeth! With 8 years of experience in dog walking, I''m committed to providing the best care for your furry friends. Each walk is designed to be a positive and enriching experience for your dog, considering their energy levels and preferences. My goal is to ensure that your dog''s time with me is enjoyable, safe, and fulfilling.', 'Dog walking, Enrichment activities', '99875555', '23', 'Buona Vista, Singapore', (SELECT user_id FROM user WHERE username = 'elizabeth'));
+
+-- Insert dog profiles
+INSERT INTO dog (dog_name, dog_breed, dog_age, dog_size, user_id) 
+VALUES
+    ("Puffy", "Japanese Spitz", 9, "M", 1);
 
 COMMIT;

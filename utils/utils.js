@@ -143,39 +143,6 @@ const getUserData = (db, userId) => {
     });
 };
 
-// Function to get owner data
-const getOwnerData = (db, userId) => {
-    return new Promise((resolve, reject) => {
-        db.get(
-            `SELECT 
-                d.dog_name, 
-                d.dog_breed, 
-                d.dog_age, 
-                d.dog_size,
-                d.dog_photo,
-                d.special_needs,
-                d.dog_remark
-
-            FROM 
-                dog d 
-            JOIN 
-                owner o 
-            ON 
-                d.user_id = o.user_id 
-            WHERE 
-                o.user_id = ?`, 
-            [userId], 
-            (err, row) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(row);
-                }
-            }
-        );
-    });
-};
-
 function setDefaultWalkerPhoto(db) {
     fs.readFile('./public/walker/walker-default-img.png', (err, data) => {
         if (err) {
@@ -192,6 +159,18 @@ function setDefaultWalkerPhoto(db) {
     });
 }
 
+const getDogData = (db, userId) => {
+    return new Promise ((resolve, reject) => {
+        db.get('SELECT * FROM dog WHERE user_id = ?', [userId], (err, dogData) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(dogData);
+            }
+        });
+    });
+};
+
 module.exports = { 
     checkExistingUser, 
     validateUserInput, 
@@ -200,7 +179,7 @@ module.exports = {
     insertWalker, 
     getWalkerData, 
     getWalkerReviews, 
-    getUserData, 
-    getOwnerData,
-    setDefaultWalkerPhoto
+    getUserData,
+    setDefaultWalkerPhoto,
+    getDogData
 };

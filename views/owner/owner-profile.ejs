@@ -18,7 +18,7 @@
         />
         <div class="profile-info">
           <h5>Username</h5>
-          <p>Jack</p>
+          <p><%= userData.username %></p>
         </div>
       </div>
       <!-- Email -->
@@ -30,7 +30,7 @@
         />
         <div class="profile-info">
           <h5>Email</h5>
-          <p>jacky@gmail.com</p>
+          <p><%= userData.email %></p>
         </div>
       </div>
     </div>
@@ -56,7 +56,7 @@
         />
         <div class="profile-info">
           <h5>Dog Name</h5>
-          <p>Max</p>
+          <p><%= dogData.dog_name %></p>
         </div>
       </div>
 
@@ -69,7 +69,7 @@
         />
         <div class="profile-info">
           <h5>Dog Breed</h5>
-          <p>Bichon</p>
+          <p><%= dogData.dog_breed %></p>
         </div>
       </div>
     </div>
@@ -84,7 +84,7 @@
         />
         <div class="profile-info">
           <h5>Dog Age</h5>
-          <p>Adult 2-8 yrs</p>
+          <p><%= dogData.dog_age %></p>
         </div>
       </div>
 
@@ -97,7 +97,7 @@
         />
         <div class="profile-info">
           <h5>Dog Size</h5>
-          <p>Medium 11-26kg</p>
+          <p><%= dogData.dog_size %></p>
         </div>
       </div>
     </div>
@@ -112,8 +112,7 @@
       <div class="profile-info">
         <h5>Special Needs or Medical Conditions</h5>
         <p>
-          Max has a sensitive stomach; please avoid giving him treats that
-          aren't pre-approved.
+          <%= dogData.special_needs %>
         </p>
       </div>
     </div>
@@ -128,8 +127,7 @@
       <div class="profile-info">
         <h5>Remarks</h5>
         <p>
-          Max is very friendly and enjoys interacting with people and small
-          dogs. He can be shy around larger dogs but usually warms up quickly.
+          <%= dogData.dog_remark %>
         </p>
       </div>
     </div>
