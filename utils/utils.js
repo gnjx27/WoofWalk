@@ -174,6 +174,33 @@ const getOwnerData = (db, userId) => {
             }
         );
     });
-}; 
+};
 
-module.exports = { checkExistingUser, validateUserInput, hashPassword, insertUser, insertWalker, getWalkerData, getWalkerReviews, getUserData, getOwnerData };
+function setDefaultWalkerPhoto(db) {
+    fs.readFile('./public/walker/walker-default-img.png', (err, data) => {
+        if (err) {
+            console.log("Error reading default walker photo");
+        } else {
+            db.run('UPDATE walker SET walker_photo = ? WHERE walker_photo = "No photo"', [data], (err) => {
+                if (err) {
+                    console.log("Error updating default walker photo");
+                } else {
+                    console.log("Default walker photo updated");
+                }
+            });
+        }
+    });
+}
+
+module.exports = { 
+    checkExistingUser, 
+    validateUserInput, 
+    hashPassword, 
+    insertUser, 
+    insertWalker, 
+    getWalkerData, 
+    getWalkerReviews, 
+    getUserData, 
+    getOwnerData,
+    setDefaultWalkerPhoto
+};

@@ -8,6 +8,7 @@ const sqlite3 = require('sqlite3').verbose();
 const routes = require('./routes/routes');
 const ownerRoutes = require('./routes/ownerRoutes');
 const walkerRoutes = require('./routes/walkerRoutes');
+const { setDefaultWalkerPhoto } = require('./utils/utils');
 
 const port = 3000;
 const app = express();
@@ -36,6 +37,8 @@ global.db = new sqlite3.Database('./database.db', function (err) {
     } else {
         console.log('Database connected');
         global.db.run('PRAGMA foreign_keys = ON');
+        // set default walker photos
+        setDefaultWalkerPhoto(global.db);
     }
 });
 
