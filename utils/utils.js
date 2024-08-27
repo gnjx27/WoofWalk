@@ -143,16 +143,16 @@ const getUserData = (db, userId) => {
     });
 };
 
-function setDefaultWalkerPhoto(db) {
-    fs.readFile('./public/walker/walker-default-img.png', (err, data) => {
+function setDefaultUserPhoto(db) {
+    fs.readFile('public/assets/default-user-photo.png', (err, data) => {
         if (err) {
-            console.log("Error reading default walker photo");
+            console.log("Error reading default user photo");
         } else {
-            db.run('UPDATE walker SET walker_photo = ? WHERE walker_photo = "No photo"', [data], (err) => {
+            db.run('UPDATE user SET user_photo = ? WHERE user_photo = "No photo"', [data], (err) => {
                 if (err) {
-                    console.log("Error updating default walker photo");
+                    console.log("Error updating default user photo");
                 } else {
-                    console.log("Default walker photo updated");
+                    console.log("Default user photo updated");
                 }
             });
         }
@@ -180,6 +180,6 @@ module.exports = {
     getWalkerData, 
     getWalkerReviews, 
     getUserData,
-    setDefaultWalkerPhoto,
+    setDefaultUserPhoto,
     getDogData
 };

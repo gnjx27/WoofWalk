@@ -11,13 +11,13 @@
   <div class="profile-container">
     <div class="profile-card">
       <!-- Owner Profile Image -->
-      <img src="/assets/reviewer1.jpg" alt="Owner Image" class="owner-image" />
+      <img id="walkerImage" src="/get-user-photo" alt="Owner Image" class="owner-image" />
 
       <!-- Upload Photo Button -->
       <div class="mt-4">
         <input
           type="file"
-          name="walkerPhoto"
+          name="userPhoto"
           id="fileInput"
           style="display: none"
           accept="image/*"
@@ -46,7 +46,7 @@
               class="form-control"
               id="username"
               name="username"
-              value="username"
+              value="<%= userData.username %>"
               autocomplete="off"
             />
           </div>
@@ -59,7 +59,7 @@
               class="form-control"
               id="email"
               name="email"
-              value="example@gmail.com"
+              value="<%= userData.email %>"
               autocomplete="off"
             />
           </div>
@@ -79,7 +79,7 @@
             class="form-control"
             id="dog_name"
             name="dog_name"
-            value="Dog Name"
+            value="<%= dogData.dog_name %>"
             autocomplete="off"
           />
         </div>
@@ -92,7 +92,7 @@
             class="form-control"
             id="dog_breed"
             name="dog_breed"
-            value="Dog Breed"
+            value="<%= dogData.dog_breed %>"
             autocomplete="off"
           />
         </div>
@@ -107,10 +107,11 @@
             <input
               class="form-check-input"
               type="radio"
-              name="dogSize"
+              name="dog_size"
               id="small"
-              value="small"
+              value="S"
               required
+              <% if (dogData.dog_size == "S") { %> checked <% } %>
             />
             <label class="size-options-2" for="small">
               <span class="size-label">Small</span>
@@ -123,10 +124,11 @@
             <input
               class="form-check-input"
               type="radio"
-              name="dogSize"
+              name="dog_size"
               id="medium"
-              value="medium"
+              value="M"
               required
+              <% if (dogData.dog_size == "M") { %> checked <% } %>
             />
             <label class="size-options-2" for="medium">
               <span class="size-label">Medium</span>
@@ -139,10 +141,11 @@
             <input
               class="form-check-input"
               type="radio"
-              name="dogSize"
+              name="dog_size"
               id="large"
-              value="large"
+              value="L"
               required
+              <% if (dogData.dog_size == "L") { %> checked <% } %>
             />
             <label class="size-options-2" for="large">
               <span class="size-label">Large</span>
@@ -155,10 +158,11 @@
             <input
               class="form-check-input"
               type="radio"
-              name="dogSize"
+              name="dog_size"
               id="xlarge"
-              value="xlarge"
+              value="XL"
               required
+              <% if (dogData.dog_size == "XL") { %> checked <% } %>
             />
             <label class="size-options-2" for="xlarge">
               <span class="size-label">X-Large</span>
@@ -177,10 +181,11 @@
             <input
               class="form-check-input"
               type="radio"
-              name="dogAge"
+              name="dog_age"
               id="puppy"
-              value="puppy"
+              value="Puppy"
               required
+              <% if (dogData.dog_age == "Puppy") { %> checked <% } %>
             />
             <label class="age-options-2" for="puppy">
               <span class="age-label">Puppy</span>
@@ -193,10 +198,11 @@
             <input
               class="form-check-input"
               type="radio"
-              name="dogAge"
+              name="dog_age"
               id="adult"
-              value="adult"
+              value="Adult"
               required
+              <% if (dogData.dog_age == "Adult") { %> checked <% } %>
             />
             <label class="age-options-2" for="adult">
               <span class="age-label">Adult</span>
@@ -209,10 +215,11 @@
             <input
               class="form-check-input"
               type="radio"
-              name="dogAge"
+              name="dog_age"
               id="senior"
-              value="senior"
+              value="Senior"
               required
+              <% if (dogData.dog_age == "Senior") { %> checked <% } %>
             />
             <label class="age-options-2" for="senior">
               <span class="age-label">Senior</span>
@@ -233,7 +240,7 @@
             autocomplete="off"
             rows="5"
           >
-Input special needs here...</textarea
+<%= dogData.special_needs %></textarea
           >
         </div>
       </div>
@@ -249,7 +256,7 @@ Input special needs here...</textarea
             autocomplete="off"
             rows="5"
           >
-Input remarks here...</textarea
+<%= dogData.dog_remark %></textarea
           >
         </div>
       </div>

@@ -17,6 +17,7 @@ const transporter = nodemailer.createTransport({
     }
 });
 
+// Middleware to save logged in user details in locals
 router.use((req, res, next) => {
     if (req.session.userId) {
         global.db.get('SELECT * FROM user WHERE user_id = ?', [req.session.userId], (err, row) => {
@@ -50,6 +51,7 @@ router.get('/booking', isAuthenticated, (req, res) => {
     });
 });
 
+// Route for booking walker page
 router.get('/booking-walker', async (req, res) => {
     const walkerData = await getWalkerData(global.db, req.session.userId);
     res.render('index', {
@@ -60,6 +62,7 @@ router.get('/booking-walker', async (req, res) => {
     });
 });
 
+// Route for booking summary page
 router.get('/booking-summary', async (req, res) => {
     const walkerData = await getWalkerData(global.db, req.session.userId);
     res.render('index', {
@@ -70,6 +73,7 @@ router.get('/booking-summary', async (req, res) => {
     });
 });
 
+// Route for booking success page
 router.get('/booking-success', (req, res) => {
     res.render('index', {
         title: 'Booking Successful - WoofWalk',
@@ -78,6 +82,7 @@ router.get('/booking-success', (req, res) => {
     });
 });
 
+// Route for booking history page
 router.get('/booking-history', async (req, res) => {
     const walkerData = await getWalkerData(global.db, req.session.userId);
     res.render('index', {
@@ -88,6 +93,7 @@ router.get('/booking-history', async (req, res) => {
     });
 });
 
+// Route for booking review page
 router.get('/booking-review', (req, res) => {
     res.render('index', {
         title: 'Booking Review - WoofWalk',
@@ -96,6 +102,7 @@ router.get('/booking-review', (req, res) => {
     });
 });
 
+// Route for booking review success page
 router.get('/booking-review-success', (req, res) => {
     res.render('index', {
         title: 'Review Success - WoofWalk',
@@ -293,6 +300,7 @@ router.post("/forgot-password", async (req, res) => {
     });
 });
 
+// Handle reset password
 router.post("/reset-password", async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
@@ -315,6 +323,14 @@ router.post("/reset-password", async (req, res) => {
         }
     );
 });
+
+// Route to get user photo
+router.get('/get-user-photo', async (req, res) => {
+    const userData = await getUserData(global.db, req.session.userId);
+    const userPhoto = userData.user_photo;
+    res.set('Content-Type', 'image/jpg');
+    res.end(userPhoto, 'binary');
+}); 
 
 // Route for logout
 router.get('/logout', (req, res) => {

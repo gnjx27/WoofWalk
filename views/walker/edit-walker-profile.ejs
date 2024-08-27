@@ -10,9 +10,9 @@
     <div class="profile-card">
       <!-- Walker Profile Image -->
       <img
-        id="walkerImage"
-        src="/walker/get-walker-photo"
-        alt="Walker Image"
+        id="userImage"
+        src="/get-user-photo"
+        alt="User Image"
         class="walker-image"
       />
 
@@ -20,7 +20,7 @@
       <div class="mt-4">
         <input
           type="file"
-          name="walkerPhoto"
+          name="userPhoto"
           id="fileInput"
           style="display: none"
           accept="image/*"
@@ -338,7 +338,7 @@
     .addEventListener("change", function (event) {
       const file = event.target.files[0];
       const fileNameSpan = document.getElementById("fileName");
-      const walkerImage = document.getElementById("walkerImage");
+      const userImage = document.getElementById("userImage");
 
       if (file) {
         // Update the file name text
@@ -349,7 +349,7 @@
 
         // Once the file is read, update the image src
         reader.onload = function (e) {
-          walkerImage.src = e.target.result;
+          userImage.src = e.target.result;
         };
 
         // Read the image file as a data URL
