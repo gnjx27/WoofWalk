@@ -264,7 +264,7 @@ router.post('/sign-in', async (req, res) => {
             }
             res.redirect('/');
         } else {
-            return res.status(400).send('Invalid username or password');
+            res.redirect('/sign-in?message=Invalid+username+or+password');
         }
     } catch (error) {
         res.status(500).send('Error signing in');

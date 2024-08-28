@@ -7,6 +7,7 @@
   action="/owner/update-owner-profile"
   method="POST"
   enctype="multipart/form-data"
+  id="update-owner-profile"
 >
   <div class="profile-container">
     <div class="profile-card">
@@ -29,7 +30,7 @@
         >
           Upload Photo
         </button>
-        <span id="fileName">No file chosen</span>
+        <span id="fileName" style="color: #9e9e9e">No file chosen</span>
       </div>
 
       <hr class="mt-4 mb-4" />
@@ -38,6 +39,7 @@
       <div class="contact-walker">
         <h3 class="mb-3">Edit User Profile</h3>
 
+        <!-- Username -->
         <div class="row mb-3">
           <div class="col-md-12">
             <label for="username" class="form-label"><b>Username</b></label>
@@ -49,8 +51,18 @@
               value="<%= userData.username %>"
               autocomplete="off"
             />
+            <div class="error-container">
+              <i
+                id="username-error-icon"
+                class="bi bi-exclamation-triangle-fill error-icon"
+                style="display: none"
+              ></i>
+              <div id="username-error" class="text-danger"></div>
+            </div>
           </div>
         </div>
+
+        <!-- Email -->
         <div class="row mb-3">
           <div class="col-md-12">
             <label for="email" class="form-label"><b>Email</b></label>
@@ -62,6 +74,14 @@
               value="<%= userData.email %>"
               autocomplete="off"
             />
+            <div class="error-container">
+              <i
+                id="email-error-icon"
+                class="bi bi-exclamation-triangle-fill error-icon"
+                style="display: none"
+              ></i>
+              <div id="email-error" class="text-danger"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -82,6 +102,14 @@
             value="<%= dogData.dog_name %>"
             autocomplete="off"
           />
+          <div class="error-container">
+            <i
+              id="dog-name-error-icon"
+              class="bi bi-exclamation-triangle-fill error-icon"
+              style="display: none"
+            ></i>
+            <div id="dog-name-error" class="text-danger"></div>
+          </div>
         </div>
         <div class="col-md-6">
           <label for="dog_breed" class="form-label"
@@ -95,6 +123,14 @@
             value="<%= dogData.dog_breed %>"
             autocomplete="off"
           />
+          <div class="error-container">
+            <i
+              id="dog-breed-error-icon"
+              class="bi bi-exclamation-triangle-fill error-icon"
+              style="display: none"
+            ></i>
+            <div id="dog-breed-error" class="text-danger"></div>
+          </div>
         </div>
       </div>
 
@@ -242,6 +278,14 @@
           >
 <%= dogData.special_needs %></textarea
           >
+          <div class="error-container">
+            <i
+              id="special-needs-error-icon"
+              class="bi bi-exclamation-triangle-fill error-icon"
+              style="display: none"
+            ></i>
+            <div id="special-needs-error" class="text-danger"></div>
+          </div>
         </div>
       </div>
       
@@ -258,6 +302,14 @@
           >
 <%= dogData.dog_remark %></textarea
           >
+          <div class="error-container">
+            <i
+              id="remark-error-icon"
+              class="bi bi-exclamation-triangle-fill error-icon"
+              style="display: none"
+            ></i>
+            <div id="remark-error" class="text-danger"></div>
+          </div>
         </div>
       </div>
 
@@ -283,10 +335,7 @@
 
 <script>
   function handleCancelClick() {
-    // Reset the form fields
     document.querySelector("form").reset();
-
-    // Navigate back to the previous page
     window.history.back();
   }
 
@@ -316,4 +365,83 @@
         fileNameSpan.textContent = "No file chosen";
       }
     });
+
+  document.getElementById("update-owner-profile").addEventListener("submit", function (event) {
+    let valid = true;
+
+    // Clear previous errors
+    document.getElementById("username-error").textContent = "";
+    document.getElementById("email-error").textContent = "";
+    document.getElementById("dog-name-error").textContent = "";
+    document.getElementById("dog-breed-error").textContent = "";
+    document.getElementById("special-needs-error").textContent = "";
+
+    // Hide error icons
+    document.getElementById("username-error-icon").style.display = "none";
+    document.getElementById("email-error-icon").style.display = "none";
+    document.getElementById("dog-name-error-icon").style.display = "none";
+    document.getElementById("dog-breed-error-icon").style.display = "none";
+    document.getElementById("special-needs-error-icon").style.display = "none";
+
+
+    // Validate Username
+    const username = document.getElementById("username").value;
+    if (username.length < 5) {
+      document.getElementById("username-error").textContent =
+        "Username must be at least 5 characters!";
+      document.getElementById("username-error-icon").style.display = "inline";
+      valid = false;
+    }
+
+    // Validate Email
+    const email = document.getElementById("email").value;
+    if (!email.includes("@") || !email.includes(".")) {
+      document.getElementById("email-error").textContent =
+        "Invalid email format!";
+      document.getElementById("email-error-icon").style.display = "inline";
+      valid = false;
+    }
+
+    // Validate Dog Name
+    const dog_name = document.getElementById("dog_name").value;
+    if (dog_name.length < 3) {
+      document.getElementById("dog-name-error").textContent =
+        "Dog Name must be at least 3 characters!";
+      document.getElementById("dog-name-error-icon").style.display = "inline";
+      valid = false;
+    }
+    
+    // Validate Dog Breed
+    const dog_breed = document.getElementById("dog_breed").value;
+    if (dog_breed.length < 3) {
+      document.getElementById("dog-breed-error").textContent =
+        "Dog breed must be at least 3 characters!";
+      document.getElementById("dog-breed-error-icon").style.display = "inline";
+      valid = false;
+    }
+    
+    // Validate Special Needs
+    const special_needs = document.getElementById("special_needs").value;
+    if (special_needs.length < 10) {
+      document.getElementById("special-needs-error").textContent =
+        "Special needs must be at least 10 characters!";
+      document.getElementById("special-needs-error-icon").style.display = "inline";
+      valid = false;
+    }
+    
+    // Validate Remark
+    const dog_remark = document.getElementById("dog_remark").value;
+    if (dog_remark.length < 10) {
+      document.getElementById("remark-error").textContent =
+        "Remark must be at least 10 characters!";
+      document.getElementById("remark-error-icon").style.display = "inline";
+      valid = false;
+    }
+
+
+    if (!valid) {
+      event.preventDefault();
+    }
+  });
+
 </script>
