@@ -57,8 +57,8 @@ router.get('/booking-walker', async (req, res) => {
     res.render('index', {
         title: 'Search Walker- WoofWalk',
         currentPage: 'booking-walker',
-        body: 'booking-walker',
-        walkerData: walkerData
+        body: 'booking-walker'
+        // walkerData: walkerData
     });
 });
 

@@ -10,6 +10,7 @@
   <div class="slide-container swiper-container">
     <div class="swiper">
       <div class="swiper-wrapper">
+        <!-- start here -->
         <!-- 1st Walker -->
         <div class="card swiper-slide">
           <div class="image-content">
@@ -21,17 +22,17 @@
           </div>
           <p class="quote">
             <img src="/assets/quotes1.png" alt="quotes1" class="quote-icon" />
-            <%=walkerData.walker_quote %>
+            Your dog happiness, my priority.
             <img src="/assets/quotes2.png" alt="quotes1" class="quote-icon" />
           </p>
           <div class="card-content">
             <div class="walker-info">
               <!-- First Column: Name, Location, Stars, Reviews -->
               <div class="walker-details">
-                <h2 class="capitalize-name"><%= user.username %> :)</h2>
+                <h2 class="capitalize-name">Carrie :)</h2>
                 <p style="color: #004393">
-                  <i class="bi bi-pin-map-fill"></i> <%=
-                  walkerData.walker_location %>
+                  <i class="bi bi-pin-mare p-fill"></i>
+                  Jurong East, Singapore
                 </p>
                 <p>⭐⭐⭐⭐⭐</p>
                 <p style="color: grey">(25 Reviews)</p>
@@ -40,10 +41,10 @@
               <div class="button-container">
                 <button
                   class="book-button"
-                  onclick="navigateToBookingSummary()"
+                  onclick="window.location.href='/booking-summary'"
                 >
                   BOOK FROM <br />
-                  <span>SGD <%= walkerData.base_price %></span> <br />
+                  <span>SGD 25</span> <br />
                   /walk
                 </button>
               </div>
@@ -57,16 +58,13 @@
               >
                 Return
               </button>
-              <button
-                type="submit"
-                class="button-design-3 payment"
-                onclick="navigateToWalkerProfile()"
+              <a href="/walker/walker-profile" class="button-design-3 payment"
+                >View More</a
               >
-                View More
-              </button>
             </div>
           </div>
         </div>
+        <!-- end here -->
 
         <!-- 2nd Walker -->
         <div class="card swiper-slide">
@@ -80,17 +78,17 @@
 
           <p class="quote">
             <img src="/assets/quotes1.png" alt="quotes1" class="quote-icon" />
-            <%=walkerData.walker_quote %>
+            Your dog happiness, my priority.
             <img src="/assets/quotes2.png" alt="quotes1" class="quote-icon" />
           </p>
           <div class="card-content">
             <div class="walker-info">
               <!-- First Column: Name, Location, Stars, Reviews -->
               <div class="walker-details">
-                <h2 class="capitalize-name"><%= user.username %> :)</h2>
+                <h2 class="capitalize-name">Carrie :)</h2>
                 <p style="color: #004393">
-                  <i class="bi bi-pin-map-fill"></i> <%=
-                  walkerData.walker_location %>
+                  <i class="bi bi-pin-mare p-fill"></i>
+                  Jurong East, Singapore
                 </p>
                 <p>⭐⭐⭐⭐⭐</p>
                 <p style="color: grey">(25 Reviews)</p>
@@ -102,7 +100,7 @@
                   onclick="navigateToBookingSummary()"
                 >
                   BOOK FROM <br />
-                  <span>SGD <%= walkerData.base_price %></span> <br />
+                  <span>SGD 25</span> <br />
                   /walk
                 </button>
               </div>
@@ -116,13 +114,9 @@
               >
                 Return
               </button>
-              <button
-                type="submit"
-                class="button-design-3 payment"
-                onclick="navigateToWalkerProfile()"
+              <a href="/walker/walker-profile" class="button-design-3 payment"
+                >View More</a
               >
-                View More
-              </button>
             </div>
           </div>
         </div>
@@ -139,17 +133,17 @@
 
           <p class="quote">
             <img src="/assets/quotes1.png" alt="quotes1" class="quote-icon" />
-            <%=walkerData.walker_quote %>
+            Your dog happiness, my priority.
             <img src="/assets/quotes2.png" alt="quotes1" class="quote-icon" />
           </p>
           <div class="card-content">
             <div class="walker-info">
               <!-- First Column: Name, Location, Stars, Reviews -->
               <div class="walker-details">
-                <h2 class="capitalize-name"><%= user.username %> :)</h2>
+                <h2 class="capitalize-name">Carrie :)</h2>
                 <p style="color: #004393">
-                  <i class="bi bi-pin-map-fill"></i> <%=
-                  walkerData.walker_location %>
+                  <i class="bi bi-pin-mare p-fill"></i>
+                  Jurong East, Singapore
                 </p>
                 <p>⭐⭐⭐⭐⭐</p>
                 <p style="color: grey">(25 Reviews)</p>
@@ -161,7 +155,7 @@
                   onclick="navigateToBookingSummary()"
                 >
                   BOOK FROM <br />
-                  <span>SGD <%= walkerData.base_price %></span> <br />
+                  <span>SGD 25</span> <br />
                   /walk
                 </button>
               </div>
@@ -175,13 +169,9 @@
               >
                 Return
               </button>
-              <button
-                type="submit"
-                class="button-design-3 payment"
-                onclick="navigateToWalkerProfile()"
+              <a href="/walker/walker-profile" class="button-design-3 payment"
+                >View More</a
               >
-                View More
-              </button>
             </div>
           </div>
         </div>
@@ -198,17 +188,17 @@
 
           <p class="quote">
             <img src="/assets/quotes1.png" alt="quotes1" class="quote-icon" />
-            <%=walkerData.walker_quote %>
+            Your dog happiness, my priority.
             <img src="/assets/quotes2.png" alt="quotes1" class="quote-icon" />
           </p>
           <div class="card-content">
             <div class="walker-info">
               <!-- First Column: Name, Location, Stars, Reviews -->
               <div class="walker-details">
-                <h2 class="capitalize-name"><%= user.username %> :)</h2>
+                <h2 class="capitalize-name">Carrie :)</h2>
                 <p style="color: #004393">
-                  <i class="bi bi-pin-map-fill"></i> <%=
-                  walkerData.walker_location %>
+                  <i class="bi bi-pin-mare p-fill"></i>
+                  Jurong East, Singapore
                 </p>
                 <p>⭐⭐⭐⭐⭐</p>
                 <p style="color: grey">(25 Reviews)</p>
@@ -220,7 +210,7 @@
                   onclick="navigateToBookingSummary()"
                 >
                   BOOK FROM <br />
-                  <span>SGD <%= walkerData.base_price %></span> <br />
+                  <span>SGD 25</span> <br />
                   /walk
                 </button>
               </div>
@@ -234,13 +224,9 @@
               >
                 Return
               </button>
-              <button
-                type="submit"
-                class="button-design-3 payment"
-                onclick="navigateToWalkerProfile()"
+              <a href="/walker/walker-profile" class="button-design-3 payment"
+                >View More</a
               >
-                View More
-              </button>
             </div>
           </div>
         </div>
@@ -257,17 +243,17 @@
 
           <p class="quote">
             <img src="/assets/quotes1.png" alt="quotes1" class="quote-icon" />
-            <%=walkerData.walker_quote %>
+            Your dog happiness, my priority.
             <img src="/assets/quotes2.png" alt="quotes1" class="quote-icon" />
           </p>
           <div class="card-content">
             <div class="walker-info">
               <!-- First Column: Name, Location, Stars, Reviews -->
               <div class="walker-details">
-                <h2 class="capitalize-name"><%= user.username %> :)</h2>
+                <h2 class="capitalize-name">Carrie :)</h2>
                 <p style="color: #004393">
-                  <i class="bi bi-pin-map-fill"></i> <%=
-                  walkerData.walker_location %>
+                  <i class="bi bi-pin-mare p-fill"></i>
+                  Jurong East, Singapore
                 </p>
                 <p>⭐⭐⭐⭐⭐</p>
                 <p style="color: grey">(25 Reviews)</p>
@@ -279,7 +265,7 @@
                   onclick="navigateToBookingSummary()"
                 >
                   BOOK FROM <br />
-                  <span>SGD <%= walkerData.base_price %></span> <br />
+                  <span>SGD 25</span> <br />
                   /walk
                 </button>
               </div>
@@ -293,13 +279,9 @@
               >
                 Return
               </button>
-              <button
-                type="submit"
-                class="button-design-3 payment"
-                onclick="navigateToWalkerProfile()"
+              <a href="/walker/walker-profile" class="button-design-3 payment"
+                >View More</a
               >
-                View More
-              </button>
             </div>
           </div>
         </div>
@@ -324,7 +306,7 @@
       modifier: 4,
       slideShadows: true,
     },
-    loop: true,
+    loop: false,
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
@@ -348,28 +330,5 @@
   function handleReturnClick() {
     // Navigate back to the booking page
     window.location.href = "/booking";
-  }
-
-  function navigateToBookingSummary() {
-    // Get the necessary data from the HTML elements
-    const walkerId = "<%= walkerData.walker_id %>";
-    const userId = "<%= user.user_id %>";
-
-    // Construct the URL for the booking-summary.ejs page
-    const bookingSummaryUrl = `/booking-summary?walkerId=${walkerId}&userId=${userId}`;
-
-    // Redirect the user to the booking-summary.ejs page
-    window.location.href = bookingSummaryUrl;
-  }
-
-  function navigateToWalkerProfile() {
-    // Get the necessary data from the HTML elements
-    const walkerId = "<%= walkerData.walker_id %>";
-
-    // Construct the URL for the walker-profile.ejs page
-    const walkerProfileUrl = `/walker/walker-profile?walkerId=${walkerId}`;
-
-    // Redirect the user to the walker-profile.ejs page
-    window.location.href = walkerProfileUrl;
   }
 </script>
