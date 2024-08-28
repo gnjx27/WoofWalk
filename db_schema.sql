@@ -109,6 +109,9 @@ VALUES
 INSERT INTO dog (dog_name, dog_breed, dog_age, dog_size, user_id) 
 VALUES
     ("Puffy", "Japanese Spitz", "Puppy", "M", 1),
-    ("Fitch", "Teria", "Senior", "S", 2);
+    ("Fitch", "Teria", "Senior", "S", 2),
+    ("Bella", "Golden Retriever", "Adult", "L", 3),
+    ("Max", "Beagle", "Puppy", "S", 4),
+    ("Rocky", "Bulldog", "Senior", "M", 5);
 
 COMMIT;
