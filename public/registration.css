@@ -47,7 +47,7 @@ input[type="radio"] {
 
 /* Styles for account type options */
 .account-options {
-  color: grey;
+  color: rgb(97, 97, 97);
   cursor: pointer;
   border: 1px solid rgba(128, 128, 128, 0.5);
   padding: 0.4em 5.5em;
@@ -106,7 +106,7 @@ input[type="radio"]:checked + .account-options {
 
 /* Style for the "Forgot password?" link */
 .forgot-password-link {
-  color: grey;
+  color: rgb(97, 97, 97);
   text-decoration: none;
   transition: color 0.2s;
 }
