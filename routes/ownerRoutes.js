@@ -42,7 +42,7 @@ router.post('/update-owner-profile', isAuthenticated, async (req, res) => {
     } catch {
         userPhoto = userData.user_photo;
     }
-    const userQuery = 'UPDATE user SET username = ?, email = ?, user_photo = ? WHERE user_id = ?';
+    const userQuery = 'UPDATE user SET username = ?, email = ?, user_photo = ?, has_owner_profile = 1 WHERE user_id = ?';
     const dogQuery = 'UPDATE dog SET dog_name = ?, dog_breed = ?, dog_size = ?, dog_age = ?, special_needs = ?, dog_remark = ? WHERE user_id = ?';
     global.db.run(userQuery, [username, email, userPhoto, req.session.userId], (err) => {
         if (err) {

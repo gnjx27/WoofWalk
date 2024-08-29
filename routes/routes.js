@@ -2,11 +2,24 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-const { checkExistingUser, validateUserInput, hashPassword, insertUser, insertWalker } = require('../utils/utils');
+const { 
+    checkExistingUser, 
+    validateUserInput, 
+    hashPassword, 
+    insertUser, 
+    insertWalker, 
+    getWalkerData, 
+    getWalkerReviews, 
+    getUserData, 
+    getDogData,
+    insertDog,
+    getWalkers,
+    getUsers,
+    getReviews
+} = require('../utils/utils');
 const { v4: uuidv4 } = require('uuid');
 const nodemailer = require('nodemailer');
 const isAuthenticated = require('../utils/auth');
-const { getWalkerData, getWalkerReviews, getUserData } = require('../utils/utils');
 
 // Nodemailer setup
 const transporter = nodemailer.createTransport({
@@ -43,22 +56,41 @@ router.get('/', (req, res) => {
 });
 
 // Route for booking page (protected)
-router.get('/booking', isAuthenticated, (req, res) => {
+router.get('/booking', isAuthenticated, async (req, res) => {
+    const dogData = await getDogData(global.db, req.session.userId);
     res.render('index', {
         title: 'Booking - WoofWalk',
         currentPage: 'booking',
-        body: 'booking'
+        body: 'booking',
+        dogData: dogData
     });
 });
 
+// Pass booking details to next route (book-walker)
+router.post('/booking-details', isAuthenticated, async (req, res) => {
+    const { location, date, time, remarks, dogSize, dogAge, timeRange } = req.body;
+    const dogData = await getDogData(global.db, req.session.userId);
+    global.db.run('UPDATE dog SET dog_size = ?, dog_age = ? WHERE user_id = ?', [dogSize, dogAge, req.session.userId], (err) => {
+        if (err) {
+            console.log("Error updating dog details");
+        } else {
+            res.redirect('/booking-walker');
+        }
+    });  
+});
+
 // Route for booking walker page
-router.get('/booking-walker', async (req, res) => {
-    const walkerData = await getWalkerData(global.db, req.session.userId);
+router.get('/booking-walker', isAuthenticated, async (req, res) => {    
+    const walkers = await getWalkers(global.db);
+    const users = await getUsers(global.db);
+    const reviews = await getReviews(global.db);
     res.render('index', {
         title: 'Search Walker- WoofWalk',
         currentPage: 'booking-walker',
-        body: 'booking-walker'
-        // walkerData: walkerData
+        body: 'booking-walker',
+        walkers: walkers,
+        users: users,
+        reviews: reviews
     });
 });
 
@@ -221,10 +253,16 @@ router.post('/sign-up', validateUserInput, hashPassword, async (req, res) => {
         const existingUser = await checkExistingUser(global.db, email, username);
         if (existingUser) {
             return res.status(400).send('Email or username already in use');
+        } else {
+            const userId = await insertUser(global.db, username, email, password_hash, accountType);
+            if (accountType == 'owner') {
+                await insertDog(global.db, userId)
+                res.status(201).redirect('/sign-in');
+            } else {
+                await insertWalker(global.db, userId);
+                res.status(201).redirect('/sign-in');
+            }
         }
-        const userId = await insertUser(global.db, username, email, password_hash, accountType);
-        await insertWalker(global.db, userId);
-        res.status(201).redirect('/sign-in');
     } catch (error) {
         console.log(error.message)
         return res.status(500).send('Error creating account');
@@ -256,7 +294,7 @@ router.post('/sign-in', async (req, res) => {
             }
 
             // Redirect based on profile completion
-            if (user.account_type === 'owner' && !user.has_dog_profile) {
+            if (user.account_type === 'owner' && !user.has_owner_profile) {
                 return res.redirect('/owner/owner-profile');
             }
             if (user.account_type === 'walker' && !user.has_walker_profile) {
@@ -330,7 +368,16 @@ router.get('/get-user-photo', async (req, res) => {
     const userPhoto = userData.user_photo;
     res.set('Content-Type', 'image/jpg');
     res.end(userPhoto, 'binary');
-}); 
+});
+
+// Route to get user photo based on id
+router.get('/get-user-photo/:userId', async (req, res) => {
+    const userId = req.params.userId;
+    const userData = await getUserData(global.db, userId);
+    const userPhoto = userData.user_photo;
+    res.set('Content-Type', 'image/jpg');
+    res.end(userPhoto, 'binary');
+});
 
 // Route for logout
 router.get('/logout', (req, res) => {

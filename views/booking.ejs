@@ -12,7 +12,7 @@
 </div>
 
 <!-- Booking Section -->
-<form action="/submit-booking" method="post">
+<form action="/booking-details" method="post">
   <div class="booking-container">
     <div class="row">
       <!-- Left Section -->
@@ -35,9 +35,11 @@
             type="text"
             class="form-control"
             id="boarding-location"
-            name="boarding-location"
+            name="location"
             placeholder="Zip Code or Address"
             required
+            autocomplete="off"
+            autofocus
           />
         </div>
 
@@ -100,8 +102,9 @@
                 type="radio"
                 name="dogSize"
                 id="small"
-                value="small"
+                value="S"
                 required
+                <% if (dogData.dog_size == 'S') { %> checked <% } %>
               />
               <label class="size-options" for="small">
                 <span class="size-label">Small</span>
@@ -116,8 +119,9 @@
                 type="radio"
                 name="dogSize"
                 id="medium"
-                value="medium"
+                value="M"
                 required
+                <% if (dogData.dog_size == 'M') { %> checked <% } %>
               />
               <label class="size-options" for="medium">
                 <span class="size-label">Medium</span>
@@ -132,8 +136,9 @@
                 type="radio"
                 name="dogSize"
                 id="large"
-                value="large"
+                value="L"
                 required
+                <% if (dogData.dog_size == 'L') { %> checked <% } %>
               />
               <label class="size-options" for="large">
                 <span class="size-label">Large</span>
@@ -148,8 +153,9 @@
                 type="radio"
                 name="dogSize"
                 id="xlarge"
-                value="xlarge"
+                value="XL"
                 required
+                <% if (dogData.dog_size == 'XL') { %> checked <% } %>
               />
               <label class="size-options" for="xlarge">
                 <span class="size-label">X-Large</span>
@@ -170,8 +176,9 @@
                 type="radio"
                 name="dogAge"
                 id="puppy"
-                value="puppy"
+                value="Puppy"
                 required
+                <% if (dogData.dog_age == 'Puppy') { %> checked <% } %>
               />
               <label class="age-options" for="puppy">
                 <span class="age-label">Puppy</span>
@@ -186,8 +193,9 @@
                 type="radio"
                 name="dogAge"
                 id="adult"
-                value="adult"
+                value="Adult"
                 required
+                <% if (dogData.dog_age == 'Adult') { %> checked <% } %>
               />
               <label class="age-options" for="adult">
                 <span class="age-label">Adult</span>
@@ -202,8 +210,9 @@
                 type="radio"
                 name="dogAge"
                 id="senior"
-                value="senior"
+                value="Senior"
                 required
+                <% if (dogData.dog_age == 'Senior') { %> checked <% } %>
               />
               <label class="age-options" for="senior">
                 <span class="age-label">Senior</span>
@@ -224,11 +233,11 @@
                 type="radio"
                 name="timeRange"
                 id="range30-45"
-                value="30-45"
+                value="30"
                 required
               />
               <label class="time-options" for="range30-45">
-                <span class="time-label">30-45</span>
+                <span class="time-label">30</span>
                 <span class="time-units">mins</span>
               </label>
             </div>
@@ -240,11 +249,11 @@
                 type="radio"
                 name="timeRange"
                 id="range45-60"
-                value="45-60"
+                value="60"
                 required
               />
               <label class="time-options" for="range45-60">
-                <span class="time-label">45-60</span>
+                <span class="time-label">60</span>
                 <span class="time-units">mins</span>
               </label>
             </div>
@@ -256,11 +265,11 @@
                 type="radio"
                 name="timeRange"
                 id="range60-90"
-                value="60-90"
+                value="90"
                 required
               />
               <label class="time-options" for="range60-90">
-                <span class="time-label">60-90</span>
+                <span class="time-label">90</span>
                 <span class="time-units">mins</span>
               </label>
             </div>
@@ -272,11 +281,11 @@
                 type="radio"
                 name="timeRange"
                 id="range90plus"
-                value="90+"
+                value="120"
                 required
               />
               <label class="time-options" for="range90plus">
-                <span class="time-label">90++</span>
+                <span class="time-label">120</span>
                 <span class="time-units">mins</span>
               </label>
             </div>
@@ -296,7 +305,6 @@
             <button
               type="submit"
               class="button-design-3 search"
-              onclick="navigateToWalkerPage()"
             >
               Search
             </button>
@@ -314,12 +322,6 @@
 
     // Navigate back to the previous page
     window.location.href = "/";
-  }
-
-  function navigateToWalkerPage() {
-    const form = document.querySelector("form");
-    const formData = new URLSearchParams(new FormData(form)).toString();
-    window.location.href = `/booking-walker?${formData}`;
   }
 
   // Display the selected file name
