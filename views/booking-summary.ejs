@@ -12,26 +12,45 @@
         <!-- Location -->
         <div class="detail-item">
           <h4><i class="bi bi-pin-map-fill"></i>Location</h4>
-          <p>Jurong East, Singapore.</p>
+          <p><%= bookingDetails.location %></p>
         </div>
         <hr />
         <!-- Date -->
         <div class="detail-item">
           <h4><i class="bi bi-calendar-check"></i>Date</h4>
-          <p>Wed, 3 May 2024</p>
+          <p><%= bookingDetails.date %></p>
         </div>
         <hr />
         <!-- Time & Duration -->
         <div class="detail-item">
           <h4><i class="bi bi-clock"></i>Time & Duration</h4>
-          <p>5pm - 6pm (45-60 min)</p>
+          <p><%= bookingDetails.time %> (<%= bookingDetails.timeRange %> min)</p>
         </div>
         <hr />
         <!-- Dog Size & Age -->
         <div class="detail-item">
           <h4><i class="bi bi-info-circle"></i>Dog Size & Age</h4>
-          <p>Medium 11-26kg</p>
-          <p>Adult 2-8 yrs</p>
+          <% if (bookingDetails.dogSize == 'S') { %>
+            <p>Small <10kg</p>
+          <% } %>
+          <% if (bookingDetails.dogSize == 'M') { %>
+            <p>Medium 11-26kg</p>
+          <% } %>
+          <% if (bookingDetails.dogSize == 'L') { %>
+            <p>Large 27-45kg</p>
+          <% } %>
+          <% if (bookingDetails.dogSize == 'XL') { %>
+            <p>X-Large 46+kg</p>
+          <% } %>
+          <% if (bookingDetails.dogAge == 'Puppy') { %>
+            <p>Puppy 0-1 yrs</p>
+          <% } %>
+          <% if (bookingDetails.dogAge == 'Adult') { %>
+            <p>Puppy 2-8 yrs</p>
+          <% } %>
+          <% if (bookingDetails.dogAge == 'Senior') { %>
+            <p>Puppy 9+ yrs</p>
+          <% } %>
         </div>
       </div>
     </div>
@@ -48,13 +67,13 @@
             class="walker-image"
           />
           <div class="walker-info">
-            <h4 class="walker-name" style="text-transform: capitalize;">Carrie :)</h4>
+            <h4 class="walker-name" style="text-transform: capitalize;"><%= walkerUserData.username %> :)</h4>
             <div class="walker-quote">
               <img
                 src="/assets/quotes1.png"
                 alt="quotes1"
                 class="quotes-icon"
-              />Your dog happiness, my priority<img
+              /><%= walkerData.walker_quote %><img
                 src="/assets/quotes2.png"
                 alt="quotes2"
                 class="quotes-icon"
@@ -68,16 +87,16 @@
       <div class="payment-details">
         <h3 class="card-title mb-4">Payment Details</h3>
         <div class="payment-item">
-          <span class="description">Basic Charge (30 mins)</span>
-          <span class="price">$30</span>
+          <span class="description">Walker Base price (30 mins)</span>
+          <span class="price">$<%= walkerData.base_price %></span>
         </div>
-        <div class="payment-item">
+        <!-- <div class="payment-item">
           <span class="description">Extended Walk (45-60 mins)</span>
           <span class="price">$15</span>
-        </div>
+        </div> -->
         <div class="payment-item total">
           <span class="description">Total Cost</span>
-          <span class="price">$45</span>
+          <span class="price">$<%= bookingDetails.totalCost %></span>
         </div>
       </div>
     </div>

@@ -32,7 +32,7 @@
               <div class="walker-info">
                 <!-- First Column: Name, Location, Stars, Reviews -->
                 <div class="walker-details">
-                  <h2 class="capitalize-name"><%= user.username %>:)</h2>
+                  <h2 class="capitalize-name"><%= user.username %> :)</h2>
                   <p style="color: #004393">
                     <i class="bi bi-pin-mare p-fill"></i>
                     <%= walker.walker_location %>
@@ -44,11 +44,11 @@
                 <div class="button-container">
                   <button
                     class="book-button"
-                    onclick="window.location.href='/booking-summary'"
+                    onclick="window.location.href='/booking-summary/<%= walker.user_id %>'"
                   >
                     BOOK FROM <br />
                     <span>SGD <%= walker.base_price %></span> <br />
-                    /walk
+                    /30 min
                   </button>
                 </div>
               </div>

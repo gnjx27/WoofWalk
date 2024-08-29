@@ -208,6 +208,18 @@ const getReviews = (db) => {
     });
 };
 
+const getBookings = (db, userId) => {
+    return new Promise ((resolve, reject) => {
+        db.all('SELECT * FROM booking WHERE user_id = ?', [userId], (err, bookings) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(bookings);
+            }
+        });
+    });
+};
+
 module.exports = { 
     checkExistingUser, 
     validateUserInput, 
@@ -222,5 +234,6 @@ module.exports = {
     insertDog,
     getWalkers,
     getUsers,
-    getReviews
+    getReviews,
+    getBookings
 };

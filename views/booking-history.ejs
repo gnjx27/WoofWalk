@@ -20,7 +20,12 @@
     <div class="jumping-dog">
       <img src="/assets/jumping-dog.gif" alt="Jumping Dog" />
     </div>
-    <!-- History 1 -->
+
+    <% for (let i = 1; i <= bookings.length; i++) {
+      const walker = walkers.find(walker => walker.walker_id == bookings[i - 1]["walker_id"]);
+      const user = users.find(user => user.user_id == walker.user_id);
+      %>
+       
     <div class="history">
       <div class="history-image-container">
         <img
@@ -31,10 +36,10 @@
       </div>
       <div class="history-content">
         <div class="history-header">
-          <h3>Booking 1</h3>
-          <h4>Carrie</h4>
-          <p>Wednesday, 3 May 2024</p>
-          <p>5pm - 6pm (45-60 min)</p>
+          <h3>Booking <%= i %></h3>
+          <h4><%= user.username %></h4>
+          <p>Date: <%= bookings[i - 1]["walk_date"] %></p>
+          <p>Time: <%= bookings[i - 1]["walk_time"] %> (<%= bookings[i - 1]["duration"] %> min)</p>
           <!-- Submit button -->
           <button
             type="submit"
@@ -46,58 +51,8 @@
         </div>
       </div>
     </div>
-    <!-- History 2 -->
-    <div class="history">
-      <div class="history-image-container">
-        <img
-          src="/assets/reviewer1.jpg"
-          alt="History Walker Image"
-          class="history-image"
-        />
-      </div>
-      <div class="history-content">
-        <div class="history-header">
-          <h3>Booking 2</h3>
-          <h4>Carrie</h4>
-          <p>Wednesday, 10 May 2024</p>
-          <p>5pm - 6pm (45-60 min)</p>
-          <!-- Submit button -->
-          <button
-            type="submit"
-            class="btn-design-1"
-            onclick="navigateToBookingReviewPage()"
-          >
-            Review
-          </button>
-        </div>
-      </div>
-    </div>
-    <!-- History 3 -->
-    <div class="history">
-      <div class="history-image-container">
-        <img
-          src="/assets/reviewer1.jpg"
-          alt="History Walker Image"
-          class="history-image"
-        />
-      </div>
-      <div class="history-content">
-        <div class="history-header">
-          <h3>Booking 3</h3>
-          <h4>Carrie</h4>
-          <p>Wednesday, 10 May 2024</p>
-          <p>5pm - 6pm (45-60 min)</p>
-          <!-- Submit button -->
-          <button
-            type="submit"
-            class="btn-design-1"
-            onclick="navigateToBookingReviewPage()"
-          >
-            Review
-          </button>
-        </div>
-      </div>
-    </div>
+    <% } %>
+    
 
     <script>
       function navigateToBookingReviewPage() {

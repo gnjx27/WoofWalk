@@ -15,7 +15,8 @@ const {
     insertDog,
     getWalkers,
     getUsers,
-    getReviews
+    getReviews,
+    getBookings
 } = require('../utils/utils');
 const { v4: uuidv4 } = require('uuid');
 const nodemailer = require('nodemailer');
@@ -69,23 +70,23 @@ router.get('/booking', isAuthenticated, async (req, res) => {
 // Pass booking details to next route (book-walker)
 router.post('/booking-details', isAuthenticated, async (req, res) => {
     const { location, date, time, remarks, dogSize, dogAge, timeRange } = req.body;
-    const dogData = await getDogData(global.db, req.session.userId);
     global.db.run('UPDATE dog SET dog_size = ?, dog_age = ? WHERE user_id = ?', [dogSize, dogAge, req.session.userId], (err) => {
         if (err) {
             console.log("Error updating dog details");
         } else {
+            req.session.bookingDetails = { location, date, time, remarks, timeRange, dogSize, dogAge };
             res.redirect('/booking-walker');
         }
-    });  
+    });
 });
 
 // Route for booking walker page
-router.get('/booking-walker', isAuthenticated, async (req, res) => {    
+router.get('/booking-walker', isAuthenticated, async (req, res) => {
     const walkers = await getWalkers(global.db);
     const users = await getUsers(global.db);
     const reviews = await getReviews(global.db);
     res.render('index', {
-        title: 'Search Walker- WoofWalk',
+        title: 'Search Walker - WoofWalk',
         currentPage: 'booking-walker',
         body: 'booking-walker',
         walkers: walkers,
@@ -95,33 +96,63 @@ router.get('/booking-walker', isAuthenticated, async (req, res) => {
 });
 
 // Route for booking summary page
-router.get('/booking-summary', async (req, res) => {
-    const walkerData = await getWalkerData(global.db, req.session.userId);
+router.get('/booking-summary/:walkerUserId', async (req, res) => {
+    const walkerUserData = await getUserData(global.db, req.params.walkerUserId);
+    const walkerData = await getWalkerData(global.db, req.params.walkerUserId);
+    const dogData = await getDogData(global.db, req.session.userId);
+    req.session.bookingDetails.dogId = dogData.dog_id;
+    req.session.bookingDetails.walkerId = req.params.walkerUserId;
+    req.session.bookingDetails.totalCost = (req.session.bookingDetails.timeRange / 30) * walkerData.base_price;
     res.render('index', {
         title: 'Booking Summary - WoofWalk',
         currentPage: 'booking-summary',
         body: 'booking-summary',
-        walkerData: walkerData
+        bookingDetails: req.session.bookingDetails,
+        walkerUserData: walkerUserData,
+        walkerData: walkerData,
     });
 });
 
 // Route for booking success page
 router.get('/booking-success', (req, res) => {
-    res.render('index', {
-        title: 'Booking Successful - WoofWalk',
-        currentPage: 'booking-success',
-        body: 'booking-success'
+    const bookingQuery = "INSERT INTO booking (dog_id, walk_location, walk_date, walk_time, duration, remarks, walk_status, user_id, walker_id) VALUES (?,?,?,?,?,?,?,?,?)";
+    global.db.run(bookingQuery, 
+    [
+        req.session.bookingDetails.dogId,
+        req.session.bookingDetails.location,
+        req.session.bookingDetails.date,
+        req.session.bookingDetails.time,
+        req.session.bookingDetails.timeRange,
+        req.session.bookingDetails.remarks,
+        "pending",
+        req.session.userId,
+        req.session.bookingDetails.walkerId
+    ], (err) => {
+        if (err) {
+            res.status(500).send("Error inserting booking");
+        } else {
+            delete req.session.bookingDetails;
+            res.render('index', {
+                title: 'Booking Successful - WoofWalk',
+                currentPage: 'booking-success',
+                body: 'booking-success'
+            });
+        }
     });
 });
 
 // Route for booking history page
 router.get('/booking-history', async (req, res) => {
-    const walkerData = await getWalkerData(global.db, req.session.userId);
+    const bookings = await getBookings(global.db, req.session.userId);
+    const walkers = await getWalkers(global.db);
+    const users = await getUsers(global.db);
     res.render('index', {
         title: 'Booking History - WoofWalk',
         currentPage: 'booking-history',
         body: 'booking-history',
-        walkerData: walkerData
+        bookings: bookings,
+        users: users,
+        walkers: walkers
     });
 });
 

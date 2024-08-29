@@ -13,14 +13,6 @@ const { setDefaultUserPhoto } = require('./utils/utils');
 const port = 3000;
 const app = express();
 
-// Middleware
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(__dirname + '/public'));
-app.use(fileUpload());
-app.set('view engine', 'ejs');
-app.set('views', __dirname + '/views');
-app.use(cookieParser());
-
 // Session setup for user authentication
 app.use(session({
     secret: 'woofwalk',
@@ -42,7 +34,13 @@ global.db = new sqlite3.Database('./database.db', function (err) {
     }
 });
 
-// Routes
+// Middleware
+app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(fileUpload());
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
+app.use(cookieParser());
 app.use('/', routes);
 app.use('/owner', ownerRoutes);
 app.use('/walker', walkerRoutes);
