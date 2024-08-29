@@ -65,6 +65,7 @@ const insertUser = (db, username, email, hashedPassword, accountType) => {
                 if (err) {
                     reject(err);
                 } else {
+                    setDefaultUserPhoto(db);
                     resolve(this.lastID);
                 }
             }
@@ -74,21 +75,23 @@ const insertUser = (db, username, email, hashedPassword, accountType) => {
 
 const insertWalker = (db, userId) => {
     return new Promise((resolve, reject) => {
-        fs.readFile('./public/walker/walker-default-img.png', (err, data) => {
+        db.run('INSERT INTO walker (user_id) VALUES (?)', [userId], (err) => {
             if (err) {
-                console.log("error reading default walker image");
+                reject(err);
             } else {
-                db.run(
-                    'INSERT INTO walker (user_id, walker_photo) VALUES (?, ?)',
-                    [userId, data],
-                    function(err) {
-                        if (err) {
-                            reject(err);
-                        } else {
-                            resolve();
-                        }
-                    }
-                );     
+                resolve();
+            }
+        });
+    });
+};
+
+const insertDog = (db, userId) => {
+    return new Promise((resolve, reject) => {
+        db.run('INSERT INTO dog (user_id) VALUES (?)', [userId], (err) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve();
             }
         });
     });
@@ -114,9 +117,7 @@ const getWalkerData = (db, userId) => {
 const getWalkerReviews = (db, walkerId) => {
     return new Promise((resolve, reject) => {
         db.all(
-            'SELECT * FROM review WHERE walker_id = ?',
-            [walkerId],
-            function(err, reviews) {
+            'SELECT * FROM review WHERE walker_id = ?', [walkerId], (err, reviews) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -171,6 +172,42 @@ const getDogData = (db, userId) => {
     });
 };
 
+const getWalkers = (db) => {
+    return new Promise ((resolve, reject) => {
+        db.all('SELECT * FROM walker', (err, walkers) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(walkers);
+            }
+        });
+    });
+}
+
+const getUsers = (db) => {
+    return new Promise ((resolve, reject) => {
+        db.all('SELECT * FROM user', (err, users) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(users);
+            }
+        });
+    });
+};
+
+const getReviews = (db) => {
+    return new Promise ((resolve, reject) => {
+        db.all('SELECT * FROM review', (err, reviews) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(reviews);
+            }
+        });
+    });
+};
+
 module.exports = { 
     checkExistingUser, 
     validateUserInput, 
@@ -181,5 +218,9 @@ module.exports = {
     getWalkerReviews, 
     getUserData,
     setDefaultUserPhoto,
-    getDogData
+    getDogData,
+    insertDog,
+    getWalkers,
+    getUsers,
+    getReviews
 };

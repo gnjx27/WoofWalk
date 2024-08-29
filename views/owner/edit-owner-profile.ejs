@@ -422,18 +422,18 @@
     
     // Validate Special Needs
     const special_needs = document.getElementById("special_needs").value;
-    if (special_needs.length < 10) {
+    if (special_needs.length < 5) {
       document.getElementById("special-needs-error").textContent =
-        "Special needs must be at least 10 characters!";
+        "Special needs must be at least 5 characters!";
       document.getElementById("special-needs-error-icon").style.display = "inline";
       valid = false;
     }
     
     // Validate Remark
     const dog_remark = document.getElementById("dog_remark").value;
-    if (dog_remark.length < 10) {
+    if (dog_remark.length < 5) {
       document.getElementById("remark-error").textContent =
-        "Remark must be at least 10 characters!";
+        "Remark must be at least 5 characters!";
       document.getElementById("remark-error-icon").style.display = "inline";
       valid = false;
     }

@@ -8,14 +8,35 @@ const { getWalkerData, getWalkerReviews, getUserData } = require('../utils/utils
 
 // Route for displaying the walker profile page (protected)
 router.get('/walker-profile', isAuthenticated, async (req, res) => {
+    const userData = await getUserData(global.db, req.session.userId);
     const walkerData = await getWalkerData(global.db, req.session.userId);
     const reviews = await getWalkerReviews(global.db, walkerData.walker_id);
     res.render('index', {
         title: 'Walker Profile - WoofWalk',
         currentPage: 'walker-profile',
         body: 'walker/walker-profile',
+        userData: userData,
         walkerData: walkerData,
         reviews: reviews
+    });
+});
+
+// Route for displaying walker profile based on userId received in params
+router.get('/walker-profile/:userId', async (req, res) => {
+    const userId = req.params.userId;
+    const userData = await getUserData(global.db, userId);
+    const walkerData = await getWalkerData(global.db, userId);
+    if (!walkerData) {
+        return res.status(404).send("walker not found.");
+    }
+    const reviews = await getWalkerReviews(global.db, walkerData.walker_id);
+    res.render('index', {
+        title: 'Walker Profile - WoofWalk',
+        currentPage: 'walker-profile',
+        body: 'walker/walker-profile',
+        userData: userData,
+        walkerData: walkerData,
+        reviews: reviews        
     });
 });
 

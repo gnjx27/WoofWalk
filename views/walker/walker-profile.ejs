@@ -4,7 +4,7 @@
   <div class="profile-card">
     <!-- Walker Profile Image -->
     <img
-      src="/get-user-photo"
+      src="/get-user-photo/<%= userData.user_id %>"
       alt="Walker Image"
       class="walker-image"
     />
@@ -23,12 +23,12 @@
     <!-- Walker Information -->
     <div class="walker-info">
       <div class="walker-details">
-        <h2 class="capitalize-name"><%= user.username %> :)</h2>
+        <h2 class="capitalize-name"><%= userData.username %> :)</h2>
         <p style="color: #004393">
           <i class="bi bi-pin-map-fill"></i> <%= walkerData.walker_location %>
         </p>
         <p>⭐⭐⭐⭐⭐</p>
-        <p style="color: grey">(25 Reviews)</p>
+        <p style="color: grey">(<%= reviews.length %> Reviews)</p>
       </div>
       <div class="button-container">
         <button class="book-button">
@@ -51,10 +51,10 @@
       </h6>
       <h6 style="color: #004393">
         <a
-          href="mailto:<%= user.email %>"
+          href="mailto:<%= userData.email %>"
           style="color: inherit; text-decoration: none"
         >
-          <i class="bi bi-envelope-fill"></i> <%= user.email %>
+          <i class="bi bi-envelope-fill"></i> <%= userData.email %>
         </a>
       </h6>
 
@@ -96,7 +96,7 @@
   <!-- Profile Details Section -->
   <div class="profile-details">
     <!-- Walker Bios -->
-    <h3 class="capitalize-name">About <%= user.username %></h3>
+    <h3 class="capitalize-name">About <%= userData.username %></h3>
     <p><%= walkerData.walker_bio %></p>
     <hr class="mt-4 mb-4" />
 
