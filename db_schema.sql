@@ -93,9 +93,9 @@ VALUES
 -- INSERT WALKER REVIEWS --
 INSERT INTO review (reviewer_name, star_rating, review, walker_id)
 VALUES 
-    ('owner1', 5, 'Good dog walker!', 1),
-    ('owner2', 5, 'Good dog walker!', 1),
-    ('owner3', 5, 'Good dog walker!', 1),
+    ('owner1', 3, 'Good dog walker!', 1),
+    ('owner2', 3, 'Good dog walker!', 1),
+    ('owner3', 3, 'Good dog walker!', 1),
     ('owner4', 4, 'Good dog walker!', 2),
     ('owner5', 4, 'Good dog walker!', 2),
     ('owner6', 2, 'Good dog walker!', 3);

@@ -339,6 +339,7 @@ router.post('/sign-in', async (req, res) => {
 
         if (user && await bcrypt.compare(password, user.password_hash)) {
             req.session.userId = user.user_id;
+            req.session.accountType = user.account_type;
             
             // Set cookie expiration based on 'Remember Me' checkbox
             if (rememberMe) {

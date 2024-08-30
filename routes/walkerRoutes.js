@@ -11,13 +11,20 @@ router.get('/walker-profile', isAuthenticated, async (req, res) => {
     const userData = await getUserData(global.db, req.session.userId);
     const walkerData = await getWalkerData(global.db, req.session.userId);
     const reviews = await getWalkerReviews(global.db, walkerData.walker_id);
+    var totalRating = 0;
+    for (const review of reviews) {
+        totalRating += review.star_rating;
+    }
+    const averageRating = Math.floor(totalRating / reviews.length);
     res.render('index', {
         title: 'Walker Profile - WoofWalk',
         currentPage: 'walker-profile',
         body: 'walker/walker-profile',
         userData: userData,
         walkerData: walkerData,
-        reviews: reviews
+        reviews: reviews,
+        accountType: req.session.accountType,
+        averageRating: averageRating
     });
 });
 
@@ -30,13 +37,20 @@ router.get('/walker-profile/:userId', async (req, res) => {
         return res.status(404).send("walker not found.");
     }
     const reviews = await getWalkerReviews(global.db, walkerData.walker_id);
+    var totalRating = 0;
+    for (const review of reviews) {
+        totalRating += review.star_rating;
+    }
+    const averageRating = Math.floor(totalRating / reviews.length);
     res.render('index', {
         title: 'Walker Profile - WoofWalk',
         currentPage: 'walker-profile',
         body: 'walker/walker-profile',
         userData: userData,
         walkerData: walkerData,
-        reviews: reviews        
+        reviews: reviews,
+        accountType: req.session.accountType,
+        averageRating: averageRating     
     });
 });
 
