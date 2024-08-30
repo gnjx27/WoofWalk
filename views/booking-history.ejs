@@ -29,7 +29,7 @@
     <div class="history">
       <div class="history-image-container">
         <img
-          src="/assets/reviewer1.jpg"
+          src="/get-user-photo/<%= user.user_id %>"
           alt="History Walker Image"
           class="history-image"
         />
@@ -44,7 +44,7 @@
           <button
             type="submit"
             class="btn-design-1"
-            onclick="navigateToBookingReviewPage()"
+            onclick="window.location.href = '/booking-review/<%= user.user_id %>/<%= walker.walker_id %>'"
           >
             Review
           </button>
@@ -55,10 +55,6 @@
     
 
     <script>
-      function navigateToBookingReviewPage() {
-        // Navigate to the booking review page
-        window.location.href = "/booking-review";
-      }
     </script>
   </div>
 </div>

@@ -101,7 +101,7 @@ router.get('/booking-summary/:walkerUserId', async (req, res) => {
     const walkerData = await getWalkerData(global.db, req.params.walkerUserId);
     const dogData = await getDogData(global.db, req.session.userId);
     req.session.bookingDetails.dogId = dogData.dog_id;
-    req.session.bookingDetails.walkerId = req.params.walkerUserId;
+    req.session.bookingDetails.walkerId = walkerData.walker_id;
     req.session.bookingDetails.totalCost = (req.session.bookingDetails.timeRange / 30) * walkerData.base_price;
     res.render('index', {
         title: 'Booking Summary - WoofWalk',
@@ -157,12 +157,35 @@ router.get('/booking-history', async (req, res) => {
 });
 
 // Route for booking review page
-router.get('/booking-review', (req, res) => {
+router.get('/booking-review/:userId/:walkerId', async (req, res) => {
+    const userData = await getUserData(global.db, req.params.userId);
+    const walkerData = await getWalkerData(global.db, req.params.walkerId);
     res.render('index', {
         title: 'Booking Review - WoofWalk',
         currentPage: 'booking-review',
-        body: 'booking-review'
+        body: 'booking-review',
+        userData: userData,
+        walkerData: walkerData
     });
+});
+
+// Route for sending review
+router.post('/booking-review/:walkerId', async (req, res) => {
+    const userData = await getUserData(global.db, req.session.userId);
+    const { rating, review } = req.body;
+    global.db.run("INSERT INTO review (reviewer_name, star_rating, review, walker_id) VALUES (?,?,?,?)", 
+        [
+            userData.username,
+            rating,
+            review,
+            req.params.walkerId
+        ], (err) => {
+            if (err) {
+                res.status(500).send("Error inserting review");
+            } else {
+                res.redirect('/booking-review-success');
+            }
+        });
 });
 
 // Route for booking review success page

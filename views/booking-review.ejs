@@ -21,11 +21,11 @@
     <p>How would you rate the service provided?</p>
   </div>
 
-  <form action="#" method="POST">
+  <form action="/booking-review/<%= walkerData.walker_id %>" method="POST">
     <!-- Walker Image -->
     <div class="review-image-container">
       <img
-        src="/assets/reviewer1.jpg"
+        src="/get-user-photo/<%= userData.user_id %>"
         alt="Review Walker Image"
         class="review-image"
       />

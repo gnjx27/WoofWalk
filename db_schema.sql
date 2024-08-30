@@ -79,9 +79,9 @@ CREATE TABLE IF NOT EXISTS payment (
 -- INSERT USER (WALKERS) --
 INSERT INTO user (username, email, password_hash, account_type)
 VALUES 
-    ('walker1', 'walker1@gmail.com', '$2b$10$WO4vjXeqEREDftX7SsaUC.fVPyH0BulMCy5jGXBtDYkAGYvUaQNKC', 'walker'),
-    ('walker2', 'walker2@gmail.com', '$2b$10$WO4vjXeqEREDftX7SsaUC.fVPyH0BulMCy5jGXBtDYkAGYvUaQNKC', 'walker'),
-    ('walker3', 'walker3@gmail.com', '$2b$10$WO4vjXeqEREDftX7SsaUC.fVPyH0BulMCy5jGXBtDYkAGYvUaQNKC', 'walker');
+    ('walker1', 'john@gmail.com', '$2b$10$WO4vjXeqEREDftX7SsaUC.fVPyH0BulMCy5jGXBtDYkAGYvUaQNKC', 'walker'),
+    ('walker2', 'bob@gmail.com', '$2b$10$WO4vjXeqEREDftX7SsaUC.fVPyH0BulMCy5jGXBtDYkAGYvUaQNKC', 'walker'),
+    ('walker3', 'frank@gmail.com', '$2b$10$WO4vjXeqEREDftX7SsaUC.fVPyH0BulMCy5jGXBtDYkAGYvUaQNKC', 'walker');
 
 -- INSERT WALKER --
 INSERT INTO walker (user_id)
@@ -93,11 +93,11 @@ VALUES
 -- INSERT WALKER REVIEWS --
 INSERT INTO review (reviewer_name, star_rating, review, walker_id)
 VALUES 
-    ('reviewer1', 5, 'Good dog walker!', 1),
-    ('reviewer2', 5, 'Good dog walker!', 1),
-    ('reviewer3', 5, 'Good dog walker!', 1),
-    ('reviewer4', 4, 'Good dog walker!', 2),
-    ('reviewer5', 4, 'Good dog walker!', 2),
-    ('reviewer6', 2, 'Good dog walker!', 3);
+    ('owner1', 5, 'Good dog walker!', 1),
+    ('owner2', 5, 'Good dog walker!', 1),
+    ('owner3', 5, 'Good dog walker!', 1),
+    ('owner4', 4, 'Good dog walker!', 2),
+    ('owner5', 4, 'Good dog walker!', 2),
+    ('owner6', 2, 'Good dog walker!', 3);
 
 COMMIT;
