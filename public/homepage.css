@@ -1,5 +1,3 @@
-/* Homepage styling (Nicelle, Started on 7 Aug  2024)*/
-
 /* Setting the height of each carousel item*/
 .carousel-item {
   height: 500px;
@@ -29,9 +27,9 @@
 
 /* Styling the button */
 .btn {
-  background-color: #d43b76;
+  background-color: #c02666;
   font-size: 20px;
-  border-color: #d43b76;
+  border-color: #c02666;
   border-radius: 5px;
   border-width: 3px;
 }
@@ -39,8 +37,8 @@
 /* Hover effect for the button */
 .btn:hover {
   background-color: rgb(240, 240, 240);
-  color: #d43b76;
-  border-color: #d43b76;
+  color: #c02666;
+  border-color: #c02666;
   border-width: 3px;
 }
 

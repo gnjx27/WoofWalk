@@ -105,7 +105,7 @@
 /* test */
 .size-options-2,
 .age-options-2 {
-  color: grey;
+  color: rgb(89, 89, 89);
   cursor: pointer;
   border: 1px solid rgba(128, 128, 128, 0.5);
   border-radius: 0.5em;
@@ -127,12 +127,12 @@
 input[type="radio"]:checked + .size-options-2,
 input[type="radio"]:checked + .age-options-2 {
   border: 2.5px solid;
-  border-color: #d43b76;
-  color: #d43b76;
+  border-color: #c02666;
+  color: #c02666;
   font-weight: bold;
 }
 
 .owner-image {
-    border-radius: 10px;
-    width: 100%;
+  border-radius: 10px;
+  width: 100%;
 }

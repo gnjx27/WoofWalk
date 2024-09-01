@@ -97,20 +97,45 @@ router.get('/booking-walker', isAuthenticated, async (req, res) => {
 
 // Route for booking summary page
 router.get('/booking-summary/:walkerUserId', async (req, res) => {
-    const walkerUserData = await getUserData(global.db, req.params.walkerUserId);
-    const walkerData = await getWalkerData(global.db, req.params.walkerUserId);
-    const dogData = await getDogData(global.db, req.session.userId);
-    req.session.bookingDetails.dogId = dogData.dog_id;
-    req.session.bookingDetails.walkerId = walkerData.walker_id;
-    req.session.bookingDetails.totalCost = (req.session.bookingDetails.timeRange / 30) * walkerData.base_price;
-    res.render('index', {
-        title: 'Booking Summary - WoofWalk',
-        currentPage: 'booking-summary',
-        body: 'booking-summary',
-        bookingDetails: req.session.bookingDetails,
-        walkerUserData: walkerUserData,
-        walkerData: walkerData,
-    });
+    try {
+        const walkerUserData = await getUserData(global.db, req.params.walkerUserId);
+        const walkerData = await getWalkerData(global.db, req.params.walkerUserId);
+        const dogData = await getDogData(global.db, req.session.userId);
+        
+        req.session.bookingDetails.dogId = dogData.dog_id;
+        req.session.bookingDetails.walkerId = walkerData.walker_id;
+
+        // Base price for the first 30 minutes
+        const basePrice = parseFloat(walkerData.base_price);
+        const baseDuration = 30;
+
+        // TimeRange is the total duration of the walk in minutes
+        const timeRange = parseFloat(req.session.bookingDetails.timeRange);
+
+        // Calculate additional time in minutes (if any) beyond the first 30 minutes
+        const additionalTime = Math.max(timeRange - baseDuration, 0);
+
+        // Calculate extraCost for the additional time (charge $3 for every extra 30 minutes)
+        const extraCost = Math.ceil(additionalTime / baseDuration) * 3;
+        req.session.bookingDetails.extraCost = parseFloat(extraCost);
+
+        // Calculate the total cost as base price + extra cost
+        const totalCost = basePrice + req.session.bookingDetails.extraCost;
+        req.session.bookingDetails.totalCost = parseFloat(totalCost);
+
+        // Render the booking summary page
+        res.render('index', {
+            title: 'Booking Summary - WoofWalk',
+            currentPage: 'booking-summary',
+            body: 'booking-summary',
+            bookingDetails: req.session.bookingDetails,
+            walkerUserData: walkerUserData,
+            walkerData: walkerData,
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('An error occurred while fetching booking summary.');
+    }
 });
 
 // Route for booking success page

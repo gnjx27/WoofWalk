@@ -65,9 +65,9 @@ CREATE TABLE IF NOT EXISTS booking (
 
 CREATE TABLE IF NOT EXISTS payment (
     payment_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    amount TEXT NOT NULL,
-    extended_walk_charge TEXT NOT NULL DEFAULT "No extra charges",
-    total_amount TEXT NOT NULL,
+    amount INTEGER NOT NULL,
+    extended_walk_charge INTEGER NOT NULL DEFAULT "No extra charges",
+    total_amount INTEGER NOT NULL,
     payment_date DATE NOT NULL,
     payment_status TEXT NOT NULL CHECK(payment_status IN('pending', 'complete')),
     user_id INTEGER NOT NULL,

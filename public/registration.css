@@ -59,8 +59,8 @@ input[type="radio"] {
 /* Styles for the selected radio option */
 input[type="radio"]:checked + .account-options {
   border: 2.5px solid;
-  border-color: #d43b76;
-  color: #d43b76;
+  border-color: #c02666;
+  color: #c02666;
   font-weight: bold;
 }
 
@@ -69,9 +69,9 @@ input[type="radio"]:checked + .account-options {
   display: block;
   width: 100%;
   padding: 0.5em;
-  border: 2px solid #d43b76;
+  border: 2px solid #c02666;
   background-color: #fff;
-  color: #d43b76;
+  color: #c02666;
   font-weight: bold;
   border-radius: 0.5em;
   text-align: center;
@@ -81,7 +81,7 @@ input[type="radio"]:checked + .account-options {
 
 /* Hover state for the submit button */
 .btn-design-1:hover {
-  background-color: #d43b76;
+  background-color: #c02666;
   color: #fff;
 }
 
@@ -98,7 +98,7 @@ input[type="radio"]:checked + .account-options {
   position: absolute;
   left: 0;
   bottom: -15px;
-  background-color: #d43b76;
+  background-color: #c02666;
   height: 4px;
   width: 60px;
   box-sizing: border-box;
@@ -113,7 +113,7 @@ input[type="radio"]:checked + .account-options {
 
 .forgot-password-link:hover {
   font-weight: bold;
-  color: #d43b76;
+  color: #c02666;
 }
 
 /* Login message */
