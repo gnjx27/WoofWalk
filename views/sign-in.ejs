@@ -43,15 +43,22 @@
       <!-- Password input field -->
       <div class="mb-3">
         <label for="password-signin" class="form-label"><b>Password</b></label>
-        <input
-          type="password"
-          class="form-control"
-          id="password-signin"
-          name="password"
-          placeholder="Enter your password"
-          required
-          autocomplete="off"
-        />
+        <div class="input-group">
+          <!-- Password input field -->
+          <input
+            type="password"
+            class="form-control"
+            id="password-signin"
+            name="password"
+            placeholder="Enter your password"
+            required
+            autocomplete="off"
+          />
+          <!-- Icon to toggle password visibility -->
+          <span class="input-group-text" id="toggle-password">
+            <i class="bi bi-eye" id="toggle-password-icon"></i>
+          </span>
+        </div>
 
         <!-- Container for displaying password validation errors -->
         <div class="error-container">
@@ -131,6 +138,25 @@
       // Prevent form submission if validation fails
       if (!valid) {
         event.preventDefault();
+      }
+    });
+
+  // Toggle password visibility
+  document
+    .getElementById("toggle-password")
+    .addEventListener("click", function () {
+      const passwordInput = document.getElementById("password-signin");
+      const toggleIcon = document.getElementById("toggle-password-icon");
+
+      // Toggle between "password" and "text" type
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        toggleIcon.classList.remove("bi-eye");
+        toggleIcon.classList.add("bi-eye-slash");
+      } else {
+        passwordInput.type = "password";
+        toggleIcon.classList.remove("bi-eye-slash");
+        toggleIcon.classList.add("bi-eye");
       }
     });
 </script>
