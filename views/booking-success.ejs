@@ -1,43 +1,53 @@
-<style>
-  /* Container for Success Page */
-  .success-container {
-    text-align: center;
-    margin: 14vh auto 8vh auto;
-    padding: 40px;
-    max-width: 50%;
-    border-radius: 30px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking Success</title>
 
-  .success-image {
-    width: 80%;
-    height: auto;
-    border-radius: 30px;
-    margin-bottom: 20px;
-  }
+  <style>
+    /* Container for Success Page */
+    .success-container {
+      text-align: center;
+      margin: 14vh auto 8vh auto;
+      padding: 40px;
+      max-width: 50%;
+      border-radius: 30px;
+      background-color: #f9f9f9;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
 
-  .message-container h1 {
-    font-size: 2em;
-    margin-bottom: 10px;
-  }
-</style>
+    .success-image {
+      width: 80%;
+      height: auto;
+      border-radius: 30px;
+      margin-bottom: 20px;
+    }
 
-<div class="success-container">
-  <img
-    src="/assets/booking-success.jpg"
-    alt="Success Image"
-    class="success-image"
-  />
-  <div class="message-container">
-    <h1>Your booking has been made!</h1>
-    <h1>Thank you :)</h1>
+    .message-container h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="success-container">
+    <img
+      src="/assets/booking-success.jpg"
+      alt="Success Image"
+      class="success-image"
+    />
+    <div class="message-container">
+      <h1>Your booking has been made!</h1>
+      <h1>Thank you :)</h1>
+    </div>
   </div>
-</div>
 
-<script>
-  // Redirect to history page after 5 seconds
-  setTimeout(function () {
-    window.location.href = "/booking-history";
-  }, 5000);
-</script>
+  <script>
+    // Redirect to history page after 5 seconds
+    setTimeout(function () {
+      window.location.href = "/booking-history";
+    }, 5000);
+  </script>
+</body>
+</html>

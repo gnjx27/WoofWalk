@@ -19,9 +19,12 @@
                     <li class="nav-item">
                         <a class="nav-link mx-lg-2 <% if (currentPage === 'home') { %> active <% } %>" aria-current="page" href="/"><center>HOME</center></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link mx-lg-2 <% if (currentPage === 'booking') { %> active <% } %>" href="/booking"><center>BOOKING</center></a>
-                    </li>
+                    <!-- Show BOOKING if user is not logged in or is logged in as owner -->
+                    <% if (!user || user.account_type === 'owner') { %> 
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2 <% if (currentPage === 'booking') { %> active <% } %>" href="/booking"><center>BOOKING</center></a>
+                        </li>
+                    <% } %>
                     <li class="nav-item">
                         <a class="nav-link mx-lg-2 <% if (currentPage === 'about') { %> active <% } %>" href="/about"><center>ABOUT US</center></a>
                     </li>

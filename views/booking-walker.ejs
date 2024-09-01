@@ -11,74 +11,72 @@
     <div class="swiper">
       <div class="swiper-wrapper">
         <!-- start here -->
-        <% walkers.forEach(walker => { 
-            const user = users.find(user => user.user_id === walker.user_id);
-            const walkerReviews = reviews.filter(review => review.walker_id === walker.walker_id);
-            var totalRating = 0;
-            for (const review of walkerReviews) {
-              totalRating += review.star_rating;
-            }
-            const averageRating = Math.floor(totalRating / walkerReviews.length);
-          %>
-          <div class="card swiper-slide">
-            <div class="image-content">
-              <img
-                src="/get-user-photo/<%= walker.user_id %>"
-                alt="Walker Image"
-                class="card-img"
-              />
-            </div>
-            <p class="quote">
-              <img src="/assets/quotes1.png" alt="quotes1" class="quote-icon" />
-              <%= walker.walker_quote %>
-              <img src="/assets/quotes2.png" alt="quotes1" class="quote-icon" />
-            </p>
-            <div class="card-content">
-              <div class="walker-info">
-                <!-- First Column: Name, Location, Stars, Reviews -->
-                <div class="walker-details">
-                  <h2 class="capitalize-name"><%= user.username %> :)</h2>
-                  <p style="color: #004393">
-                    <i class="bi bi-pin-mare p-fill"></i>
-                    <%= walker.walker_location %>
-                  </p>
-                  <p>
-                    <% for (let i = 0; i < averageRating; i++) { %>
-                    ⭐
-                    <% } %>
-                    </p>
-                  <p style="color: grey">(<%= walkerReviews.length %> Reviews)</p>
-                </div>
-                <!-- Second Column: Book Button -->
-                <div class="button-container">
-                  <button
-                    class="book-button"
-                    onclick="window.location.href='/booking-summary/<%= walker.user_id %>'"
-                  >
-                    BOOK FROM <br />
-                    <span>SGD <%= walker.base_price %></span> <br />
-                    /30 min
-                  </button>
-                </div>
+        <% walkers.forEach(walker => { const user = users.find(user =>
+        user.user_id === walker.user_id); const walkerReviews =
+        reviews.filter(review => review.walker_id === walker.walker_id); var
+        totalRating = 0; for (const review of walkerReviews) { totalRating +=
+        review.star_rating; } const averageRating = Math.floor(totalRating /
+        walkerReviews.length); %>
+        <div class="card swiper-slide">
+          <div class="image-content">
+            <img
+              src="/get-user-photo/<%= walker.user_id %>"
+              alt="Walker Image"
+              class="card-img"
+            />
+          </div>
+          <p class="quote">
+            <img src="/assets/quotes1.png" alt="quotes1" class="quote-icon" />
+            <%= walker.walker_quote %>
+            <img src="/assets/quotes2.png" alt="quotes1" class="quote-icon" />
+          </p>
+          <div class="card-content">
+            <div class="walker-info">
+              <!-- First Column: Name, Location, Stars, Reviews -->
+              <div class="walker-details">
+                <h2 class="capitalize-name"><%= user.username %> :)</h2>
+                <p style="color: #004393">
+                  <i class="bi bi-pin-mare p-fill"></i>
+                  <%= walker.walker_location %>
+                </p>
+                <p>
+                  <% for (let i = 0; i < averageRating; i++) { %> ⭐ <% } %>
+                </p>
+                <p style="color: rgb(143, 143, 143)">
+                  (<%= walkerReviews.length %> Reviews)
+                </p>
               </div>
-              <!-- Buttons -->
-              <div class="col-12 buttons-container">
+              <!-- Second Column: Book Button -->
+              <div class="button-container">
                 <button
-                  type="reset"
-                  class="button-design-3 cancel"
-                  onclick="handleReturnClick()"
+                  class="book-button"
+                  onclick="window.location.href='/booking-summary/<%= walker.user_id %>'"
                 >
-                  Return
+                  BOOK FROM <br />
+                  <span>SGD <%= walker.base_price %></span> <br />
+                  /30 min
                 </button>
-                <a href="/walker/walker-profile/<%= user.user_id %>" class="button-design-3 payment"
-                  >View More</a
-                >
               </div>
+            </div>
+            <!-- Buttons -->
+            <div class="col-12 buttons-container">
+              <button
+                type="reset"
+                class="button-design-3 cancel"
+                onclick="handleReturnClick()"
+              >
+                Return
+              </button>
+              <a
+                href="/walker/walker-profile/<%= user.user_id %>"
+                class="button-design-3 payment"
+                >View More</a
+              >
             </div>
           </div>
-          <!-- end here -->
+        </div>
+        <!-- end here -->
         <% }); %>
-        
       </div>
     </div>
     <div class="swiper-button-prev"></div>
