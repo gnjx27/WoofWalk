@@ -292,10 +292,12 @@ router.get('/sign-in', (req, res) => {
 
 // Route for sign-up page
 router.get('/sign-up', (req, res) => {
+    const message = req.query.message;
     res.render('index', {
         title: 'Sign Up - WoofWalk',
         currentPage: 'sign-up',
-        body: 'sign-up'
+        body: 'sign-up',
+        message: message
     });
 });
 
@@ -331,7 +333,8 @@ router.post('/sign-up', validateUserInput, hashPassword, async (req, res) => {
         const { username, email, password_hash, accountType } = req.body;
         const existingUser = await checkExistingUser(global.db, email, username);
         if (existingUser) {
-            return res.status(400).send('Email or username already in use');
+            // return res.status(400).send('Email or username already in use');
+            return res.redirect('/sign-up?message=Email+or+username+already+in+use');
         } else {
             const userId = await insertUser(global.db, username, email, password_hash, accountType);
             if (accountType == 'owner') {
@@ -343,8 +346,7 @@ router.post('/sign-up', validateUserInput, hashPassword, async (req, res) => {
             }
         }
     } catch (error) {
-        console.log(error.message)
-        return res.status(500).send('Error creating account');
+        return res.redirect('/sign-up?message=Error+creating+account');
     }
 });
 
@@ -385,7 +387,7 @@ router.post('/sign-in', async (req, res) => {
             res.redirect('/sign-in?message=Invalid+username+or+password');
         }
     } catch (error) {
-        res.status(500).send('Error signing in');
+        res.redirect('/sign-in?message=Error+signing+in')
     }
 });
 
