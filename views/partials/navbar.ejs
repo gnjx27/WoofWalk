@@ -33,9 +33,11 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav d-flex justify-content-end">
-                    <% if (user) { %> <!-- Check if user is logged in -->
+                    <!-- Check if user is logged in -->
+                    <% if (user) { %> 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle custom-btn d-block mx-lg-2" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="text-transform: capitalize;">
+                            <a class="nav-link dropdown-toggle custom-btn d-block mx-lg-2" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" 
+                            aria-expanded="false" style="text-transform: capitalize;">
                                 <i class="bi bi-person-circle"></i> <%= user.username %>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
@@ -51,7 +53,8 @@
                                 <li><a class="dropdown-item" href="/logout"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
                             </ul>
                         </li>
-                    <% } else { %> <!-- If not logged in -->
+                    <!-- If not logged in -->
+                    <% } else { %> 
                         <li class="nav-item">
                             <a href="/sign-in" class="custom-btn d-block mx-lg-2">
                                 <i class="bi bi-box-arrow-in-right"></i> Sign In
