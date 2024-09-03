@@ -42,6 +42,10 @@
         <i class="fas fa-star" data-value="1"></i>
       </div>
       <input type="hidden" id="star-rating" name="rating"/>
+      <p id="rating-warning" class="warning-message " style="text-align: center; display:none; color: red;">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        Please select a rating.
+      </p>
     </div>
 
     <!-- Review Section -->
@@ -80,6 +84,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     const stars = document.querySelectorAll(".star-rating .fa-star");
     const ratingInput = document.getElementById("star-rating");
+    const ratingWarning = document.getElementById("rating-warning");
 
     stars.forEach((star) => {
       star.addEventListener("click", () => {
@@ -96,6 +101,9 @@
           nextSibling.classList.add("selected");
           nextSibling = nextSibling.nextElementSibling;
         }
+
+        // Hide the warning message if a star is selected
+        ratingWarning.style.display = "none";
       });
 
       star.addEventListener("mouseover", () => {
@@ -116,7 +124,16 @@
         stars.forEach((s) => s.classList.remove("hover"));
       });
     });
-  });
+
+    // Show warning message if no rating is selected on submit
+    document.querySelector('form').addEventListener('submit', (event) => {
+      if (!ratingInput.value) {
+        event.preventDefault();
+        ratingWarning.style.display = "block";  // Show the warning message
+      }
+    });
+});
+
 
   function handleCancelClick() {
     document.querySelector("form").reset();
