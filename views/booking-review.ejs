@@ -41,7 +41,7 @@
         <i class="fas fa-star" data-value="2"></i>
         <i class="fas fa-star" data-value="1"></i>
       </div>
-      <input type="hidden" id="star-rating" name="rating" required />
+      <input type="hidden" id="star-rating" name="rating"/>
     </div>
 
     <!-- Review Section -->
@@ -69,7 +69,6 @@
       <button
         type="submit"
         class="button-design-3 payment"
-        onclick="navigateToReviewSuccessPage()"
       >
         Submit Review
       </button>
@@ -124,8 +123,11 @@
     window.location.href = "/booking-history";
   }
 
-  function navigateToReviewSuccessPage() {
-    // Navigate to the booking review success page
-    window.location.href = "/booking-review-success";
-  }
+  document.querySelector('form').addEventListener('submit', (event) => {
+    const starRating = document.getElementById('star-rating');
+    if (!starRating.value) {
+      event.preventDefault();
+    }
+  });
+
 </script>
