@@ -1,4 +1,7 @@
 # WoofWalk
+
+![WoofWalk Logo](./public/assets/logo2.png)
+
 WoofWalk is a dog walking service platform designed to connect dog owners with trusted dog walkers. Users can browse available walkers, book sessions, and leave reviews for their walkers. The platform also allows dog walkers to create profiles, set pricing, and manage their bookings.
 
 ## Prerequisites
