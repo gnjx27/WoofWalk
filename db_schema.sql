@@ -76,21 +76,74 @@ CREATE TABLE IF NOT EXISTS payment (
     FOREIGN KEY (booking_id) REFERENCES booking (booking_id)
 );
 
--- INSERT USER (WALKERS) --
+-- inserting dummy walker user profiles --
 INSERT INTO user (username, email, password_hash, account_type)
 VALUES 
-    ('walker1', 'john@gmail.com', '$2b$10$WO4vjXeqEREDftX7SsaUC.fVPyH0BulMCy5jGXBtDYkAGYvUaQNKC', 'walker'),
-    ('walker2', 'bob@gmail.com', '$2b$10$WO4vjXeqEREDftX7SsaUC.fVPyH0BulMCy5jGXBtDYkAGYvUaQNKC', 'walker'),
-    ('walker3', 'frank@gmail.com', '$2b$10$WO4vjXeqEREDftX7SsaUC.fVPyH0BulMCy5jGXBtDYkAGYvUaQNKC', 'walker');
+    ('Alice', 'alice@gmail.com', '$2b$10$WO4vjXeqEREDftX7SsaUC.fVPyH0BulMCy5jGXBtDYkAGYvUaQNKC', 'walker'),
+    ('Bruce', 'bruce@gmail.com', '$2b$10$WO4vjXeqEREDftX7SsaUC.fVPyH0BulMCy5jGXBtDYkAGYvUaQNKC', 'walker'),
+    ('Charlie', 'charlie@gmail.com', '$2b$10$WO4vjXeqEREDftX7SsaUC.fVPyH0BulMCy5jGXBtDYkAGYvUaQNKC', 'walker'),
+    ('Daisy', 'daisy@gmail.com', '$2b$10$WO4vjXeqEREDftX7SsaUC.fVPyH0BulMCy5jGXBtDYkAGYvUaQNKC', 'walker'),
+    ('Elizabeth', 'elizabeth@gmail.com', '$2b$10$WO4vjXeqEREDftX7SsaUC.fVPyH0BulMCy5jGXBtDYkAGYvUaQNKC', 'walker');
 
--- INSERT WALKER --
-INSERT INTO walker (user_id)
+-- inserting dummy walker data -- 
+INSERT INTO walker (
+    walker_quote,
+    walker_bio,
+    walker_skills,
+    walker_contact,
+    base_price,
+    walker_location,
+    user_id
+)
 VALUES
-    (1),
-    (2),
-    (3);
+    (
+        'Your dog''s happiness, my priority.',
+        'Hi there! I''m Alice, and I''m absolutely passionate about dogs. With over 7 years of experience in dog walking and pet care, I''ve had the joy of meeting and caring for dogs of all shapes and sizes. From energetic pups who love a good game of fetch to older dogs who enjoy a leisurely stroll, I tailor each walk to suit their needs and personality. Your furry companion''s happiness and well-being are my top priorities, and I can''t wait to create paw-some memories with them!',
+        'Dog walking, Obedience training',
+        '98765432',
+        '25',
+        'Jurong East, Singapore',
+        1
+    ),
+    (
+        'Every wag tells a story!',
+        'Hello! I''m Bruce, a dedicated dog walker with over 5 years of experience. I believe in the unique bond between dogs and their owners, and I''m here to strengthen that bond through fun and engaging walks. Whether your dog is a high-energy runner or a laid-back walker, I customize each session to fit their needs. Let''s make every walk an adventure your dog will love!',
+        'Dog walking, Behavioral training',
+        '91234567',
+        '22',
+        'Orchard Road, Singapore',
+        2
+    ),
+    (
+        'Walking with dogs is not just a job; it''s a joy and a privilege.',
+        'Greetings! I am Charlie with 6 years in dog walking and a lifelong love for pets, I provide a personalized walking experience for each furry friend. From playful pups to gentle seniors, I ensure every walk is both enjoyable and beneficial. My goal is to make each walk a delightful experience for your dog and to foster a positive relationship between us.',
+        'Dog walking, Pet sitting',
+        '99876543',
+        '28',
+        'Bugis, Singapore',
+        3
+    ),
+    (
+        'Let''s explore the world one paw at a time!',
+        'Daisy here!, and I am thrilled to offer my dog walking services. With a background in pet care and a passion for animals, I ensure that every walk is an adventure. My approach is to understand each dog''s personality and needs to provide a tailored walking experience. Whether it''s a brisk run or a relaxed stroll, your dog will be in good hands with me.',
+        'Dog walking, Exercise routines',
+        '99871233',
+        '30',
+        'Tampines, Singapore',
+        4
+    ),
+    (
+        'Unleash your dogs happiness with me!',
+        'Greetings, My name is Elizabeth! With 8 years of experience in dog walking, I''m committed to providing the best care for your furry friends. Each walk is designed to be a positive and enriching experience for your dog, considering their energy levels and preferences. My goal is to ensure that your dog''s time with me is enjoyable, safe, and fulfilling.',
+        'Dog walking, Enrichment activities',
+        '99875555',
+        '23',
+        'Buona Vista, Singapore',
+        5
+    );
+    
 
--- INSERT WALKER REVIEWS --
+-- inserting dummy reviews --
 INSERT INTO review (reviewer_name, star_rating, review, walker_id)
 VALUES 
     ('owner1', 3, 'Good dog walker!', 1),
