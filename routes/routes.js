@@ -412,7 +412,7 @@ router.post("/forgot-password", async (req, res) => {
     };
     transporter.sendMail(mailDetails, (err, info) => {
         console.log("One time link sent to user's email");
-        res.redirect("/sign-in");
+        res.redirect("/sign-in?message=One+time+password+reset+link+sent+to+your+email");
     });
 });
 
