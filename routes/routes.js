@@ -411,28 +411,21 @@ router.post("/forgot-password", async (req, res) => {
         text: `Click the one-time link to reset your password: ${OTTLink}`  
     };
     transporter.sendMail(mailDetails, (err, info) => {
-        if (err) {
-            return res.status(500).send("Error sending email to user");
-        }
-        else {
-            console.log("One time link sent to user's email");
-            res.redirect("/sign-in");
-        }
+        console.log("One time link sent to user's email");
+        res.redirect("/sign-in");
     });
 });
 
 // Handle reset password
-router.post("/reset-password", async (req, res) => {
-    const email = req.body.email;
-    const password = req.body.password;
+router.post("/reset-password", hashPassword,async (req, res) => {
+    const { email, password_hash } = req.body;
     const existingUser = await checkExistingUser(global.db, email, "none");
     if (!existingUser) {
         return res.status(400).send("User not registered");
     }
-    const hashedPassword = await hashPassword(password);
     global.db.run(
         "UPDATE user SET password_hash = ? WHERE email = ?",
-        [hashedPassword, email],
+        [password_hash, email],
         (err) => {
             if (err) {
                 return res.status(500).send("Error updating password");
